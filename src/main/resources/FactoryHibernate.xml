@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/mydb</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <mapping class="korotaev.Models.Md.Achievement"/>
+      <mapping class="korotaev.Models.Md.Achievmenttype"/>
+      <mapping class="korotaev.Models.Md.Auto"/>
+      <mapping class="korotaev.Models.Md.Message"/>
+      <mapping class="korotaev.Models.Md.Messagetype"/>
+      <mapping class="korotaev.Models.Md.Region"/>
+      <mapping class="korotaev.Models.Md.Request"/>
+      <mapping class="korotaev.Models.Md.Requeststatus"/>
+      <mapping class="korotaev.Models.Md.Requesttype"/>
+      <mapping class="korotaev.Models.Md.Session"/>
+      <mapping class="korotaev.Models.Md.Tool"/>
+      <mapping class="korotaev.Models.Md.Tooltypes"/>
+      <mapping class="korotaev.Models.Md.Transmissiontype"/>
+      <mapping class="korotaev.Models.Md.User"/>
+      <mapping class="korotaev.Models.Md.Userstatus"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
