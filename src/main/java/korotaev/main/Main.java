@@ -19,12 +19,12 @@ public class Main {
 
 
         UsersManagers service = ctx.getBean(UsersManagers.class);
-        List<User> users = service.findUsersByNameLike("rus");
+        List<User> users = service.findUsersByNameContaining("rus");
         int i = 0;
         for (User user: users
                 ) {
             i++;
-            System.out.println(i + ") " +  user.getName() + " " + user.getEmail());
+            System.out.println(i + ") " +  user.getName());
         }
         }
 

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
-@Service("jpaContactService")
+@Service("jpaUsersService")
 @Repository
 @Transactional
 public class UsersServiceImpl implements UsersService {
@@ -27,7 +27,7 @@ public class UsersServiceImpl implements UsersService {
 
     public List<User> findByNameLike (String name) {
 
-        return usersManagers.findUsersByNameLike(name);
+        return usersManagers.findUsersByNameContaining(name);
     }
 
 }
