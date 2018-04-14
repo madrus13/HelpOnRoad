@@ -159,7 +159,7 @@ public class Message {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CreateUser", referencedColumnName = "Id")
+    @JoinColumn(name = "CreateUser", referencedColumnName = "Id", insertable = false, updatable = false)
     public User getUserByCreateUser() {
         return userByCreateUser;
     }
@@ -169,7 +169,7 @@ public class Message {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Request", referencedColumnName = "Id")
+    @JoinColumn(name = "Request", referencedColumnName = "Id", insertable = false, updatable = false)
     public Request getRequestByRequest() {
         return requestByRequest;
     }
@@ -179,7 +179,7 @@ public class Message {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Type", referencedColumnName = "Id")
+    @JoinColumn(name = "Type", referencedColumnName = "Id", insertable = false, updatable = false)
     public Messagetype getMessagetypeByType() {
         return messagetypeByType;
     }
@@ -189,7 +189,7 @@ public class Message {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Region", referencedColumnName = "Id")
+    @JoinColumn(name = "Region", referencedColumnName = "Id", insertable = false, updatable = false)
     public Region getRegionByRegion() {
         return regionByRegion;
     }

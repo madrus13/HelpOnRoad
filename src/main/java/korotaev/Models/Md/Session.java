@@ -77,7 +77,7 @@ public class Session {
     }
 
     @ManyToOne
-    @JoinColumn(name = "User", referencedColumnName = "Id")
+    @JoinColumn(name = "User", referencedColumnName = "Id", insertable = false, updatable = false)
     public User getUserByUser() {
         return userByUser;
     }

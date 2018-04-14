@@ -224,7 +224,7 @@ public class Request {
     }
 
     @ManyToOne
-    @JoinColumn(name = "User", referencedColumnName = "Id")
+    @JoinColumn(name = "User", referencedColumnName = "Id", insertable = false, updatable = false)
     public User getUserByUser() {
         return userByUser;
     }
@@ -234,7 +234,7 @@ public class Request {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CreationUser", referencedColumnName = "Id")
+    @JoinColumn(name = "CreationUser", referencedColumnName = "Id", insertable = false, updatable = false)
     public User getUserByCreationUser() {
         return userByCreationUser;
     }
@@ -244,7 +244,7 @@ public class Request {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Type", referencedColumnName = "Id")
+    @JoinColumn(name = "Type", referencedColumnName = "Id", insertable = false, updatable = false)
     public Requesttype getRequesttypeByType() {
         return requesttypeByType;
     }
@@ -254,7 +254,7 @@ public class Request {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Status", referencedColumnName = "Id")
+    @JoinColumn(name = "Status", referencedColumnName = "Id", insertable = false, updatable = false)
     public Requeststatus getRequeststatusByStatus() {
         return requeststatusByStatus;
     }

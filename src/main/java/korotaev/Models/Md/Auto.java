@@ -103,7 +103,7 @@ public class Auto {
     }
 
     @ManyToOne
-    @JoinColumn(name = "User", referencedColumnName = "Id")
+    @JoinColumn(name = "User", referencedColumnName = "Id", insertable = false, updatable = false)
     public User getUserByUser() {
         return userByUser;
     }
@@ -113,7 +113,7 @@ public class Auto {
     }
 
     @ManyToOne
-    @JoinColumn(name = "TransmissionType", referencedColumnName = "Id")
+    @JoinColumn(name = "TransmissionType", referencedColumnName = "Id", insertable = false, updatable = false)
     public Transmissiontype getTransmissiontypeByTransmissionType() {
         return transmissiontypeByTransmissionType;
     }

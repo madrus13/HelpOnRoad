@@ -76,7 +76,7 @@ public class Tool {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Type", referencedColumnName = "Id")
+    @JoinColumn(name = "Type", referencedColumnName = "Id", insertable = false, updatable = false)
     public Tooltypes getTooltypesByType() {
         return tooltypesByType;
     }
@@ -86,7 +86,7 @@ public class Tool {
     }
 
     @ManyToOne
-    @JoinColumn(name = "User", referencedColumnName = "Id")
+    @JoinColumn(name = "User", referencedColumnName = "Id", insertable = false, updatable = false)
     public User getUserByUser() {
         return userByUser;
     }

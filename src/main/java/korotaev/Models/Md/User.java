@@ -231,7 +231,7 @@ public class User {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Status", referencedColumnName = "Id")
+    @JoinColumn(name = "Status", referencedColumnName = "Id", insertable = false, updatable = false)
     public Userstatus getUserstatusByStatus() {
         return userstatusByStatus;
     }
@@ -241,7 +241,7 @@ public class User {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Region", referencedColumnName = "Id")
+    @JoinColumn(name = "Region", referencedColumnName = "Id", insertable = false, updatable = false)
     public Region getRegionByRegion() {
         return regionByRegion;
     }

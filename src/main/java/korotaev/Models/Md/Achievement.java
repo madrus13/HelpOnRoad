@@ -88,7 +88,7 @@ public class Achievement {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Type", referencedColumnName = "Id")
+    @JoinColumn(name = "Type", referencedColumnName = "Id", insertable = false, updatable = false)
     public Achievmenttype getAchievmenttypeByType() {
         return achievmenttypeByType;
     }
