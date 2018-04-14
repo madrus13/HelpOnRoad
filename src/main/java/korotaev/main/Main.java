@@ -17,14 +17,15 @@ public class Main {
         ctx.load("classpath:spring-config.xml"); //move from src.main.java to src.main.resources
         ctx.refresh();
 
-        /*
-        UsersManagers service = ctx.getBean("jpaUsersManagers", UsersManagers.class);
-        List<User> users = service.findMD_UsersByName("rus");
 
+        UsersManagers service = ctx.getBean(UsersManagers.class);
+        List<User> users = service.findUsersByNameLike("rus");
+        int i = 0;
         for (User user: users
                 ) {
-            System.out.println(user.getEmail() + user.getAutosById().toString());
-        }*/
+            i++;
+            System.out.println(i + ") " +  user.getName() + " " + user.getEmail());
+        }
         }
 
 

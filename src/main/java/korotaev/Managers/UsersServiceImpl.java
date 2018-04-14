@@ -25,4 +25,9 @@ public class UsersServiceImpl implements UsersService {
         return usersManagers.findMD_UsersByName(name);
     }
 
+    public List<User> findByNameLike (String name) {
+
+        return usersManagers.findUsersByNameLike(name);
+    }
+
 }
