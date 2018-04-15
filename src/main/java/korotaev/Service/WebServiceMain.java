@@ -7,10 +7,14 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import javax.jws.WebMethod;
+import javax.jws.WebService;
+import javax.ejb.Stateless;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 
+@WebService
+@Stateless
 public class WebServiceMain {
     private  static String INVALID_TOKEN =      "INVALID TOKEN";
     private  static String INVALIDE_DATA =      "INVALID DATA";
@@ -19,8 +23,16 @@ public class WebServiceMain {
 
         private   String saveUserAndRetJson(User user)
         {
-            UsersManagers service = ctx.getBean(UsersManagers.class);
-            service.save(user);
+            UsersManagers service;
+            try {
+                service = ctx.getBean(UsersManagers.class);
+                if (service!=null) {
+                    service.save(user);
+                }
+           }
+           catch (Exception ex) {
+               //ex.printStackTrace();
+            }
             return objToJson(user);
         }
 
@@ -36,6 +48,7 @@ public class WebServiceMain {
             return res;
         }
 
+         @WebMethod
         public String insertUser(String name, String region,String password)
         {
             User user = new User();
