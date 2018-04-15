@@ -2,22 +2,20 @@ package korotaev.main;
 
 import korotaev.Managers.UsersManagers;
 import korotaev.Models.Md.User;
+import korotaev.Service.WebServiceMain;
 import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.List;
 
 public class Main {
+    private WebServiceMain webService;
     public static void main(String[] args) {
 
-        BasicConfigurator.configure();
+        WebServiceMain webService = new WebServiceMain();
 
-
-        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring-config.xml"); //move from src.main.java to src.main.resources
-        ctx.refresh();
-
-
+        webService.insertUser("ololoshka432","3","pass123");
+        /*
         UsersManagers service = ctx.getBean(UsersManagers.class);
         List<User> users = service.findUsersByNameContaining("rus");
         int i = 0;
@@ -25,8 +23,9 @@ public class Main {
                 ) {
             i++;
             System.out.println(i + ") " +  user.getName());
+        } */
         }
-        }
+
 
 
 }
