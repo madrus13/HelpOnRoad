@@ -7,6 +7,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 //import javax.ejb.Stateless;
 import java.io.IOException;
@@ -31,7 +32,8 @@ public class WebServiceMain {
                 }
            }
            catch (Exception ex) {
-               //ex.printStackTrace();
+               ex.printStackTrace();
+               return INVALIDE_DATA;
             }
             return objToJson(user);
         }
