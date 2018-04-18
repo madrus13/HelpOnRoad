@@ -9,13 +9,13 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-//import javax.ejb.Stateless;
+import javax.ejb.Stateless;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 
 @WebService
-//@Stateless
+@Stateless
 public class WebServiceMain {
     private  static String INVALID_TOKEN =      "INVALID TOKEN";
     private  static String INVALIDE_DATA =      "INVALID DATA";
