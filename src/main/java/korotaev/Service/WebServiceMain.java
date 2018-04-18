@@ -50,7 +50,7 @@ public class WebServiceMain {
             return res;
         }
 
-         @WebMethod
+        @WebMethod
         public String insertUser(String name, String region,String password)
         {
             User user = new User();
