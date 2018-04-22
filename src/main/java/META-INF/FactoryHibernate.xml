@@ -6,21 +6,21 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/mydb</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <mapping class="korotaev.Models.Md.Achievement"/>
-      <mapping class="korotaev.Models.Md.Achievmenttype"/>
-      <mapping class="korotaev.Models.Md.Auto"/>
-      <mapping class="korotaev.Models.Md.Message"/>
-      <mapping class="korotaev.Models.Md.Messagetype"/>
-      <mapping class="korotaev.Models.Md.Region"/>
-      <mapping class="korotaev.Models.Md.Request"/>
-      <mapping class="korotaev.Models.Md.Requeststatus"/>
-      <mapping class="korotaev.Models.Md.Requesttype"/>
-      <mapping class="korotaev.Models.Md.Session"/>
-      <mapping class="korotaev.Models.Md.Tool"/>
-      <mapping class="korotaev.Models.Md.Tooltypes"/>
-      <mapping class="korotaev.Models.Md.Transmissiontype"/>
-      <mapping class="korotaev.Models.Md.User"/>
-      <mapping class="korotaev.Models.Md.Userstatus"/>
+      <mapping class="korotaev.Entity.Achievement"/>
+      <mapping class="korotaev.Entity.Achievmenttype"/>
+      <mapping class="korotaev.Entity.Auto"/>
+      <mapping class="korotaev.Entity.Message"/>
+      <mapping class="korotaev.Entity.Messagetype"/>
+      <mapping class="korotaev.Entity.Region"/>
+      <mapping class="korotaev.Entity.Request"/>
+      <mapping class="korotaev.Entity.Requeststatus"/>
+      <mapping class="korotaev.Entity.Requesttype"/>
+      <mapping class="korotaev.Entity.Session"/>
+      <mapping class="korotaev.Entity.Tool"/>
+      <mapping class="korotaev.Entity.Tooltypes"/>
+      <mapping class="korotaev.Entity.Transmissiontype"/>
+      <mapping class="korotaev.Entity.User"/>
+      <mapping class="korotaev.Entity.Userstatus"/>
       <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

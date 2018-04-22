@@ -1,12 +1,6 @@
 package korotaev.main;
 
-import korotaev.Managers.UsersManagers;
-import korotaev.Models.Md.User;
 import korotaev.Service.WebServiceMain;
-import org.apache.log4j.BasicConfigurator;
-import org.springframework.context.support.GenericXmlApplicationContext;
-
-import java.util.List;
 
 public class Main {
     private WebServiceMain webService;

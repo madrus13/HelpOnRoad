@@ -1,13 +1,12 @@
 package korotaev.Service;
 
-import korotaev.Managers.UsersManagers;
-import korotaev.Models.Md.User;
+import korotaev.Managers.User.UsersManagers;
+import korotaev.Entity.User;
 import org.apache.log4j.BasicConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import javax.jws.WebMethod;
-import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.ejb.Stateless;
 import java.io.IOException;
@@ -21,10 +20,10 @@ public class WebServiceMain {
     private  static String INVALIDE_DATA =      "INVALID DATA";
     private GenericXmlApplicationContext ctx;
 
+    public UsersManagers service;
 
         private   String saveUserAndRetJson(User user)
         {
-            UsersManagers service;
             try {
                 service = ctx.getBean(UsersManagers.class);
                 if (service!=null) {
@@ -40,7 +39,7 @@ public class WebServiceMain {
 
         private String objToJson(Object obj)
         {
-            String res = "INVALIDE_DATA";
+            String res = INVALIDE_DATA;
             ObjectMapper mapper = new ObjectMapper();
             try {
                 res = mapper.writeValueAsString(obj);
@@ -79,8 +78,41 @@ public class WebServiceMain {
 
             return $jsString;
         }
+*/
+    /*
+    @WebMethod
+    public String getSessionToken(String name, String password)
+    {
+        String res = INVALIDE_DATA;
+        List<User> find = service.findUsersByName(name);
+        User model = null;
 
+        if (find.isEmpty() == false) {
+            model = find.get(0);
 
+        }
+        if (model!=null && model.getPassword() == password) {
+            findSession = TSession::find()->where(['User' => $model->Id]);
+
+            if ($findSession !=null && $findSession->one()!=null) {
+                $session = $findSession->one();
+                $result =  $session->Token;
+            }
+            else {
+                if ($model!=null && $user!=null) {
+                    $newSession = new TSession();
+                    $newSession->User = $model->Id;
+                    $newSession->Token = (string) ($user.base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
+                    if(!$newSession->save())
+                        return BaseJson::encode($newSession->getErrors());
+                    $result = $newSession->Token;
+                }
+            }
+        }
+
+        return $result;
+    }
+    /*
                 public function getSessionToken($user, $password)
                 {
                     $result = INVALID_TOKEN;
