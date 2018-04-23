@@ -2,6 +2,7 @@ package korotaev.Service;
 
 import korotaev.Managers.User.UsersManagers;
 import korotaev.Entity.User;
+import korotaev.Managers.User.UsersServiceImpl;
 import org.apache.log4j.BasicConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -22,7 +23,10 @@ public class WebServiceMain {
 
     public UsersManagers service;
 
-        private   String saveUserAndRetJson(User user)
+    public WebServiceMain() {
+    }
+
+    private   String saveUserAndRetJson(User user)
         {
             try {
                 service = ctx.getBean(UsersManagers.class);
@@ -336,10 +340,7 @@ public class WebServiceMain {
                 return INVALIDE;
             }
             */
-    public WebServiceMain() {
-        BasicConfigurator.configure();
-        ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring-config.xml");
-        ctx.refresh();
+    public WebServiceMain(GenericXmlApplicationContext context) {
+        ctx = context;
     }
 }
