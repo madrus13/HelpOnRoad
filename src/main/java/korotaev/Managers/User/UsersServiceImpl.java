@@ -34,9 +34,4 @@ public class UsersServiceImpl {
 
         return usersManagers.findUsersByName(name);
     }
-    public User findUsersById (long Id) {
-
-        return usersManagers.findUsersById(Id).isEmpty() ? null : usersManagers.findUsersById(Id).get(0);
-    }
-
 }

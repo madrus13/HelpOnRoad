@@ -1,12 +1,11 @@
 package korotaev.main;
 
-import korotaev.Entity.User;
+import korotaev.Entity.TransmissionType;
+import korotaev.Managers.Transmissiontype.TrTypeServiceImpl;
 import korotaev.Managers.User.UsersServiceImpl;
 import korotaev.Service.WebServiceMain;
 import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.support.GenericXmlApplicationContext;
-
-import java.util.List;
 
 public class Main {
     private static GenericXmlApplicationContext ctx;
@@ -27,12 +26,15 @@ public class Main {
 
         WebServiceMain webService = new WebServiceMain(ctx);
         UsersServiceImpl sd = new UsersServiceImpl(ctx);
-        List<User> ololoshka432 = sd.findByName("ololoshka432");
+        TrTypeServiceImpl ff = new TrTypeServiceImpl(ctx);
+
+
+
         int i = 0;
-        for (User user: ololoshka432
+        for (TransmissionType ttype: ff.findAll()
                 ) {
             i++;
-            System.out.println(i + ") " +  user.getName());
+            System.out.println(i + ") " +  ttype.getName());
         }
         //WebServiceMain webService = new WebServiceMain();
 

@@ -1,0 +1,16 @@
+getSessionToken(String name, String password)
+>>findSessionByUser
+create new session
+генерация токена sha1 java
+getSessionToken($user, $password)
+getUserIdByToken($sessionToken)
+get Tachievement by User
+get Tool by User
+get auto by User
+load User by Id
+get all MessageTypes
+getAllRequestType
+getAllTransmissionType
+getAllToolType
+getAllTachievmenttype
+getAllRegions

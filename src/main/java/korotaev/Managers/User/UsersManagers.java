@@ -9,5 +9,4 @@ import java.util.List;
 public interface UsersManagers extends CrudRepository<User, Long> {
     List<User> findUsersByName(String name);
     List<User> findAll();
-    List<User> findUsersById(long Id);
 }

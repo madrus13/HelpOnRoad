@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Transmissiontype implements Serializable {
+public class TransmissionType implements Serializable {
     private int id;
     private String name;
     private Byte isDeleted;
@@ -46,7 +46,7 @@ public class Transmissiontype implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Transmissiontype that = (Transmissiontype) o;
+        TransmissionType that = (TransmissionType) o;
 
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
@@ -63,7 +63,7 @@ public class Transmissiontype implements Serializable {
         return result;
     }
 
-    @OneToMany(mappedBy = "transmissiontypeByTransmissionType")
+    @OneToMany(mappedBy = "transmissionTypeByTransmissionType")
     public Collection<Auto> getAutosById() {
         return autosById;
     }

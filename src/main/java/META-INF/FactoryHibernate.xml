@@ -18,7 +18,7 @@
       <mapping class="korotaev.Entity.Session"/>
       <mapping class="korotaev.Entity.Tool"/>
       <mapping class="korotaev.Entity.Tooltypes"/>
-      <mapping class="korotaev.Entity.Transmissiontype"/>
+      <mapping class="korotaev.Entity.TransmissionType"/>
       <mapping class="korotaev.Entity.User"/>
       <mapping class="korotaev.Entity.Userstatus"/>
       <!-- <property name="connection.username"/> -->

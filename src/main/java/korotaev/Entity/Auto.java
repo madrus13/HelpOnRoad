@@ -12,7 +12,7 @@ public class Auto implements Serializable {
     private Byte isDeleted;
     private Integer transmissionType;
     private User userByUser;
-    private Transmissiontype transmissiontypeByTransmissionType;
+    private TransmissionType transmissionTypeByTransmissionType;
 
     @Id
     @Column(name = "Id", nullable = false)
@@ -115,11 +115,11 @@ public class Auto implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "TransmissionType", referencedColumnName = "Id", insertable = false, updatable = false)
-    public Transmissiontype getTransmissiontypeByTransmissionType() {
-        return transmissiontypeByTransmissionType;
+    public TransmissionType getTransmissionTypeByTransmissionType() {
+        return transmissionTypeByTransmissionType;
     }
 
-    public void setTransmissiontypeByTransmissionType(Transmissiontype transmissiontypeByTransmissionType) {
-        this.transmissiontypeByTransmissionType = transmissiontypeByTransmissionType;
+    public void setTransmissionTypeByTransmissionType(TransmissionType transmissionTypeByTransmissionType) {
+        this.transmissionTypeByTransmissionType = transmissionTypeByTransmissionType;
     }
 }
