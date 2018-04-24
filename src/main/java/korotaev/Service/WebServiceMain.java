@@ -2,8 +2,6 @@ package korotaev.Service;
 
 import korotaev.Managers.User.UsersManagers;
 import korotaev.Entity.User;
-import korotaev.Managers.User.UsersServiceImpl;
-import org.apache.log4j.BasicConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -11,8 +9,9 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.ejb.Stateless;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
-import java.util.List;
 
 @WebService
 @Stateless
@@ -58,13 +57,33 @@ public class WebServiceMain {
         {
             User user = new User();
             user.setName(name);
-            user.setModifyDate(Timestamp.valueOf("2018-04-15 13:29:00") );
+            user.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            user.setCreationDate(new Timestamp(System.currentTimeMillis()) );
             user.setPassword(password);
             //user.setRegion(region);
 
             return saveUserAndRetJson(user);
         }
 
+
+    public String sha1(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("SHA-1");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < messageDigest.length; i++)
+                hexString.append(String.format("%02X", 0xFF & messageDigest[i]));
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
     /*
             public String getUsers(String xml)
                     {

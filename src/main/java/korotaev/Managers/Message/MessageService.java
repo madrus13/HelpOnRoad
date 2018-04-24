@@ -1,8 +1,8 @@
-package korotaev.Managers.Request;
+package korotaev.Managers.Message;
 
 import com.google.common.collect.Lists;
-import korotaev.Entity.Region;
-import korotaev.Entity.Request;
+import korotaev.Entity.Auto;
+import korotaev.Entity.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -11,25 +11,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("jpaRequestService")
+@Service("jpaMessageService")
 @Repository
 @Transactional
-public class RequestServiceImpl {
+public class MessageService {
 
     @Autowired
-    private RequestManagers requestManagers;
+    private MessageManagers messageManagers;
     private GenericXmlApplicationContext ctx;
 
-    public RequestServiceImpl(GenericXmlApplicationContext context) {
+    public MessageService(GenericXmlApplicationContext context) {
         ctx = context;
-        requestManagers = ctx.getBean(RequestManagers.class);
+        messageManagers = ctx.getBean(MessageManagers.class);
     }
 
-    public RequestServiceImpl() {
+    public MessageService() {
     }
 
-    public List<Request> findAll() {
-        return Lists.newArrayList(requestManagers.findAll());
+    public List<Message> findAll() {
+        return Lists.newArrayList(messageManagers.findAll());
     }
 
 

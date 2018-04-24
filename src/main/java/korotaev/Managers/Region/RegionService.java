@@ -1,8 +1,8 @@
-package korotaev.Managers.Tool;
+package korotaev.Managers.Region;
 
 import com.google.common.collect.Lists;
-import korotaev.Entity.Tool;
-import korotaev.Entity.Tooltypes;
+import korotaev.Entity.Message;
+import korotaev.Entity.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -11,25 +11,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("jpaToolService")
+@Service("jpaRegionService")
 @Repository
 @Transactional
-public class ToolServiceImpl {
+public class RegionService {
 
     @Autowired
-    private ToolManagers trTypeManagers;
+    private RegionManagers regionManagers;
     private GenericXmlApplicationContext ctx;
 
-    public ToolServiceImpl(GenericXmlApplicationContext context) {
+    public RegionService(GenericXmlApplicationContext context) {
         ctx = context;
-        trTypeManagers = ctx.getBean(ToolManagers.class);
+        regionManagers = ctx.getBean(RegionManagers.class);
     }
 
-    public ToolServiceImpl() {
+    public RegionService() {
     }
 
-    public List<Tool> findAll() {
-        return Lists.newArrayList(trTypeManagers.findAll());
+    public List<Region> findAll() {
+        return Lists.newArrayList(regionManagers.findAll());
     }
+
+
 
 }

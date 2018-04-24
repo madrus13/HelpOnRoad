@@ -14,18 +14,18 @@ import java.util.List;
 @Service("jpaRequestStatusService")
 @Repository
 @Transactional
-public class RequestStatusServiceImpl {
+public class RequestStatusService {
 
     @Autowired
     private RequestStatusManagers requestStatusManagers;
     private GenericXmlApplicationContext ctx;
 
-    public RequestStatusServiceImpl(GenericXmlApplicationContext context) {
+    public RequestStatusService(GenericXmlApplicationContext context) {
         ctx = context;
         requestStatusManagers = ctx.getBean(RequestStatusManagers.class);
     }
 
-    public RequestStatusServiceImpl() {
+    public RequestStatusService() {
     }
 
     public List<Requeststatus> findAll() {

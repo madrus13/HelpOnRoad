@@ -7,45 +7,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db1ee4d8-524a-479c-be31-99e837808285" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/TODO.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievmenttype/AchievTypeManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievmenttype/AchievTypeServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Messagetype/MessageTypeManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Messagetype/MessageTypeServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requesttype/RequestTypeManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requesttype/RequestTypeServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeManagers.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionManagers.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionService.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml" afterPath="$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Entity/Auto.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Entity/Auto.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Entity/Transmissiontype.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Entity/TransmissionType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/TODO.txt" afterPath="$PROJECT_DIR$/TODO.txt" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievmenttype/AchievTypeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievmenttype/AchievTypeService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Messagetype/MessageTypeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Messagetype/MessageTypeService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requesttype/RequestTypeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requesttype/RequestTypeService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/korotaev/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/korotaev/main/Main.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/Entity/Auto.class" afterPath="$PROJECT_DIR$/target/classes/korotaev/Entity/Auto.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/Entity/Transmissiontype.class" afterPath="$PROJECT_DIR$/target/classes/korotaev/Entity/Transmissiontype.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/Managers/User/UsersManagers.class" afterPath="$PROJECT_DIR$/target/classes/korotaev/Managers/User/UsersManagers.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/Managers/User/UsersService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/Managers/User/UsersServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/korotaev/Managers/User/UsersServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/main/Main.class" afterPath="$PROJECT_DIR$/target/classes/korotaev/main/Main.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/korotaev/Managers/User/UsersServiceImpl.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,103 +41,99 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MessageServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-61">
-              <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegionServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestManagers.java">
+      <file leaf-file-name="WebServiceMain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="10" column="62" lean-forward="false" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+              <caret line="60" column="71" lean-forward="false" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestStatusServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusServiceImpl.java">
+      <file leaf-file-name="SessionService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="24" column="65" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="65" />
+            <state relative-caret-position="68">
+              <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestStatusManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusManagers.java">
+      <file leaf-file-name="SessionManagers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionManagers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="22" />
+            <state relative-caret-position="136">
+              <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#849#850#0" expanded="true" />
+                <element signature="e#876#877#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegionManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionManagers.java">
+      <file leaf-file-name="UsersManagers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+              <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToolManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java">
+      <file leaf-file-name="ToolTypeService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="302">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#933#934#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToolService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="35" column="68" lean-forward="false" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
+              <folding>
+                <element signature="e#1007#1008#0" expanded="true" />
+                <element signature="e#1085#1086#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AchievManagers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="13" column="53" lean-forward="false" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToolServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolServiceImpl.java">
+      <file leaf-file-name="AchievService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageManagers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="11" column="63" lean-forward="false" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+            <state relative-caret-position="211">
+              <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -166,6 +146,7 @@
       <find>saveUserAndRetJson</find>
       <find>usersService</find>
       <find>TransmissionType</find>
+      <find>getuseridbytoken</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,16 +160,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/Requesttype.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/Session.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/Tool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/Tooltypes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/Transmissiontype.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Models/Md/Userstatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/UsersManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/UsersServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/TrTypeManagers.java" />
@@ -206,15 +181,9 @@
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Entity/TransmissionType.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievTypeManagers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AchievServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/AutoManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageManagers.java" />
@@ -228,8 +197,20 @@
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolTypeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/ToolTypeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionManagers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionService.java" />
       </list>
     </option>
   </component>
@@ -312,15 +293,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="korotaev" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="korotaev" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
@@ -438,6 +410,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="korotaev" type="462c0819:PsiDirectoryNode" />
               <item name="Managers" type="462c0819:PsiDirectoryNode" />
+              <item name="Session" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="korotaev" type="462c0819:PsiDirectoryNode" />
+              <item name="Managers" type="462c0819:PsiDirectoryNode" />
               <item name="Tool" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -523,11 +505,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Session" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Tool" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Requeststatus" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Request" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Region" />
-      <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Message" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\META-INF" />
@@ -871,7 +853,7 @@
       <workItem from="1523985862501" duration="807000" />
       <workItem from="1523986975362" duration="128000" />
       <workItem from="1524322919126" duration="7254000" />
-      <workItem from="1524509295208" duration="8385000" />
+      <workItem from="1524509295208" duration="11492000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1523906857613</created>
@@ -908,17 +890,24 @@
       <option name="project" value="LOCAL" />
       <updated>1524511374718</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refactor: now it works">
+      <created>1524592497106</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1524592497107</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30480000" />
+    <option name="totallyTimeSpent" value="33587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42677164" sideWeight="0.17423134" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42677164" sideWeight="0.1830161" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -929,17 +918,17 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31496063" sideWeight="0.44436312" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31496063" sideWeight="0.4385066" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.4941435" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42677164" sideWeight="0.82576865" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42677164" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31112736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31112736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.4941435" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -971,7 +960,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new" />
     <MESSAGE value="refactor: not working now" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: not working now" />
+    <MESSAGE value="refactor: now it works" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: now it works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -980,15 +970,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Thread.java" />
     <entry file="file://$PROJECT_DIR$/sampleJPA.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1032,13 +1013,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Entity/Session.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1047,14 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="41" lean-forward="false" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -1127,7 +1093,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1144,32 +1112,8 @@
         <state relative-caret-position="153">
           <caret line="9" column="80" lean-forward="false" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="75" lean-forward="false" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,7 +1125,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievmenttype/AchievTypeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievmenttype/AchievTypeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
@@ -1189,28 +1133,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Messagetype/MessageTypeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Messagetype/MessageTypeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="false" />
+            <element signature="e#1013#1014#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#945#946#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Transmissiontype/TrTypeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
@@ -1226,12 +1160,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Requesttype/RequestTypeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Requesttype/RequestTypeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1241,7 +1175,7 @@
         <state relative-caret-position="153">
           <caret line="9" column="80" lean-forward="false" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1270,46 +1204,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="331" column="17" lean-forward="false" selection-start-line="331" selection-start-column="17" selection-end-line="331" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="30" column="27" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageManagers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1318,7 +1212,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Message/MessageService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-61">
           <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
@@ -1326,7 +1220,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Request/RequestService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="23" />
@@ -1347,31 +1241,15 @@
         <state relative-caret-position="186">
           <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Requeststatus/RequestStatusService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="24" column="65" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1384,10 +1262,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="-27">
           <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Entity/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="75" lean-forward="false" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="39" lean-forward="false" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Auto/AutoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="3" lean-forward="false" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tool/ToolService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="35" column="68" lean-forward="false" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
+          <folding>
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Tooltypes/ToolTypeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#933#934#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="95" column="16" lean-forward="false" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+          <folding>
+            <element signature="e#2361#2362#0" expanded="false" />
+            <element signature="e#2409#2410#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Achievement/AchievManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="53" lean-forward="false" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Service/WebServiceMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="60" column="71" lean-forward="false" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding />
         </state>
       </provider>

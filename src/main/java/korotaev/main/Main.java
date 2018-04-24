@@ -1,8 +1,8 @@
 package korotaev.main;
 
 import korotaev.Entity.TransmissionType;
-import korotaev.Managers.Transmissiontype.TrTypeServiceImpl;
-import korotaev.Managers.User.UsersServiceImpl;
+import korotaev.Managers.Transmissiontype.TrTypeService;
+import korotaev.Managers.User.UsersService;
 import korotaev.Service.WebServiceMain;
 import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -25,8 +25,8 @@ public class Main {
         initContextMain();
 
         WebServiceMain webService = new WebServiceMain(ctx);
-        UsersServiceImpl sd = new UsersServiceImpl(ctx);
-        TrTypeServiceImpl ff = new TrTypeServiceImpl(ctx);
+        UsersService sd = new UsersService(ctx);
+        TrTypeService ff = new TrTypeService(ctx);
 
 
 

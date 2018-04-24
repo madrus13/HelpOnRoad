@@ -1,7 +1,7 @@
-package korotaev.Managers.Tooltypes;
+package korotaev.Managers.Transmissiontype;
 
 import com.google.common.collect.Lists;
-import korotaev.Entity.Tooltypes;
+import korotaev.Entity.TransmissionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -10,25 +10,26 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("jpaToolTypeService")
+@Service("jpaTrTypeService")
 @Repository
 @Transactional
-public class ToolTypeServiceImpl {
+public class TrTypeService {
 
     @Autowired
-    private ToolTypeManagers trTypeManagers;
+    private TrTypeManagers trTypeManagers;
     private GenericXmlApplicationContext ctx;
 
-    public ToolTypeServiceImpl(GenericXmlApplicationContext context) {
+    public TrTypeService(GenericXmlApplicationContext context) {
         ctx = context;
-        trTypeManagers = ctx.getBean(ToolTypeManagers.class);
+        trTypeManagers = ctx.getBean(TrTypeManagers.class);
     }
 
-    public ToolTypeServiceImpl() {
+    public TrTypeService() {
     }
 
-    public List<Tooltypes> findAll() {
+    public List<TransmissionType> findAll() {
         return Lists.newArrayList(trTypeManagers.findAll());
     }
+
 
 }

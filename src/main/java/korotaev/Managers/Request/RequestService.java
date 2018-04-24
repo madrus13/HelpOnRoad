@@ -1,7 +1,8 @@
-package korotaev.Managers.Requesttype;
+package korotaev.Managers.Request;
 
 import com.google.common.collect.Lists;
-import korotaev.Entity.Requesttype;
+import korotaev.Entity.Region;
+import korotaev.Entity.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -10,25 +11,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("jpaRequestTypeService")
+@Service("jpaRequestService")
 @Repository
 @Transactional
-public class RequestTypeServiceImpl {
+public class RequestService {
 
     @Autowired
-    private RequestTypeManagers requestTypeManagers;
+    private RequestManagers requestManagers;
     private GenericXmlApplicationContext ctx;
 
-    public RequestTypeServiceImpl(GenericXmlApplicationContext context) {
+    public RequestService(GenericXmlApplicationContext context) {
         ctx = context;
-        requestTypeManagers = ctx.getBean(RequestTypeManagers.class);
+        requestManagers = ctx.getBean(RequestManagers.class);
     }
 
-    public RequestTypeServiceImpl() {
+    public RequestService() {
     }
 
-    public List<Requesttype> findAll() {
-        return Lists.newArrayList(requestTypeManagers.findAll());
+    public List<Request> findAll() {
+        return Lists.newArrayList(requestManagers.findAll());
     }
 
 

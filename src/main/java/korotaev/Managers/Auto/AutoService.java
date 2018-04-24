@@ -3,6 +3,7 @@ package korotaev.Managers.Auto;
 import com.google.common.collect.Lists;
 import korotaev.Entity.Achievement;
 import korotaev.Entity.Auto;
+import korotaev.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -14,24 +15,26 @@ import java.util.List;
 @Service("jpaAutoService")
 @Repository
 @Transactional
-public class AutoServiceImpl {
+public class AutoService {
 
     @Autowired
     private AutoManagers autoManagers;
     private GenericXmlApplicationContext ctx;
 
-    public AutoServiceImpl(GenericXmlApplicationContext context) {
+    public AutoService(GenericXmlApplicationContext context) {
         ctx = context;
         autoManagers = ctx.getBean(AutoManagers.class);
     }
 
-    public AutoServiceImpl() {
+    public AutoService() {
     }
 
     public List<Auto> findAll() {
         return Lists.newArrayList(autoManagers.findAll());
     }
 
-
+    public List<Auto> findAutoByUser(User user) {
+        return Lists.newArrayList(autoManagers.findAutoByUser(user));
+    }
 
 }

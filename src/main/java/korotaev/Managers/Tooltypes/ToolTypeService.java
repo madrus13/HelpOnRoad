@@ -1,8 +1,7 @@
-package korotaev.Managers.Message;
+package korotaev.Managers.Tooltypes;
 
 import com.google.common.collect.Lists;
-import korotaev.Entity.Auto;
-import korotaev.Entity.Message;
+import korotaev.Entity.Tooltypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -11,27 +10,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("jpaMessageService")
+@Service("jpaToolTypeService")
 @Repository
 @Transactional
-public class MessageServiceImpl {
+public class ToolTypeService {
 
     @Autowired
-    private MessageManagers messageManagers;
+    private ToolTypeManagers trTypeManagers;
     private GenericXmlApplicationContext ctx;
 
-    public MessageServiceImpl(GenericXmlApplicationContext context) {
+    public ToolTypeService(GenericXmlApplicationContext context) {
         ctx = context;
-        messageManagers = ctx.getBean(MessageManagers.class);
+        trTypeManagers = ctx.getBean(ToolTypeManagers.class);
     }
 
-    public MessageServiceImpl() {
+    public ToolTypeService() {
     }
 
-    public List<Message> findAll() {
-        return Lists.newArrayList(messageManagers.findAll());
+    public List<Tooltypes> findAll() {
+        return Lists.newArrayList(trTypeManagers.findAll());
     }
-
-
 
 }

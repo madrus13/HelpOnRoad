@@ -14,18 +14,18 @@ import java.util.List;
 @Service("jpaAchievTypeService")
 @Repository
 @Transactional
-public class AchievTypeServiceImpl {
+public class AchievTypeService {
 
     @Autowired
     private AchievTypeManagers achievTypeManagers;
     private GenericXmlApplicationContext ctx;
 
-    public AchievTypeServiceImpl(GenericXmlApplicationContext context) {
+    public AchievTypeService(GenericXmlApplicationContext context) {
         ctx = context;
         achievTypeManagers = ctx.getBean(AchievTypeManagers.class);
     }
 
-    public AchievTypeServiceImpl() {
+    public AchievTypeService() {
     }
 
     public List<Achievmenttype> findAll() {

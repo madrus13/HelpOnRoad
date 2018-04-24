@@ -1,8 +1,7 @@
-package korotaev.Managers.Region;
+package korotaev.Managers.Requesttype;
 
 import com.google.common.collect.Lists;
-import korotaev.Entity.Message;
-import korotaev.Entity.Region;
+import korotaev.Entity.Requesttype;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -11,25 +10,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("jpaRegionService")
+@Service("jpaRequestTypeService")
 @Repository
 @Transactional
-public class RegionServiceImpl {
+public class RequestTypeService {
 
     @Autowired
-    private RegionManagers regionManagers;
+    private RequestTypeManagers requestTypeManagers;
     private GenericXmlApplicationContext ctx;
 
-    public RegionServiceImpl(GenericXmlApplicationContext context) {
+    public RequestTypeService(GenericXmlApplicationContext context) {
         ctx = context;
-        regionManagers = ctx.getBean(RegionManagers.class);
+        requestTypeManagers = ctx.getBean(RequestTypeManagers.class);
     }
 
-    public RegionServiceImpl() {
+    public RequestTypeService() {
     }
 
-    public List<Region> findAll() {
-        return Lists.newArrayList(regionManagers.findAll());
+    public List<Requesttype> findAll() {
+        return Lists.newArrayList(requestTypeManagers.findAll());
     }
 
 

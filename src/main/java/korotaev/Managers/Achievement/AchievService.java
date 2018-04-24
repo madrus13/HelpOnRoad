@@ -3,6 +3,7 @@ package korotaev.Managers.Achievement;
 import com.google.common.collect.Lists;
 import korotaev.Entity.Achievement;
 import korotaev.Entity.Achievmenttype;
+import korotaev.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Repository;
@@ -14,24 +15,26 @@ import java.util.List;
 @Service("jpaAchievService")
 @Repository
 @Transactional
-public class AchievServiceImpl {
+public class AchievService {
 
     @Autowired
     private AchievManagers achievManagers;
     private GenericXmlApplicationContext ctx;
 
-    public AchievServiceImpl(GenericXmlApplicationContext context) {
+    public AchievService(GenericXmlApplicationContext context) {
         ctx = context;
         achievManagers = ctx.getBean(AchievManagers.class);
     }
 
-    public AchievServiceImpl() {
+    public AchievService() {
     }
 
     public List<Achievement> findAll() {
         return Lists.newArrayList(achievManagers.findAll());
     }
 
-
+    public List<Achievement> findAchievementByUser(User user) {
+        return Lists.newArrayList(achievManagers.findAchievementByUser(user));
+    }
 
 }

@@ -12,18 +12,22 @@ import java.util.List;
 @Service("jpaUsersService")
 @Repository
 @Transactional
-public class UsersServiceImpl {
+public class UsersService {
 
     @Autowired
     private UsersManagers usersManagers;
     private GenericXmlApplicationContext ctx;
 
-    public UsersServiceImpl(GenericXmlApplicationContext context) {
+    public UsersService(GenericXmlApplicationContext context) {
         ctx = context;
         usersManagers = ctx.getBean(UsersManagers.class);
     }
 
-    public UsersServiceImpl() {
+    public UsersService() {
+    }
+
+    public List<User> findUsersByName(String name) {
+        return null;
     }
 
     public List<User> findAll() {

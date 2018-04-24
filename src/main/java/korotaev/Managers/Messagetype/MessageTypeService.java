@@ -14,18 +14,18 @@ import java.util.List;
 @Service("jpaMessageTypeService")
 @Repository
 @Transactional
-public class MessageTypeServiceImpl {
+public class MessageTypeService {
 
     @Autowired
     private MessageTypeManagers messageTypeManagers;
     private GenericXmlApplicationContext ctx;
 
-    public MessageTypeServiceImpl(GenericXmlApplicationContext context) {
+    public MessageTypeService(GenericXmlApplicationContext context) {
         ctx = context;
         messageTypeManagers = ctx.getBean(MessageTypeManagers.class);
     }
 
-    public MessageTypeServiceImpl() {
+    public MessageTypeService() {
     }
 
     public List<Messagetype> findAll() {
