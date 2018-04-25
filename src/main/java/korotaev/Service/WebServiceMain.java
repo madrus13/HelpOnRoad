@@ -1,5 +1,18 @@
 package korotaev.Service;
 
+import korotaev.Entity.Session;
+import korotaev.Entity.TransmissionType;
+import korotaev.Managers.Achievement.AchievService;
+import korotaev.Managers.Achievmenttype.AchievTypeService;
+import korotaev.Managers.Auto.AutoService;
+import korotaev.Managers.Message.MessageService;
+import korotaev.Managers.Messagetype.MessageTypeService;
+import korotaev.Managers.Region.RegionService;
+import korotaev.Managers.Request.RequestService;
+import korotaev.Managers.Session.SessionService;
+import korotaev.Managers.Tool.ToolService;
+import korotaev.Managers.Tooltypes.ToolTypeService;
+import korotaev.Managers.Transmissiontype.TrTypeService;
 import korotaev.Managers.User.UsersManagers;
 import korotaev.Entity.User;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -16,54 +29,63 @@ import java.sql.Timestamp;
 @WebService
 @Stateless
 public class WebServiceMain {
-    private  static String INVALID_TOKEN =      "INVALID TOKEN";
-    private  static String INVALIDE_DATA =      "INVALID DATA";
+    private static String INVALID_TOKEN = "INVALID TOKEN";
+    private static String INVALIDE_DATA = "INVALID DATA";
     private GenericXmlApplicationContext ctx;
 
-    public UsersManagers service;
+    private UsersManagers usersManagers;
+
+    private SessionService sessionService;
+    private RegionService regionService;
+    private AchievService achievService;
+    private AchievTypeService achievTypeService;
+    private AutoService autoService;
+    private MessageService messageService;
+    private MessageTypeService messageTypeService;
+    private RequestService requestService;
+    private ToolService toolService;
+    private ToolTypeService toolTypeService;
+    private TrTypeService trTypeService;
+
 
     public WebServiceMain() {
     }
 
-    private   String saveUserAndRetJson(User user)
-        {
-            try {
-                service = ctx.getBean(UsersManagers.class);
-                if (service!=null) {
-                    service.save(user);
-                }
-           }
-           catch (Exception ex) {
-               ex.printStackTrace();
-               return INVALIDE_DATA;
+    private String saveUserAndRetJson(User user) {
+        try {
+            usersManagers = ctx.getBean(UsersManagers.class);
+            if (usersManagers != null) {
+                usersManagers.save(user);
             }
-            return objToJson(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return INVALIDE_DATA;
         }
+        return objToJson(user);
+    }
 
-        private String objToJson(Object obj)
-        {
-            String res = INVALIDE_DATA;
-            ObjectMapper mapper = new ObjectMapper();
-            try {
-                res = mapper.writeValueAsString(obj);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return res;
+    private String objToJson(Object obj) {
+        String res = INVALIDE_DATA;
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            res = mapper.writeValueAsString(obj);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return res;
+    }
 
-        @WebMethod
-        public String insertUser(String name, String region,String password)
-        {
-            User user = new User();
-            user.setName(name);
-            user.setCreationDate(new Timestamp(System.currentTimeMillis()));
-            user.setCreationDate(new Timestamp(System.currentTimeMillis()) );
-            user.setPassword(password);
-            //user.setRegion(region);
+    @WebMethod
+    public String insertUser(String name, String region, String password) {
+        User user = new User();
+        user.setName(name);
+        user.setCreationDate(new Timestamp(System.currentTimeMillis()));
+        user.setCreationDate(new Timestamp(System.currentTimeMillis()));
+        user.setPassword(password);
+        //user.setRegion(region);
 
-            return saveUserAndRetJson(user);
-        }
+        return saveUserAndRetJson(user);
+    }
 
 
     public String sha1(String s) {
@@ -84,10 +106,11 @@ public class WebServiceMain {
         }
         return "";
     }
+
     /*
             public String getUsers(String xml)
                     {
-                      UsersManagers service = ctx.getBean(UsersManagers.class);
+                      UsersManagers usersManagers = ctx.getBean(UsersManagers.class);
 
 
 
@@ -107,7 +130,7 @@ public class WebServiceMain {
     public String getSessionToken(String name, String password)
     {
         String res = INVALIDE_DATA;
-        List<User> find = service.findUsersByName(name);
+        List<User> find = usersManagers.findUsersByName(name);
         User model = null;
 
         if (find.isEmpty() == false) {
@@ -341,25 +364,56 @@ public class WebServiceMain {
                 return INVALIDE;
             }
 
+             */
+    @WebMethod
+    public String getAllRegions(String $sessionToken) {
+        String result = "";
+        if (sessionService == null) {
+            result = "Not inited";
+        }
+        Session session = sessionService.findSessionByToken($sessionToken);
+
+        if (session != null && session.getUserByUser() != null) {
+
+        } else {
+            result = INVALID_TOKEN;
+        }
+        result =  objToJson(regionService.findAll());
+
+        return result;
+    }
+    /*
+    }
 
 
-                public function getAllRegions($sessionToken)
-                        {
-                                $userId = $this->getUserIdByToken($sessionToken);
-                if ($userId == null) {
-                    return INVALID_TOKEN;
-                }
-
-                $types = Tregion::find()->all();
-
-                if ($types!=null)
-                {
-                    return   BaseJson::encode($types);
-                }
-                return INVALIDE;
+            public function getAllRegions($sessionToken)
+                    {
+                            $userId = $this->getUserIdByToken($sessionToken);
+            if ($userId == null) {
+                return INVALID_TOKEN;
             }
-            */
+
+            $types = Tregion::find()->all();
+
+            if ($types!=null)
+            {
+                return   BaseJson::encode($types);
+            }
+            return INVALIDE;
+        }
+    */
     public WebServiceMain(GenericXmlApplicationContext context) {
         ctx = context;
+        sessionService = new SessionService(ctx);
+        regionService = new RegionService(ctx);
+        achievService = new AchievService(ctx);
+        achievTypeService = new AchievTypeService(ctx);
+        autoService = new AutoService(ctx);
+        messageService = new MessageService(ctx);
+        messageTypeService = new MessageTypeService();
+        requestService = new RequestService(ctx);
+        toolService = new ToolService(ctx);
+        toolTypeService = new ToolTypeService(ctx);
+        trTypeService = new TrTypeService(ctx);
     }
 }

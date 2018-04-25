@@ -25,17 +25,17 @@ public class Main {
         initContextMain();
 
         WebServiceMain webService = new WebServiceMain(ctx);
-        UsersService sd = new UsersService(ctx);
-        TrTypeService ff = new TrTypeService(ctx);
+        //UsersService sd = new UsersService(ctx);
+        //TrTypeService ff = new TrTypeService(ctx);
 
 
 
-        int i = 0;
-        for (TransmissionType ttype: ff.findAll()
-                ) {
-            i++;
-            System.out.println(i + ") " +  ttype.getName());
-        }
+//        int i = 0;
+//        for (TransmissionType ttype: ff.findAll()
+//                ) {
+//            i++;
+//            System.out.println(i + ") " +  ttype.getName());
+//        }
         //WebServiceMain webService = new WebServiceMain();
 
         //webService.insertUser("ololoshka432","3","pass123");

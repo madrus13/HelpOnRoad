@@ -31,7 +31,10 @@ public class SessionService {
         return Lists.newArrayList(sessionManagers.findAll());
     }
 
-    public List<Session> findSessionByToken(String token) {
-        return Lists.newArrayList(sessionManagers.findSessionByToken(token));
+    public Session findSessionByToken(String token) {
+        if (sessionManagers.findSessionByToken(token).isEmpty() == false) {
+            return Lists.newArrayList(sessionManagers.findSessionByToken(token)).get(0);
+        }
+        return null;
     }
 }
