@@ -1,6 +1,7 @@
 package korotaev.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -8,13 +9,17 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
+@Transactional
+@JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Region implements Serializable  {
     private int id;
     private String name;
     private Byte isDeleted;
 
-    private Collection<Message> messagesById;
-    private Collection<User> usersById;
+    @JsonIgnore
+    private  Collection<Message> messagesById;
+    @JsonIgnore
+    private  Collection<User> usersById;
 
     @Id
     @Column(name = "Id", nullable = false)
@@ -69,21 +74,20 @@ public class Region implements Serializable  {
     }
 
     @OneToMany(mappedBy = "regionByRegion")
-    @Transient
+    @JsonIgnore
     public Collection<Message> getMessagesById() {
         return messagesById;
     }
-    @Transient
     public void setMessagesById(Collection<Message> messagesById) {
         this.messagesById = messagesById;
     }
 
     @OneToMany(mappedBy = "regionByRegion")
-    @Transient
+    @JsonIgnore
     public Collection<User> getUsersById() {
         return usersById;
     }
-    @Transient
+
     public void setUsersById(Collection<User> usersById) {
         this.usersById = usersById;
     }

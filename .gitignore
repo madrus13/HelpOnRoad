@@ -1,3 +1,5 @@
 *.war
 /target/sampleJPA-1.0-SNAPSHOT
 classes
+/.idea/dataSources/23213fd6-a08b-4578-8f79-25f7bf8dcce6.xml
+/.idea/dataSources/93f3080f-caea-4df2-afd6-9192c316c5d5.xml

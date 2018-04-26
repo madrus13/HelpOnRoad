@@ -7,6 +7,7 @@ import korotaev.Managers.Achievmenttype.AchievTypeService;
 import korotaev.Managers.Auto.AutoService;
 import korotaev.Managers.Message.MessageService;
 import korotaev.Managers.Messagetype.MessageTypeService;
+import korotaev.Managers.Region.RegionManagers;
 import korotaev.Managers.Region.RegionService;
 import korotaev.Managers.Request.RequestService;
 import korotaev.Managers.Session.SessionService;
@@ -17,6 +18,7 @@ import korotaev.Managers.User.UsersManagers;
 import korotaev.Entity.User;
 import org.apache.log4j.BasicConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.hibernate.Hibernate;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,13 +36,14 @@ import java.util.List;
 
 
 @WebService
-@Stateless
+@Transactional
 public class WebServiceMain {
     private static String INVALID_TOKEN = "INVALID TOKEN";
     private static String INVALIDE_DATA = "INVALID DATA";
     private GenericXmlApplicationContext ctx;
 
     private UsersManagers usersManagers;
+    private RegionManagers regionManagers;
 
     private SessionService sessionService;
     private RegionService regionService;
@@ -95,6 +98,14 @@ public class WebServiceMain {
         user.setCreationDate(new Timestamp(System.currentTimeMillis()));
         user.setPassword(password);
         //user.setRegion(region);
+
+
+        for (int i = 0; i < 500; i++) {
+            korotaev.Entity.Region reg = new korotaev.Entity.Region();
+            reg.setName("name_" + i);
+            regionManagers.save(reg);
+        }
+
 
         return saveUserAndRetJson(user);
     }
@@ -395,8 +406,8 @@ public class WebServiceMain {
         } else {
             result = INVALID_TOKEN;
         }
-
-        ArrayList<korotaev.Entity.Region> regions;
+        ;
+        List<korotaev.Entity.Region> regions;
         regions = regionService.findAll();
         result =  objToJson(regions);
 
@@ -447,6 +458,7 @@ public class WebServiceMain {
     private void initService()
     {
         if (ctx!=null) {
+            regionManagers = ctx.getBean(RegionManagers.class);
             if (sessionService == null) sessionService = new SessionService(ctx);
             if (regionService == null) regionService = new RegionService(ctx);
             if (achievService == null) achievService = new AchievService(ctx);
