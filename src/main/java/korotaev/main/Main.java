@@ -22,9 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        initContextMain();
+        //initContextMain();
 
-        WebServiceMain webService = new WebServiceMain(ctx);
+        //WebServiceMain webService = new WebServiceMain(ctx);
         //UsersService sd = new UsersService(ctx);
         //TrTypeService ff = new TrTypeService(ctx);
 

@@ -15,16 +15,23 @@ import korotaev.Managers.Tooltypes.ToolTypeService;
 import korotaev.Managers.Transmissiontype.TrTypeService;
 import korotaev.Managers.User.UsersManagers;
 import korotaev.Entity.User;
+import org.apache.log4j.BasicConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.ejb.Stateless;
+import javax.swing.plaf.synth.Region;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @WebService
 @Stateless
@@ -64,19 +71,24 @@ public class WebServiceMain {
         return objToJson(user);
     }
 
+
     private String objToJson(Object obj) {
         String res = INVALIDE_DATA;
         ObjectMapper mapper = new ObjectMapper();
         try {
             res = mapper.writeValueAsString(obj);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return res;
     }
 
-    @WebMethod
-    public String insertUser(String name, String region, String password) {
+    @WebMethod()
+    public String insertUser(
+                            @WebParam(name="name")   String name,
+                            @WebParam(name="region") String region,
+                            @WebParam(name="password") String password) {
+        initMainCfg();
         User user = new User();
         user.setName(name);
         user.setCreationDate(new Timestamp(System.currentTimeMillis()));
@@ -88,7 +100,7 @@ public class WebServiceMain {
     }
 
 
-    public String sha1(String s) {
+    private String sha1(String s) {
         try {
             // Create MD5 Hash
             MessageDigest digest = java.security.MessageDigest.getInstance("SHA-1");
@@ -366,19 +378,27 @@ public class WebServiceMain {
 
              */
     @WebMethod
-    public String getAllRegions(String $sessionToken) {
+    public String getAllRegions(
+            @WebParam(name="sessionToken") String sessionToken) {
+        initMainCfg();
         String result = "";
         if (sessionService == null) {
             result = "Not inited";
         }
-        Session session = sessionService.findSessionByToken($sessionToken);
+        Session session = null;
+        if (sessionService != null) {
+            session = sessionService.findSessionByToken(sessionToken);
+        }
 
         if (session != null && session.getUserByUser() != null) {
 
         } else {
             result = INVALID_TOKEN;
         }
-        result =  objToJson(regionService.findAll());
+
+        ArrayList<korotaev.Entity.Region> regions;
+        regions = regionService.findAll();
+        result =  objToJson(regions);
 
         return result;
     }
@@ -402,18 +422,42 @@ public class WebServiceMain {
             return INVALIDE;
         }
     */
-    public WebServiceMain(GenericXmlApplicationContext context) {
+    public WebServiceMain(GenericXmlApplicationContext context)
+    {
         ctx = context;
-        sessionService = new SessionService(ctx);
-        regionService = new RegionService(ctx);
-        achievService = new AchievService(ctx);
-        achievTypeService = new AchievTypeService(ctx);
-        autoService = new AutoService(ctx);
-        messageService = new MessageService(ctx);
-        messageTypeService = new MessageTypeService();
-        requestService = new RequestService(ctx);
-        toolService = new ToolService(ctx);
-        toolTypeService = new ToolTypeService(ctx);
-        trTypeService = new TrTypeService(ctx);
+        initMainCfg();
+    }
+
+    private void initMainCfg()
+    {
+        initContext();
+        initService();
+    }
+
+    private void initContext()
+    {
+        if (ctx == null) {
+            BasicConfigurator.configure();
+            ctx = new GenericXmlApplicationContext();
+            ctx.load("classpath:spring-config.xml");
+            ctx.refresh();
+        }
+    }
+
+    private void initService()
+    {
+        if (ctx!=null) {
+            if (sessionService == null) sessionService = new SessionService(ctx);
+            if (regionService == null) regionService = new RegionService(ctx);
+            if (achievService == null) achievService = new AchievService(ctx);
+            if (achievTypeService == null) achievTypeService = new AchievTypeService(ctx);
+            if (autoService == null) autoService = new AutoService(ctx);
+            if (messageService == null) messageService = new MessageService(ctx);
+            if (messageTypeService == null) messageTypeService = new MessageTypeService();
+            if (requestService == null) requestService = new RequestService(ctx);
+            if (toolService == null) toolService = new ToolService(ctx);
+            if (toolTypeService == null) toolTypeService = new ToolTypeService(ctx);
+            if (trTypeService == null) trTypeService = new TrTypeService(ctx);
+        }
     }
 }

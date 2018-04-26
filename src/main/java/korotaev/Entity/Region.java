@@ -1,14 +1,18 @@
 package korotaev.Entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Region implements Serializable {
+public class Region implements Serializable  {
     private int id;
     private String name;
     private Byte isDeleted;
+
     private Collection<Message> messagesById;
     private Collection<User> usersById;
 
@@ -65,19 +69,21 @@ public class Region implements Serializable {
     }
 
     @OneToMany(mappedBy = "regionByRegion")
+    @Transient
     public Collection<Message> getMessagesById() {
         return messagesById;
     }
-
+    @Transient
     public void setMessagesById(Collection<Message> messagesById) {
         this.messagesById = messagesById;
     }
 
     @OneToMany(mappedBy = "regionByRegion")
+    @Transient
     public Collection<User> getUsersById() {
         return usersById;
     }
-
+    @Transient
     public void setUsersById(Collection<User> usersById) {
         this.usersById = usersById;
     }
