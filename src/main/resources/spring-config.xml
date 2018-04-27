@@ -24,7 +24,7 @@
         </property>
         <!--поиск сущностей в этом пакете-->
         <property name="packagesToScan"
-                  value="korotaev"/>
+                  value="ru"/>
     </bean>
 
     <!-- Datasource. Источник данных - база MySQL -->
@@ -39,10 +39,10 @@
     <context:annotation-config/>
 
     <!--Scanning components in base-package (look for annotations) -->
-    <context:component-scan base-package="korotaev"/>
+    <context:component-scan base-package="ru"/>
 
     <!-- Need for Repository abstraction -->
-    <jpa:repositories base-package="korotaev" entity-manager-factory-ref="emf"
+    <jpa:repositories base-package="ru" entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
 
 </beans>
