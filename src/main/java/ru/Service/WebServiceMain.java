@@ -314,7 +314,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(messageService.findAll());
+            result =  objToJson(messageTypeService.findAll());
         }
         else {
             result = INVALID_TOKEN;

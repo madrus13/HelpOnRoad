@@ -1,5 +1,6 @@
 package ru.Entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ public class Requesttype implements Serializable {
     private int id;
     private String name;
     private Byte isDeleted;
+    @JsonIgnore
     private Collection<Request> requestsById;
 
     @Id

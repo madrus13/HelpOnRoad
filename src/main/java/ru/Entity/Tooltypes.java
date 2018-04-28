@@ -1,5 +1,6 @@
 package ru.Entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ public class Tooltypes implements Serializable {
     private int id;
     private String name;
     private Byte isDeleted;
+    @JsonIgnore
     private Collection<Tool> toolsById;
 
     @Id
@@ -69,6 +71,7 @@ public class Tooltypes implements Serializable {
     }
 
     @OneToMany(mappedBy = "tooltypesByType")
+    @JsonIgnore
     public Collection<Tool> getToolsById() {
         return toolsById;
     }

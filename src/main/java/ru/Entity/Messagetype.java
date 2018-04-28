@@ -1,5 +1,6 @@
 package ru.Entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ public class Messagetype implements Serializable {
     private int id;
     private String name;
     private Byte isDeleted;
+    @JsonIgnore
     private Collection<Message> messagesById;
 
     @Id
@@ -69,6 +71,7 @@ public class Messagetype implements Serializable {
     }
 
     @OneToMany(mappedBy = "messagetypeByType")
+    @JsonIgnore
     public Collection<Message> getMessagesById() {
         return messagesById;
     }
