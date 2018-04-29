@@ -1,6 +1,7 @@
 package ru.Service;
 
 import org.joda.time.DateTime;
+import ru.Entity.Achievement;
 import ru.Entity.Session;
 import ru.Managers.Achievement.AchievService;
 import ru.Managers.Achievmenttype.AchievTypeService;
@@ -10,6 +11,7 @@ import ru.Managers.Messagetype.MessageTypeService;
 import ru.Managers.Region.RegionManagers;
 import ru.Managers.Region.RegionService;
 import ru.Managers.Request.RequestService;
+import ru.Managers.Requesttype.RequestTypeService;
 import ru.Managers.Session.SessionManagers;
 import ru.Managers.Session.SessionService;
 import ru.Managers.Tool.ToolService;
@@ -55,6 +57,7 @@ public class WebServiceMain {
     private MessageService messageService;
     private MessageTypeService messageTypeService;
     private RequestService requestService;
+    private RequestTypeService requestTypeService;
     private ToolService toolService;
     private ToolTypeService toolTypeService;
     private TrTypeService trTypeService;
@@ -91,23 +94,19 @@ public class WebServiceMain {
     @WebMethod()
     public String insertUser(
                             @WebParam(name="name")   String name,
-                            @WebParam(name="region") String region,
-                            @WebParam(name="password") String password) {
+                            @WebParam(name="region") Integer region,
+                            @WebParam(name="password") String password,
+                            @WebParam(name="email") String email
+                            ) {
         initMainCfg();
         User user = new User();
         user.setName(name);
         user.setCreationDate(new Timestamp(System.currentTimeMillis()));
         user.setModifyDate(new Timestamp(System.currentTimeMillis()));
         user.setPassword(password);
-        //user.setRegion(region);
-
-        /*
-        for (int i = 0; i < 500; i++) {
-            ru.Entity.Region reg = new ru.Entity.Region();
-            reg.setName("name_" + i);
-            regionManagers.save(reg);
-        }
-        */
+        user.setEmail(email);
+        user.setStatus(2); //Const : common user
+        user.setRegion(region);
 
         return saveUserAndRetJson(user);
     }
@@ -131,25 +130,6 @@ public class WebServiceMain {
         }
         return "";
     }
-
-    /*
-            public String getUsers(String xml)
-                    {
-                      UsersManagers usersManagers = ctx.getBean(UsersManagers.class);
-
-
-
-
-                         $jsString = BaseJson::encode($res);
-
-
-            if ($jsString == null) {
-                return "RESULT IS NULL";
-            }
-
-            return $jsString;
-        }
-*/
 
     @WebMethod
     public String getSessionToken(
@@ -183,108 +163,7 @@ public class WebServiceMain {
 
         return res;
     }
-    /*
-                public function getSessionToken($user, $password)
-                {
-                    $result = INVALID_TOKEN;
-                    $find = Tuser::find()->where(['Name' => $user]);
 
-                    $model = null;
-                    if ($find!=null) {
-                        $model = $find->one();
-                    }
-                    if ($model!=null && $model->Password == $password) {
-                        $findSession = TSession::find()->where(['User' => $model->Id]);
-
-                        if ($findSession !=null && $findSession->one()!=null) {
-                            $session = $findSession->one();
-                            $result =  $session->Token;
-                        }
-                        else {
-                            if ($model!=null && $user!=null) {
-                                $newSession = new TSession();
-                                $newSession->User = $model->Id;
-                                $newSession->Token = (string) ($user.base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
-                                if(!$newSession->save())
-                                    return BaseJson::encode($newSession->getErrors());
-                                $result = $newSession->Token;
-                            }
-                        }
-                    }
-
-                    return $result;
-                }
-
-
-                public function getUserIdByToken($sessionToken)
-                        {
-                                $findSession = TSession::find()->where(['Token' => $sessionToken]);
-
-                if ($findSession !=null && $findSession->one()!=null) {
-                    $userId = $findSession->one()->User;
-                    return $userId;
-                }
-                else {
-                    return null;
-                }
-
-            }
-
-
-                public function getUserAchievment($sessionToken)
-                        {
-                                $userId = $this->getUserIdByToken($sessionToken);
-                if ($userId == null) {
-                    return INVALID_TOKEN;
-                }
-
-                $val = Tachievement::findAll(['User' => $userId]);
-
-                if ($val!=null)
-                {
-                    return   BaseJson::encode($val);
-                }
-                return $userId;
-            }
-
-
-
-                public function getUserTools($sessionToken)
-                        {
-                                $userId = $this->getUserIdByToken($sessionToken);
-                if ($userId == null) {
-                    return INVALID_TOKEN;
-                }
-
-                $val = Ttool::findAll(['User' => $userId]);
-
-                if ($val!=null)
-                {
-                    return   BaseJson::encode($val);
-                }
-                return $userId;
-            }
-
-
-
-                public function getUserAuto($sessionToken)
-                        {
-                                $userId = $this->getUserIdByToken($sessionToken);
-                if ($userId == null) {
-                    return INVALID_TOKEN;
-                }
-
-                $auto = Tauto::findAll(['User' => $userId]);
-
-                if ($auto!=null)
-                {
-                    return   BaseJson::encode($auto);
-                }
-                return INVALIDE;
-            }
-
-
-             */
 
     @WebMethod
     public String getUserInfo(
@@ -330,7 +209,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(requestService.findAll());
+            result =  objToJson(requestTypeService.findAll());
         }
         else {
             result = INVALID_TOKEN;
@@ -386,6 +265,28 @@ public class WebServiceMain {
         return result;
     }
 
+
+    @WebMethod
+    public String getAllTachievmentByUser(
+            @WebParam(name="sessionToken") String sessionToken,
+            @WebParam(name="user") Long userId) {
+        initMainCfg();
+        String result = "";
+        User user = null;
+        List<Achievement> achievs = null;
+        if (isTokenCorrect(sessionToken))
+        {
+            user = usersManagers.findOne(userId);
+            if (user!=null) {
+                result =  objToJson(achievService.findAchievementByUser(user));
+            }
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
+
     @WebMethod
     public String getAllRegions(
             @WebParam(name="sessionToken") String sessionToken) {
@@ -432,6 +333,7 @@ public class WebServiceMain {
             sessionManagers = ctx.getBean(SessionManagers.class);
             usersManagers = ctx.getBean(UsersManagers.class);
 
+
             if (userService == null) userService = new UsersService(ctx);
             if (sessionService == null) sessionService = new SessionService(ctx);
             if (regionService == null) regionService = new RegionService(ctx);
@@ -439,7 +341,7 @@ public class WebServiceMain {
             if (achievTypeService == null) achievTypeService = new AchievTypeService(ctx);
             if (autoService == null) autoService = new AutoService(ctx);
             if (messageService == null) messageService = new MessageService(ctx);
-            if (messageTypeService == null) messageTypeService = new MessageTypeService();
+            if (messageTypeService == null) messageTypeService = new MessageTypeService(ctx);
             if (requestService == null) requestService = new RequestService(ctx);
             if (toolService == null) toolService = new ToolService(ctx);
             if (toolTypeService == null) toolTypeService = new ToolTypeService(ctx);

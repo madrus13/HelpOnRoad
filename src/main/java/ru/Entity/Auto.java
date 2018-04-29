@@ -13,9 +13,9 @@ public class Auto implements Serializable {
     private int id;
     private String name;
     private Byte haveCable;
-    private Integer user;
+    private Long user;
     private Byte isDeleted;
-    private Integer transmissionType;
+    private Long transmissionType;
     private User userByUser;
     private TransmissionType transmissionTypeByTransmissionType;
 
@@ -51,11 +51,11 @@ public class Auto implements Serializable {
 
     @Basic
     @Column(name = "User", nullable = true)
-    public Integer getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(Integer user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 
@@ -71,11 +71,11 @@ public class Auto implements Serializable {
 
     @Basic
     @Column(name = "TransmissionType", nullable = true)
-    public Integer getTransmissionType() {
+    public Long getTransmissionType() {
         return transmissionType;
     }
 
-    public void setTransmissionType(Integer transmissionType) {
+    public void setTransmissionType(Long transmissionType) {
         this.transmissionType = transmissionType;
     }
 

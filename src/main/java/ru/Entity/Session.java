@@ -11,19 +11,19 @@ import java.sql.Timestamp;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Session implements Serializable {
-    private int id;
+    private Long id;
     private String token;
     private Timestamp creationDate;
-    private Integer user;
+    private Long user;
     private User userByUser;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class Session implements Serializable {
 
     @Basic
     @Column(name = "User", nullable = true)
-    public Integer getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(Integer user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 
@@ -75,7 +75,7 @@ public class Session implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = id.intValue();
         result = 31 * result + (token != null ? token.hashCode() : 0);
         result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);

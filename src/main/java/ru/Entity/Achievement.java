@@ -10,20 +10,20 @@ import java.io.Serializable;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Achievement implements Serializable {
-    private int id;
+    private Long id;
     private String name;
-    private Integer user;
+    private Long user;
     private Byte isDeleted;
-    private Integer type;
+    private Long type;
     private Achievmenttype achievmenttypeByType;
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +39,11 @@ public class Achievement implements Serializable {
 
     @Basic
     @Column(name = "User", nullable = true)
-    public Integer getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(Integer user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 
@@ -59,11 +59,11 @@ public class Achievement implements Serializable {
 
     @Basic
     @Column(name = "Type", nullable = true)
-    public Integer getType() {
+    public Long getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(Long type) {
         this.type = type;
     }
 
@@ -85,7 +85,7 @@ public class Achievement implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = id.intValue();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (isDeleted != null ? isDeleted.hashCode() : 0);

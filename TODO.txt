@@ -1,16 +1,40 @@
-getSessionToken(String name, String password)
->>findSessionByUser
-create new session
-генерация токена sha1 java
-getSessionToken($user, $password)
-getUserIdByToken($sessionToken)
-V get Tachievement by User
-V get Tool by User
-V get auto by User
-V load User by Id
-V get all MessageTypes
-V getAllRequestType
-V getAllTransmissionType
-V getAllToolType
-V getAllTachievmenttype
-V getAllRegions
+/*
+TODO: public function getUserAchievment($sessionToken)
+TODO:public function getUserTools($sessionToken)
+TODO: public function getUserAuto($sessionToken)
+*/
+
+
+
+Составить список основных функций для веб-сервиса
+все update \ insert \ select
+
+
+Message
+Получить часть писем по региону  за последний час
+Получить письма по По конкретному запросу (Request)
+Писать сообщение в ПМ
+Писать сообщение в региональный чат пользователя
+Писать письма с привязкой к конкретному request
+
+
+Request
+Получить все запросы пользователя ( нужна помощь)
+Получить все запросы пользователя ( он помог кому то) с фильтрацией по типу\статусу
+Получить все открытые запросы в радиусе скольки то км с фильтрацией по типу
+Создать запрос (нужна помощь)
+Закрыть запрос автором
+Откликнуться на запрос
+Подвердить закрытие запроса другим пользователем ( из списка откликнувшихся)
+Получить текущий активный запрос пользователя
+Получить количество всех запросов пользователя ( нужна помощь)
+Получить количество всех запросов пользователя (request )
+
+
+когда человек откликнулся, появляется  чат\ПМ\сообщения с привязкой к запросу??
+один пользователь -один активный Request
+Как быстро определить по  request (Тип - needToHelp, goToHelp)
+
+Связь региона и координаты по умолчанию, если типа не определилась
+загрузка таблицы с городами и координатами
+запрос через spatial  поиск в радиусе по точке

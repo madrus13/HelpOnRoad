@@ -38,7 +38,7 @@ public class SessionService {
         return null;
     }
 
-    public Session findSessionByUserId(Integer userId) {
+    public Session findSessionByUserId(Long userId) {
         Session result = null;
         List<Session>  findSession =   sessionManagers.findSessionByUser(userId);
         if (findSession.isEmpty() == false) {

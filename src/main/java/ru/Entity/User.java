@@ -13,7 +13,7 @@ import java.util.Collection;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class User implements Serializable {
-    private int id;
+    private Long id;
     private String name;
     @JsonIgnore
     private String password;
@@ -36,11 +36,11 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -171,7 +171,7 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id.intValue();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (userPhotoPath != null ? userPhotoPath.hashCode() : 0);
