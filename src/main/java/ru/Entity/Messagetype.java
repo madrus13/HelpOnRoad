@@ -12,7 +12,7 @@ import java.util.Collection;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Messagetype implements Serializable {
-    private int id;
+    private Long id;
     private String name;
     private Byte isDeleted;
     @JsonIgnore
@@ -20,11 +20,12 @@ public class Messagetype implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,7 +65,7 @@ public class Messagetype implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (isDeleted != null ? isDeleted.hashCode() : 0);
         return result;

@@ -12,7 +12,7 @@ import java.util.Collection;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class TransmissionType implements Serializable {
-    private int id;
+    private Long id;
     private String name;
     private Byte isDeleted;
     @JsonIgnore
@@ -20,11 +20,11 @@ public class TransmissionType implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,7 +64,7 @@ public class TransmissionType implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (isDeleted != null ? isDeleted.hashCode() : 0);
         return result;

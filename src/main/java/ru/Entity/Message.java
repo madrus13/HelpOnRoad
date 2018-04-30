@@ -11,16 +11,16 @@ import java.sql.Timestamp;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Message implements Serializable {
-    private int id;
+    private Long id;
     private String text;
     private Timestamp creationDate;
     private Timestamp modifyDate;
-    private Integer createUser;
+    private Long createUser;
     private String messagePhotoPath;
     private Byte isDeleted;
-    private Integer request;
-    private Integer type;
-    private Integer region;
+    private Long request;
+    private Long type;
+    private Long region;
     private User userByCreateUser;
     private Request requestByRequest;
     private Messagetype messagetypeByType;
@@ -28,11 +28,12 @@ public class Message implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,11 +69,11 @@ public class Message implements Serializable {
 
     @Basic
     @Column(name = "CreateUser", nullable = true)
-    public Integer getCreateUser() {
+    public Long getCreateUser() {
         return createUser;
     }
 
-    public void setCreateUser(Integer createUser) {
+    public void setCreateUser(Long createUser) {
         this.createUser = createUser;
     }
 
@@ -98,31 +99,31 @@ public class Message implements Serializable {
 
     @Basic
     @Column(name = "Request", nullable = true)
-    public Integer getRequest() {
+    public Long getRequest() {
         return request;
     }
 
-    public void setRequest(Integer request) {
+    public void setRequest(Long request) {
         this.request = request;
     }
 
     @Basic
     @Column(name = "Type", nullable = true)
-    public Integer getType() {
+    public Long getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(Long type) {
         this.type = type;
     }
 
     @Basic
     @Column(name = "Region", nullable = true)
-    public Integer getRegion() {
+    public Long getRegion() {
         return region;
     }
 
-    public void setRegion(Integer region) {
+    public void setRegion(Long region) {
         this.region = region;
     }
 
@@ -151,7 +152,7 @@ public class Message implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = 0;
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         result = 31 * result + (modifyDate != null ? modifyDate.hashCode() : 0);

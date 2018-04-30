@@ -2,14 +2,17 @@ package ru.Service;
 
 import org.joda.time.DateTime;
 import ru.Entity.Achievement;
+import ru.Entity.Request;
 import ru.Entity.Session;
 import ru.Managers.Achievement.AchievService;
 import ru.Managers.Achievmenttype.AchievTypeService;
 import ru.Managers.Auto.AutoService;
+import ru.Managers.Message.MessageManagers;
 import ru.Managers.Message.MessageService;
 import ru.Managers.Messagetype.MessageTypeService;
 import ru.Managers.Region.RegionManagers;
 import ru.Managers.Region.RegionService;
+import ru.Managers.Request.RequestManagers;
 import ru.Managers.Request.RequestService;
 import ru.Managers.Requesttype.RequestTypeService;
 import ru.Managers.Session.SessionManagers;
@@ -28,9 +31,14 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.ws.soap.MTOM;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
+import java.util.Base64;
 import java.util.List;
 
 import static com.sun.deploy.util.SessionState.save;
@@ -39,6 +47,7 @@ import static com.sun.javafx.css.StyleManager.getErrors;
 
 @WebService
 @Transactional
+@MTOM(enabled = true, threshold = 102400)
 public class WebServiceMain {
     private static String INVALID_TOKEN = "INVALID TOKEN";
     private static String INVALIDE_DATA = "INVALID DATA";
@@ -47,6 +56,8 @@ public class WebServiceMain {
     private UsersManagers usersManagers;
     private RegionManagers regionManagers;
     private SessionManagers sessionManagers;
+    private RequestManagers requestManagers;
+    private MessageManagers messageManagers;
 
     private UsersService userService;
     private SessionService sessionService;
@@ -80,6 +91,19 @@ public class WebServiceMain {
     }
 
 
+    private String saveRequestAndRetJson(Request obj) {
+        try {
+            requestManagers = ctx.getBean(RequestManagers.class);
+            if (requestManagers != null) {
+                requestManagers.save(obj);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return INVALIDE_DATA;
+        }
+        return objToJson(obj);
+    }
+
     private String objToJson(Object obj) {
         String res = INVALIDE_DATA;
         ObjectMapper mapper = new ObjectMapper();
@@ -94,7 +118,7 @@ public class WebServiceMain {
     @WebMethod()
     public String insertUser(
                             @WebParam(name="name")   String name,
-                            @WebParam(name="region") Integer region,
+                            @WebParam(name="region") Long region,
                             @WebParam(name="password") String password,
                             @WebParam(name="email") String email
                             ) {
@@ -105,10 +129,59 @@ public class WebServiceMain {
         user.setModifyDate(new Timestamp(System.currentTimeMillis()));
         user.setPassword(password);
         user.setEmail(email);
-        user.setStatus(2); //Const : common user
+        user.setStatus(2L); //Const : common user
         user.setRegion(region);
 
         return saveUserAndRetJson(user);
+    }
+
+    @WebMethod()
+    public String createRequest(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="name")          String name,
+            @WebParam(name="description")   String description,
+            @WebParam(name="latitude")      double latitude,
+            @WebParam(name="longitude")     double longitude,
+            @WebParam(name="typeId")        Long typeId,
+            @WebParam(name="fileName")      String fileName,
+            @WebParam(name="fileImage")     byte[] fileImage
+
+    ) {
+        initMainCfg();
+        String result = "";
+        byte[] encodedBytes;
+        Long createUserByToken = -1L;
+
+        if (isTokenCorrect(sessionToken,createUserByToken))
+        {
+            if (createUserByToken > 0) {
+                Request request = new Request();
+                request.setCreationDate(new Timestamp(System.currentTimeMillis()));
+                request.setDescription(description);
+                request.setLatitude(latitude);
+                request.setLongitude(longitude);
+                request.setModifyDate(new Timestamp(System.currentTimeMillis()));
+                request.setStatus(1L); // status open = 1, close = 2, unknown = 3
+                request.setType(typeId);
+                request.setCreationUser(createUserByToken);
+                result = saveRequestAndRetJson(request);
+                if (fileImage!=null && fileImage.length > 0) {
+                    encodedBytes = Base64.getEncoder().encode(fileImage);
+                    try (FileOutputStream fos = new FileOutputStream("c:\\" + System.currentTimeMillis() )) {
+                        fos.write(encodedBytes);
+                    } catch (IOException ioe) {
+                        ioe.printStackTrace();
+                    }
+                }
+
+            }
+
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+
+        return result;
     }
 
 
@@ -332,7 +405,8 @@ public class WebServiceMain {
             regionManagers = ctx.getBean(RegionManagers.class);
             sessionManagers = ctx.getBean(SessionManagers.class);
             usersManagers = ctx.getBean(UsersManagers.class);
-
+            requestManagers = ctx.getBean(RequestManagers.class);
+            messageManagers = ctx.getBean(MessageManagers.class);
 
             if (userService == null) userService = new UsersService(ctx);
             if (sessionService == null) sessionService = new SessionService(ctx);
@@ -343,6 +417,7 @@ public class WebServiceMain {
             if (messageService == null) messageService = new MessageService(ctx);
             if (messageTypeService == null) messageTypeService = new MessageTypeService(ctx);
             if (requestService == null) requestService = new RequestService(ctx);
+            if (requestTypeService == null) requestTypeService = new RequestTypeService(ctx);
             if (toolService == null) toolService = new ToolService(ctx);
             if (toolTypeService == null) toolTypeService = new ToolTypeService(ctx);
             if (trTypeService == null) trTypeService = new TrTypeService(ctx);
@@ -363,6 +438,27 @@ public class WebServiceMain {
 
         if (session != null && session.getUserByUser() != null) {
             isCorrectToken = true;
+        } else {
+            isCorrectToken = false;
+        }
+        return isCorrectToken;
+    }
+
+    private boolean isTokenCorrect(String sessionToken, Long outUserId)
+    {
+        boolean isCorrectToken  = false;
+
+        if (sessionService == null) {
+            isCorrectToken = false;
+        }
+        Session session = null;
+        if (sessionService != null) {
+            session = sessionService.findSessionByToken(sessionToken);
+        }
+
+        if (session != null && session.getUserByUser() != null) {
+            isCorrectToken = true;
+            outUserId = session.getUser();
         } else {
             isCorrectToken = false;
         }

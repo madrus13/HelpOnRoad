@@ -23,13 +23,18 @@ public class User implements Serializable {
     private Timestamp creationDate;
     private Timestamp modifyDate;
     private Byte isDeleted;
-    private Integer status;
-    private Integer region;
+    private Long status;
+    private Long region;
     private Collection<Auto> autosById;
+    @JsonIgnore
     private Collection<Message> messagesById;
+    @JsonIgnore
     private Collection<Request> requestsById;
+    @JsonIgnore
     private Collection<Request> requestsById_0;
+    @JsonIgnore
     private Collection<Session> sessionsById;
+    @JsonIgnore
     private Collection<Tool> toolsById;
     private Userstatus userstatusByStatus;
     private Region regionByRegion;
@@ -128,21 +133,21 @@ public class User implements Serializable {
 
     @Basic
     @Column(name = "Status", nullable = true)
-    public Integer getStatus() {
+    public Long getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Long status) {
         this.status = status;
     }
 
     @Basic
     @Column(name = "Region", nullable = true)
-    public Integer getRegion() {
+    public Long getRegion() {
         return region;
     }
 
-    public void setRegion(Integer region) {
+    public void setRegion(Long region) {
         this.region = region;
     }
 
@@ -187,6 +192,7 @@ public class User implements Serializable {
     }
 
     @OneToMany(mappedBy = "userByUser")
+    @JsonIgnore
     public Collection<Auto> getAutosById() {
         return autosById;
     }
@@ -196,6 +202,7 @@ public class User implements Serializable {
     }
 
     @OneToMany(mappedBy = "userByCreateUser")
+    @JsonIgnore
     public Collection<Message> getMessagesById() {
         return messagesById;
     }
@@ -205,6 +212,7 @@ public class User implements Serializable {
     }
 
     @OneToMany(mappedBy = "userByUser")
+    @JsonIgnore
     public Collection<Request> getRequestsById() {
         return requestsById;
     }
@@ -214,6 +222,7 @@ public class User implements Serializable {
     }
 
     @OneToMany(mappedBy = "userByCreationUser")
+    @JsonIgnore
     public Collection<Request> getRequestsById_0() {
         return requestsById_0;
     }
@@ -223,6 +232,7 @@ public class User implements Serializable {
     }
 
     @OneToMany(mappedBy = "userByUser")
+    @JsonIgnore
     public Collection<Session> getSessionsById() {
         return sessionsById;
     }
@@ -232,6 +242,7 @@ public class User implements Serializable {
     }
 
     @OneToMany(mappedBy = "userByUser")
+    @JsonIgnore
     public Collection<Tool> getToolsById() {
         return toolsById;
     }

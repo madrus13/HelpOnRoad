@@ -13,7 +13,7 @@ import java.util.Collection;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Request implements Serializable {
-    private int id;
+    private Long id;
     private String description;
     private Timestamp creationDate;
     private Timestamp modifyDate;
@@ -21,12 +21,12 @@ public class Request implements Serializable {
     private Byte isResolvedByUser;
     private String requestPhotoPath;
     private Byte isDeleted;
-    private Integer user;
-    private Integer creationUser;
+    private Long user;
+    private Long creationUser;
     private Double latitude;
     private Double longitude;
-    private Integer type;
-    private Integer status;
+    private Long type;
+    private Long status;
     private Collection<Message> messagesById;
     private User userByUser;
     private User userByCreationUser;
@@ -35,11 +35,12 @@ public class Request implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -115,21 +116,21 @@ public class Request implements Serializable {
 
     @Basic
     @Column(name = "User", nullable = true)
-    public Integer getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(Integer user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 
     @Basic
     @Column(name = "CreationUser", nullable = true)
-    public Integer getCreationUser() {
+    public Long getCreationUser() {
         return creationUser;
     }
 
-    public void setCreationUser(Integer creationUser) {
+    public void setCreationUser(Long creationUser) {
         this.creationUser = creationUser;
     }
 
@@ -155,21 +156,21 @@ public class Request implements Serializable {
 
     @Basic
     @Column(name = "Type", nullable = true)
-    public Integer getType() {
+    public Long getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(Long type) {
         this.type = type;
     }
 
     @Basic
     @Column(name = "Status", nullable = true)
-    public Integer getStatus() {
+    public Long getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Long status) {
         this.status = status;
     }
 
@@ -204,7 +205,7 @@ public class Request implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = 0;
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         result = 31 * result + (modifyDate != null ? modifyDate.hashCode() : 0);

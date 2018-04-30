@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Auto implements Serializable {
-    private int id;
+    private Long id;
     private String name;
     private Byte haveCable;
     private Long user;
@@ -21,11 +21,11 @@ public class Auto implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -99,7 +99,7 @@ public class Auto implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (haveCable != null ? haveCable.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
