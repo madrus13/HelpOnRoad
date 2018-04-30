@@ -36,6 +36,7 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -171,7 +172,7 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id.intValue();
+        int result = 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (userPhotoPath != null ? userPhotoPath.hashCode() : 0);

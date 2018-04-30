@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `achievement` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
-  `User` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `User` bigint(20) UNSIGNED ZEROFILL DEFAULT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL,
-  `Type` int(10) UNSIGNED DEFAULT NULL
+  `Type` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -48,7 +48,7 @@ INSERT INTO `achievement` (`Id`, `Name`, `User`, `IsDeleted`, `Type`) VALUES
 --
 
 CREATE TABLE `achievmenttype` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -70,12 +70,12 @@ INSERT INTO `achievmenttype` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `auto` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `HaveCable` tinyint(1) DEFAULT NULL,
-  `User` int(10) UNSIGNED DEFAULT NULL,
+  `User` bigint(20) UNSIGNED DEFAULT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL,
-  `TransmissionType` int(10) UNSIGNED DEFAULT NULL
+  `TransmissionType` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -85,16 +85,16 @@ CREATE TABLE `auto` (
 --
 
 CREATE TABLE `message` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Text` varchar(255) DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT NULL,
   `ModifyDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `CreateUser` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `CreateUser` bigint(20) UNSIGNED ZEROFILL DEFAULT NULL,
   `MessagePhotoPath` varchar(100) DEFAULT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL,
-  `Request` int(10) UNSIGNED DEFAULT NULL,
-  `Type` int(10) UNSIGNED DEFAULT NULL,
-  `Region` int(10) UNSIGNED DEFAULT NULL
+  `Request` bigint(20) UNSIGNED DEFAULT NULL,
+  `Type` bigint(20) UNSIGNED DEFAULT NULL,
+  `Region` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -104,7 +104,7 @@ CREATE TABLE `message` (
 --
 
 CREATE TABLE `messagetype` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -125,7 +125,7 @@ INSERT INTO `messagetype` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `region` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -645,7 +645,7 @@ INSERT INTO `region` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `request` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Description` varchar(45) DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT NULL,
   `ModifyDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -653,12 +653,12 @@ CREATE TABLE `request` (
   `IsResolvedByUser` tinyint(1) DEFAULT NULL,
   `RequestPhotoPath` varchar(100) DEFAULT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL,
-  `User` int(10) UNSIGNED DEFAULT NULL,
-  `CreationUser` int(10) UNSIGNED DEFAULT NULL,
+  `User` bigint(20) UNSIGNED DEFAULT NULL,
+  `CreationUser` bigint(20) UNSIGNED DEFAULT NULL,
   `Latitude` double DEFAULT NULL,
   `Longitude` double DEFAULT NULL,
-  `Type` int(10) UNSIGNED DEFAULT NULL,
-  `Status` int(10) UNSIGNED DEFAULT NULL
+  `Type` bigint(20) UNSIGNED DEFAULT NULL,
+  `Status` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -668,7 +668,7 @@ CREATE TABLE `request` (
 --
 
 CREATE TABLE `requeststatus` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -689,7 +689,7 @@ INSERT INTO `requeststatus` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `requesttype` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -711,10 +711,10 @@ INSERT INTO `requesttype` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `session` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Token` varchar(50) NOT NULL,
   `CreationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `User` int(10) UNSIGNED DEFAULT NULL
+  `User` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -733,9 +733,9 @@ INSERT INTO `session` (`Id`, `Token`, `CreationDate`, `User`) VALUES
 --
 
 CREATE TABLE `tool` (
-  `Id` int(10) UNSIGNED NOT NULL,
-  `Type` int(10) UNSIGNED DEFAULT NULL,
-  `User` int(10) UNSIGNED DEFAULT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
+  `Type` bigint(20) UNSIGNED DEFAULT NULL,
+  `User` bigint(20) UNSIGNED DEFAULT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -746,7 +746,7 @@ CREATE TABLE `tool` (
 --
 
 CREATE TABLE `tooltypes` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -768,7 +768,7 @@ INSERT INTO `tooltypes` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `transmissiontype` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -790,7 +790,7 @@ INSERT INTO `transmissiontype` (`Id`, `Name`, `IsDeleted`) VALUES
 --
 
 CREATE TABLE `user` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `UserPhotoPath` varchar(100) DEFAULT NULL,
@@ -799,8 +799,8 @@ CREATE TABLE `user` (
   `CreationDate` timestamp NULL DEFAULT NULL,
   `ModifyDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `IsDeleted` tinyint(1) DEFAULT NULL,
-  `Status` int(10) UNSIGNED DEFAULT NULL,
-  `Region` int(10) UNSIGNED DEFAULT NULL
+  `Status` bigint(20) UNSIGNED DEFAULT NULL,
+  `Region` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -822,7 +822,7 @@ INSERT INTO `user` (`Id`, `Name`, `Password`, `UserPhotoPath`, `Email`, `IsAppro
 --
 
 CREATE TABLE `userstatus` (
-  `Id` int(10) UNSIGNED NOT NULL,
+  `Id` bigint(20) UNSIGNED NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -970,77 +970,77 @@ ALTER TABLE `userstatus`
 -- AUTO_INCREMENT для таблицы `achievement`
 --
 ALTER TABLE `achievement`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `achievmenttype`
 --
 ALTER TABLE `achievmenttype`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `message`
 --
 ALTER TABLE `message`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `messagetype`
 --
 ALTER TABLE `messagetype`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `region`
 --
 ALTER TABLE `region`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=505;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=505;
 --
 -- AUTO_INCREMENT для таблицы `request`
 --
 ALTER TABLE `request`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `requeststatus`
 --
 ALTER TABLE `requeststatus`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `requesttype`
 --
 ALTER TABLE `requesttype`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT для таблицы `session`
 --
 ALTER TABLE `session`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `tool`
 --
 ALTER TABLE `tool`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `tooltypes`
 --
 ALTER TABLE `tooltypes`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `transmissiontype`
 --
 ALTER TABLE `transmissiontype`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `userstatus`
 --
 ALTER TABLE `userstatus`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

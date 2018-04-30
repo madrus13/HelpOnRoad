@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface AchievManagers extends CrudRepository<Achievement, Long> {
     List<Achievement> findAll();
-    List<Achievement> findAchievementByUser(User user);
+    List<Achievement> findAchievementByUser(Long userId);
 }

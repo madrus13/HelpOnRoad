@@ -32,8 +32,8 @@ public class AchievService {
         return Lists.newArrayList(achievManagers.findAll());
     }
 
-    public List<Achievement> findAchievementByUser(User user) {
-        return Lists.newArrayList(achievManagers.findAchievementByUser(user));
+    public List<Achievement> findAchievementByUser(Long userId) {
+        return Lists.newArrayList(achievManagers.findAchievementByUser(userId));
     }
 
 }

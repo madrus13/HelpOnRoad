@@ -277,8 +277,8 @@ public class WebServiceMain {
         if (isTokenCorrect(sessionToken))
         {
             user = usersManagers.findOne(userId);
-            if (user!=null) {
-                result =  objToJson(achievService.findAchievementByUser(user));
+            if (user!=null && user.getId()!=null) {
+                result =  objToJson(achievService.findAchievementByUser(user.getId()));
             }
         }
         else {

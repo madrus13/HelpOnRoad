@@ -19,6 +19,7 @@ public class Session implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -75,7 +76,7 @@ public class Session implements Serializable {
 
     @Override
     public int hashCode() {
-        Integer result = id.intValue();
+        Integer result = 0;
         result = 31 * result + (token != null ? token.hashCode() : 0);
         result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
