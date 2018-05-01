@@ -44,6 +44,18 @@ import java.util.List;
 import static com.sun.deploy.util.SessionState.save;
 import static com.sun.javafx.css.StyleManager.getErrors;
 
+class CustomObjResult{
+    public Long userId;
+    public boolean isBoolVal;
+
+    public CustomObjResult(Long id, boolean isBoolVal) {
+        this.userId = id;
+        this.isBoolVal = isBoolVal;
+    }
+
+
+
+}
 
 @WebService
 @Transactional
@@ -149,10 +161,11 @@ public class WebServiceMain {
     ) {
         initMainCfg();
         String result = "";
-        byte[] encodedBytes;
-        Long createUserByToken = -1L;
 
-        if (isTokenCorrect(sessionToken,createUserByToken))
+        String fileDirName = "";
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+        Long createUserByToken = res.userId;
+        if (res.isBoolVal == true)
         {
             if (createUserByToken > 0) {
                 Request request = new Request();
@@ -164,18 +177,12 @@ public class WebServiceMain {
                 request.setStatus(1L); // status open = 1, close = 2, unknown = 3
                 request.setType(typeId);
                 request.setCreationUser(createUserByToken);
-                result = saveRequestAndRetJson(request);
-                if (fileImage!=null && fileImage.length > 0) {
-                    encodedBytes = Base64.getEncoder().encode(fileImage);
-                    try (FileOutputStream fos = new FileOutputStream("c:\\" + System.currentTimeMillis() )) {
-                        fos.write(encodedBytes);
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    }
+                fileDirName = String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
+                if (saveByteToFile(fileImage, fileDirName) == true) {
+                    request.setRequestPhotoPath(fileDirName);
                 }
-
+                result = saveRequestAndRetJson(request);
             }
-
         }
         else {
             result = INVALID_TOKEN;
@@ -184,6 +191,22 @@ public class WebServiceMain {
         return result;
     }
 
+    private boolean saveByteToFile(byte[] fileImage, String hashName )
+    {
+        byte[] encodedBytes;
+        boolean isSuccess = false;
+        if (fileImage!=null && fileImage.length > 0) {
+            encodedBytes = Base64.getEncoder().encode(fileImage);
+
+            try (FileOutputStream fos = new FileOutputStream("f:\\WebFiles\\" + hashName )) {
+                fos.write(encodedBytes);
+                isSuccess = true;
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+        return isSuccess;
+    }
 
     private String sha1(String s) {
         try {
@@ -444,9 +467,11 @@ public class WebServiceMain {
         return isCorrectToken;
     }
 
-    private boolean isTokenCorrect(String sessionToken, Long outUserId)
+    private CustomObjResult isTokenCorrectWithUser(String sessionToken)
     {
+        CustomObjResult res = null;
         boolean isCorrectToken  = false;
+        Long outUserId = -1L;
 
         if (sessionService == null) {
             isCorrectToken = false;
@@ -462,7 +487,8 @@ public class WebServiceMain {
         } else {
             isCorrectToken = false;
         }
-        return isCorrectToken;
+        res = new CustomObjResult(outUserId, isCorrectToken);
+        return res;
     }
 
     private User getUserByToken(String sessionToken)
