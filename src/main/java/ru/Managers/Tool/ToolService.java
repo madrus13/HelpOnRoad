@@ -31,7 +31,7 @@ public class ToolService {
     public List<Tool> findAll() {
         return Lists.newArrayList(trTypeManagers.findAll());
     }
-    public List<Tool> findToolByUser(User user) {
-        return Lists.newArrayList(trTypeManagers.findToolByUser(user));
+    public List<Tool> findToolByUser(Long userId) {
+        return Lists.newArrayList(trTypeManagers.findToolByUser (userId));
     }
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
+@Table(name = "tooltypes")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Tooltypes implements Serializable {

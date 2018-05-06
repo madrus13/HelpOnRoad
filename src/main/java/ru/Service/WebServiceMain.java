@@ -57,6 +57,7 @@ public class WebServiceMain {
 
     private static final String F_WEB_FILES_REQUEST_PHOTO = "f:\\WebFiles\\RequestPhoto\\";
     private static final String F_WEB_FILES_USER_AVATAR_PHOTO = "f:\\WebFiles\\UserAvatarPhoto\\";
+    private static final String F_WEB_FILES_MESSAGE_PHOTO = "f:\\WebFiles\\MessagePhoto\\";
 
     private static final String INVALID_USERNAME_OR_PASS = "INVALID_USERNAME_OR_PASS";
     private static final String INVALID_TOKEN = "INVALID TOKEN";
@@ -108,6 +109,20 @@ public class WebServiceMain {
             requestManagers = ctx.getBean(RequestManagers.class);
             if (requestManagers != null) {
                 requestManagers.save(obj);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return INVALIDE_DATA;
+        }
+        return objToJson(obj);
+    }
+
+
+    private String saveMessageAndRetJson(Message obj) {
+        try {
+            messageManagers = ctx.getBean(MessageManagers.class);
+            if (messageManagers != null) {
+                messageManagers.save(obj);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -243,10 +258,10 @@ public class WebServiceMain {
                 }
                 else {
                     request = new Request();
+                    request.setCreationDate(new Timestamp(System.currentTimeMillis()));
                 }
 
                 if (request!=null) {
-                    request.setCreationDate(new Timestamp(System.currentTimeMillis()));
                     request.setDescription(description);
                     request.setLatitude(latitude);
                     request.setLongitude(longitude);
@@ -347,6 +362,78 @@ public class WebServiceMain {
     }
 
 
+    @WebMethod()
+    public String insertMessage(
+            @WebParam(name="Id")            Long Id,
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="text")          String text,
+            @WebParam(name="requestId")     Long requestId,
+            @WebParam(name="regionId")      Long regionId,
+            @WebParam(name="typeId")        Long typeId,
+            @WebParam(name="fileName")      String fileName,
+            @WebParam(name="fileImage")     byte[] fileImage
+
+    ) {
+        initMainCfg();
+        String result = "";
+        Message msg = null;
+
+        String fileDirName = "";
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+        Long createUserByToken = res.userId;
+        if (res.isBoolVal == true)
+        {
+            if (createUserByToken > 0) {
+
+                if (Id > 0) {
+                    Message findedMsg = messageManagers.findOne(Id);
+                    if (findedMsg.getCreateUser() == createUserByToken) {
+                        msg = findedMsg;
+                    }
+                    else {
+                        return INVALID_TOKEN_OR_USER_ID;
+                    }
+                }
+                else {
+                    msg = new Message();
+                    msg.setCreationDate(new Timestamp(System.currentTimeMillis()));
+                }
+
+                if (msg!=null) {
+                    msg.setModifyDate(new Timestamp(System.currentTimeMillis()));
+
+                    if (regionId > 0){
+                        msg.setRegion(regionId);
+                    }
+                    if (requestId > 0){
+                        msg.setRequest(requestId);
+                    }
+                    if (typeId > 0){
+                        msg.setType(typeId);
+                    }
+                    msg.setText(text);
+                    msg.setCreateUser(createUserByToken);
+                    fileDirName = F_WEB_FILES_MESSAGE_PHOTO + String.valueOf(msg.hashCode()) + System.currentTimeMillis() + fileName;
+                    if (saveByteToFile(fileImage, fileDirName) == true) {
+                        msg.setMessagePhotoPath(fileDirName);
+                    }
+                    result = saveMessageAndRetJson(msg);
+                }
+                else {
+                    result = INVALIDE_DATA;
+                }
+            }
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+
+        return result;
+    }
+
+
+
+
     @WebMethod
     public String getUserInfo(
             @WebParam(name="sessionToken") String sessionToken) {
@@ -432,7 +519,7 @@ public class WebServiceMain {
     }
 
     @WebMethod
-    public String getAllTachievmenttype(
+    public String getAllAchievmenttype(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
         String result = "";
@@ -449,7 +536,7 @@ public class WebServiceMain {
 
 
     @WebMethod
-    public String getAllTachievmentByUser(
+    public String getAllAchievmentByUser(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="user") Long userId) {
         initMainCfg();
@@ -468,6 +555,51 @@ public class WebServiceMain {
         }
         return result;
     }
+
+
+    @WebMethod
+    public String getAllToolByUser(
+            @WebParam(name="sessionToken") String sessionToken,
+            @WebParam(name="user") Long userId) {
+        initMainCfg();
+        String result = "";
+        User user = null;
+        List<Tool> achievs = null;
+        if (isTokenCorrect(sessionToken))
+        {
+            user = usersManagers.findOne(userId);
+            if (user!=null && user.getId()!=null) {
+                result =  objToJson(toolService.findToolByUser(user.getId()));
+            }
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
+
+
+    @WebMethod
+    public String getAllAutoByUser(
+            @WebParam(name="sessionToken") String sessionToken,
+            @WebParam(name="user") Long userId) {
+        initMainCfg();
+        String result = "";
+        User user = null;
+        List<Tool> tools = null;
+        if (isTokenCorrect(sessionToken))
+        {
+            user = usersManagers.findOne(userId);
+            if (user!=null && user.getId()!=null) {
+                result =  objToJson(autoService.findAutoByUser(user.getId()));
+            }
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
+
 
     @WebMethod
     public String getAllRegions(

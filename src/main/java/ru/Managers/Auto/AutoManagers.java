@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface AutoManagers extends CrudRepository<Auto, Long> {
     List<Auto> findAll();
-    List<Auto> findAutoByUser(User user);
+    List<Auto> findAutoByUser(Long user);
 }

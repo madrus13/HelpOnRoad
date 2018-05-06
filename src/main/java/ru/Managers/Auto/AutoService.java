@@ -32,7 +32,7 @@ public class AutoService {
         return Lists.newArrayList(autoManagers.findAll());
     }
 
-    public List<Auto> findAutoByUser(User user) {
+    public List<Auto> findAutoByUser(Long user) {
         return Lists.newArrayList(autoManagers.findAutoByUser(user));
     }
 

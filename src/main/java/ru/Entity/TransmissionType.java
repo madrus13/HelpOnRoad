@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
+@Table(name = "transmissiontype")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class TransmissionType implements Serializable {

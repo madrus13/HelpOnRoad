@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
+@Table(name = "Achievmenttype")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Achievmenttype implements Serializable {

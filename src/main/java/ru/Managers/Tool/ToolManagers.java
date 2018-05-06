@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ToolManagers extends CrudRepository<Tool, Long> {
     List<Tool> findAll();
-    List<Tool> findToolByUser(User user);
+    List<Tool> findToolByUser(Long userId);
 }

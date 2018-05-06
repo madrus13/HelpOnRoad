@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 30 2018 г., 10:27
+-- Время создания: Май 06 2018 г., 20:57
 -- Версия сервера: 5.7.14
 -- Версия PHP: 5.6.25
 
@@ -39,7 +39,7 @@ CREATE TABLE `achievement` (
 --
 
 INSERT INTO `achievement` (`Id`, `Name`, `User`, `IsDeleted`, `Type`) VALUES
-(3, 'ach1', 0000000009, NULL, 3);
+(3, 'ach1', 00000000000000000009, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -661,6 +661,19 @@ CREATE TABLE `request` (
   `Status` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `request`
+--
+
+INSERT INTO `request` (`Id`, `Description`, `CreationDate`, `ModifyDate`, `CloseDate`, `IsResolvedByUser`, `RequestPhotoPath`, `IsDeleted`, `User`, `CreationUser`, `Latitude`, `Longitude`, `Type`, `Status`) VALUES
+(2, 'This is description', '2018-04-30 19:39:09', '2018-04-30 19:39:09', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 5, 1),
+(3, 'This is description 2', '2018-05-01 19:49:34', '2018-05-01 19:49:34', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
+(4, 'This is description 2', '2018-05-01 19:50:34', '2018-05-01 19:50:34', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
+(5, 'This is description 2', '2018-05-01 20:22:39', '2018-05-01 20:22:39', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
+(6, 'This is description 2', '2018-05-01 20:22:50', '2018-05-01 20:22:50', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
+(7, '123 description salsdlkfjlskfj', '2018-05-06 17:55:24', '2018-05-06 17:55:24', NULL, NULL, NULL, NULL, NULL, 10, 0.123, 0.321, 4, 1),
+(8, 'description salsdlkfjlskfj', '2018-05-06 17:52:19', '2018-05-06 17:52:19', NULL, NULL, NULL, NULL, NULL, 10, 0, 0, 4, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -724,7 +737,8 @@ CREATE TABLE `session` (
 INSERT INTO `session` (`Id`, `Token`, `CreationDate`, `User`) VALUES
 (1, 'D5B4DC0D765B553733264DDBAD7846B10F9487FA', NULL, 9),
 (2, 'BCEFEE4736697D800CCA2866157D0CF7B509E778', NULL, 9),
-(3, '0438BB180B2C521796012C85DE100662DAEA2938', NULL, 9);
+(3, '0438BB180B2C521796012C85DE100662DAEA2938', NULL, 9),
+(4, 'CF22E5636DC63FEB44BEFAB7CEA794EB010A614C', NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -813,7 +827,8 @@ INSERT INTO `user` (`Id`, `Name`, `Password`, `UserPhotoPath`, `Email`, `IsAppro
 (3, 'ololoshka123', 'pass123', NULL, NULL, NULL, NULL, '2018-04-15 09:29:00', NULL, NULL, NULL),
 (4, 'ololoshka432', 'pass123', NULL, NULL, NULL, NULL, '2018-04-15 09:29:00', NULL, NULL, NULL),
 (8, 'ololo', '67456', NULL, NULL, NULL, NULL, '2018-04-15 09:29:00', NULL, NULL, NULL),
-(9, 'test', 'pass', NULL, NULL, NULL, '2018-04-27 18:36:01', '2018-04-27 18:36:01', NULL, NULL, NULL);
+(9, 'test', 'pass', NULL, NULL, NULL, '2018-04-27 18:36:01', '2018-04-27 18:36:01', NULL, NULL, NULL),
+(10, 'ruslan', '12345671', 'f:\\WebFiles\\UserAvatarPhoto\\-13852670701525603101834wsd34', 'mad@bad34.ru', NULL, '2018-05-06 10:38:22', '2018-05-06 10:38:22', NULL, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -1000,7 +1015,7 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT для таблицы `request`
 --
 ALTER TABLE `request`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `requeststatus`
 --
@@ -1015,7 +1030,7 @@ ALTER TABLE `requesttype`
 -- AUTO_INCREMENT для таблицы `session`
 --
 ALTER TABLE `session`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `tool`
 --
@@ -1035,7 +1050,7 @@ ALTER TABLE `transmissiontype`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT для таблицы `userstatus`
 --

@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "message")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Message implements Serializable {

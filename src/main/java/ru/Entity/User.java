@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
+@Table(name = "user")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class User implements Serializable {
