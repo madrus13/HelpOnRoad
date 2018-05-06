@@ -1,9 +1,7 @@
 package ru.Service;
 
 import org.joda.time.DateTime;
-import ru.Entity.Achievement;
-import ru.Entity.Request;
-import ru.Entity.Session;
+import ru.Entity.*;
 import ru.Managers.Achievement.AchievService;
 import ru.Managers.Achievmenttype.AchievTypeService;
 import ru.Managers.Auto.AutoService;
@@ -21,7 +19,6 @@ import ru.Managers.Tool.ToolService;
 import ru.Managers.Tooltypes.ToolTypeService;
 import ru.Managers.Transmissiontype.TrTypeService;
 import ru.Managers.User.UsersManagers;
-import ru.Entity.User;
 import ru.Managers.User.UsersService;
 import org.apache.log4j.BasicConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -32,7 +29,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.ws.soap.MTOM;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -40,9 +36,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.Base64;
 import java.util.List;
-
-import static com.sun.deploy.util.SessionState.save;
-import static com.sun.javafx.css.StyleManager.getErrors;
 
 class CustomObjResult{
     public Long userId;
@@ -61,8 +54,15 @@ class CustomObjResult{
 @Transactional
 @MTOM(enabled = true, threshold = 102400)
 public class WebServiceMain {
-    private static String INVALID_TOKEN = "INVALID TOKEN";
-    private static String INVALIDE_DATA = "INVALID DATA";
+
+    private static final String F_WEB_FILES_REQUEST_PHOTO = "f:\\WebFiles\\RequestPhoto\\";
+    private static final String F_WEB_FILES_USER_AVATAR_PHOTO = "f:\\WebFiles\\UserAvatarPhoto\\";
+
+    private static final String INVALID_USERNAME_OR_PASS = "INVALID_USERNAME_OR_PASS";
+    private static final String INVALID_TOKEN = "INVALID TOKEN";
+    private static final String INVALID_TOKEN_OR_USER_ID = "INVALID_TOKEN_OR_USER_ID";
+    private static final String INVALIDE_DATA = "INVALID DATA";
+
     private GenericXmlApplicationContext ctx;
 
     private UsersManagers usersManagers;
@@ -128,32 +128,94 @@ public class WebServiceMain {
     }
 
     @WebMethod()
-    public String insertUser(
+    public String insertUpdateUser(
+                            @WebParam(name="Id")   Long Id,
+                            @WebParam(name="sessionToken")  String sessionToken,
                             @WebParam(name="name")   String name,
                             @WebParam(name="region") Long region,
                             @WebParam(name="password") String password,
-                            @WebParam(name="email") String email
+                            @WebParam(name="email") String email,
+                            @WebParam(name="fileName")      String fileName,
+                            @WebParam(name="fileImage")     byte[] fileImage
                             ) {
+        String fullPath = "";
+        User user = null;
         initMainCfg();
-        User user = new User();
-        user.setName(name);
-        user.setCreationDate(new Timestamp(System.currentTimeMillis()));
-        user.setModifyDate(new Timestamp(System.currentTimeMillis()));
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setStatus(2L); //Const : common user
-        user.setRegion(region);
 
-        return saveUserAndRetJson(user);
+        if (name.isEmpty() || password.isEmpty()) {
+            return INVALID_USERNAME_OR_PASS;
+        }
+
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (Id > 0 && !sessionToken.isEmpty() && res.isBoolVal == false) {
+            return INVALID_TOKEN;
+        }
+
+        if (Id > 0 && !sessionToken.isEmpty() && !res.userId.equals(Id))
+        {
+            return INVALID_TOKEN_OR_USER_ID;
+        }
+
+
+        User findedUser  = userService.findOneUserByName(name);
+
+        //По имени не найден пользователь, который обновляется
+        if (Id > 0 && !sessionToken.isEmpty() && findedUser == null) {
+            return INVALID_USERNAME_OR_PASS;
+        }
+
+        //Проверка имени на повтор
+        if (Id <= 0 && sessionToken.isEmpty() && !name.isEmpty()) {
+
+            if (findedUser == null) {
+                user = new User();
+            }
+            else {
+                return INVALID_USERNAME_OR_PASS;
+            }
+        }
+
+        //
+        if (user == null && findedUser!=null && findedUser.getId() == Id && res.isBoolVal == true) {
+            user = findedUser;
+        }
+        else {
+            if(user==null) {
+                return INVALID_TOKEN_OR_USER_ID;
+            }
+        }
+
+
+
+        if (user  != null) {
+            user.setName(name);
+            user.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            user.setModifyDate(new Timestamp(System.currentTimeMillis()));
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setStatus(Userstatus.StatusCommon); //Const : common user
+
+            fullPath = F_WEB_FILES_USER_AVATAR_PHOTO + String.valueOf(user.hashCode()) + System.currentTimeMillis() + fileName;
+            if (saveByteToFile(fileImage, fullPath) == true) {
+                user.setUserPhotoPath(fullPath);
+            }
+            user.setRegion(region);
+            return saveUserAndRetJson(user);
+        }
+
+    return INVALIDE_DATA;
     }
 
     @WebMethod()
-    public String createRequest(
+    public String insertUpdateRequest(
+            @WebParam(name="Id")            Long Id,
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="name")          String name,
             @WebParam(name="description")   String description,
             @WebParam(name="latitude")      double latitude,
             @WebParam(name="longitude")     double longitude,
+            @WebParam(name="statusId")      Long statusId,
             @WebParam(name="typeId")        Long typeId,
             @WebParam(name="fileName")      String fileName,
             @WebParam(name="fileImage")     byte[] fileImage
@@ -161,6 +223,7 @@ public class WebServiceMain {
     ) {
         initMainCfg();
         String result = "";
+        Request request = null;
 
         String fileDirName = "";
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
@@ -168,20 +231,43 @@ public class WebServiceMain {
         if (res.isBoolVal == true)
         {
             if (createUserByToken > 0) {
-                Request request = new Request();
-                request.setCreationDate(new Timestamp(System.currentTimeMillis()));
-                request.setDescription(description);
-                request.setLatitude(latitude);
-                request.setLongitude(longitude);
-                request.setModifyDate(new Timestamp(System.currentTimeMillis()));
-                request.setStatus(1L); // status open = 1, close = 2, unknown = 3
-                request.setType(typeId);
-                request.setCreationUser(createUserByToken);
-                fileDirName = String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
-                if (saveByteToFile(fileImage, fileDirName) == true) {
-                    request.setRequestPhotoPath(fileDirName);
+
+                if (Id > 0) {
+                    Request findedRequest = requestManagers.findOne(Id);
+                    if (findedRequest.getCreationUser() == createUserByToken) {
+                        request = findedRequest;
+                    }
+                    else {
+                        return INVALID_TOKEN_OR_USER_ID;
+                    }
                 }
-                result = saveRequestAndRetJson(request);
+                else {
+                    request = new Request();
+                }
+
+                if (request!=null) {
+                    request.setCreationDate(new Timestamp(System.currentTimeMillis()));
+                    request.setDescription(description);
+                    request.setLatitude(latitude);
+                    request.setLongitude(longitude);
+                    request.setModifyDate(new Timestamp(System.currentTimeMillis()));
+                    if ((statusId == Requeststatus.StatusOpen) || (statusId == Requeststatus.StatusClose))
+                    {
+                        request.setStatus(statusId);
+                    }
+
+                    request.setType(typeId);
+                    request.setCreationUser(createUserByToken);
+                    fileDirName = F_WEB_FILES_REQUEST_PHOTO + String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
+                    if (saveByteToFile(fileImage, fileDirName) == true) {
+                        request.setRequestPhotoPath(fileDirName);
+                    }
+                    result = saveRequestAndRetJson(request);
+                }
+                else {
+                    result = INVALIDE_DATA;
+                }
+
             }
         }
         else {
@@ -191,14 +277,14 @@ public class WebServiceMain {
         return result;
     }
 
-    private boolean saveByteToFile(byte[] fileImage, String hashName )
+    private boolean saveByteToFile(byte[] fileImage, String fullPathToSave)
     {
         byte[] encodedBytes;
         boolean isSuccess = false;
         if (fileImage!=null && fileImage.length > 0) {
             encodedBytes = Base64.getEncoder().encode(fileImage);
 
-            try (FileOutputStream fos = new FileOutputStream("f:\\WebFiles\\" + hashName )) {
+            try (FileOutputStream fos = new FileOutputStream(  fullPathToSave )) {
                 fos.write(encodedBytes);
                 isSuccess = true;
             } catch (IOException ioe) {

@@ -12,6 +12,11 @@ import java.util.Collection;
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Requeststatus implements Serializable {
+
+    public static final Long StatusOpen    = 1L;
+    public static final Long StatusClose   = 2L;
+    public static final Long StatusUnknown = 3L;
+
     private Long id;
     private String name;
     private Byte isDeleted;

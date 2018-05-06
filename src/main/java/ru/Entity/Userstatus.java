@@ -1,5 +1,6 @@
 package ru.Entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,12 @@ public class Userstatus implements Serializable {
     private Long id;
     private String name;
     private Byte isDeleted;
+
+    public static final Long StatusAdmin    = 1L;
+    public static final Long StatusCommon   = 2L;
+    public static final Long StatusNoActive = 4L;
+
+    @JsonIgnore
     private Collection<User> usersById;
 
     @Id
@@ -69,6 +76,7 @@ public class Userstatus implements Serializable {
     }
 
     @OneToMany(mappedBy = "userstatusByStatus")
+    @JsonIgnore
     public Collection<User> getUsersById() {
         return usersById;
     }
