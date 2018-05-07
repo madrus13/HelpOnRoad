@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 06 2018 г., 20:57
+-- Время создания: Май 07 2018 г., 19:19
 -- Версия сервера: 5.7.14
 -- Версия PHP: 5.6.25
 
@@ -90,12 +90,27 @@ CREATE TABLE `message` (
   `CreationDate` timestamp NULL DEFAULT NULL,
   `ModifyDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `CreateUser` bigint(20) UNSIGNED ZEROFILL DEFAULT NULL,
+  `UserRx` bigint(20) UNSIGNED ZEROFILL DEFAULT NULL,
   `MessagePhotoPath` varchar(100) DEFAULT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL,
   `Request` bigint(20) UNSIGNED DEFAULT NULL,
   `Type` bigint(20) UNSIGNED DEFAULT NULL,
   `Region` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `message`
+--
+
+INSERT INTO `message` (`Id`, `Text`, `CreationDate`, `ModifyDate`, `CreateUser`, `UserRx`, `MessagePhotoPath`, `IsDeleted`, `Request`, `Type`, `Region`) VALUES
+(1, 'Text', '2018-05-07 18:15:46', '2018-05-07 18:15:46', 00000000000000000010, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Text', '2018-05-07 18:55:59', '2018-05-07 18:55:59', 00000000000000000010, 00000000000000000010, NULL, NULL, NULL, NULL, NULL),
+(4, 'Text', '2018-05-07 18:56:51', '2018-05-07 18:56:51', 00000000000000000010, 00000000000000000001, NULL, NULL, NULL, NULL, NULL),
+(11, 'Text', '2018-05-07 19:12:27', '2018-05-07 19:12:27', 00000000000000000010, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'Text', '2018-05-07 19:18:23', '2018-05-07 19:18:23', 00000000000000000010, 00000000000000000010, NULL, NULL, NULL, NULL, NULL),
+(16, 'Text', '2018-05-07 19:18:26', '2018-05-07 19:18:26', 00000000000000000010, 00000000000000000010, NULL, NULL, NULL, NULL, NULL),
+(17, 'Text', '2018-05-07 19:18:28', '2018-05-07 19:18:28', 00000000000000000010, 00000000000000000010, NULL, NULL, NULL, NULL, NULL),
+(18, 'Text', '2018-05-07 19:18:36', '2018-05-07 19:18:36', 00000000000000000010, 00000000000000000010, NULL, NULL, NULL, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -671,7 +686,7 @@ INSERT INTO `request` (`Id`, `Description`, `CreationDate`, `ModifyDate`, `Close
 (4, 'This is description 2', '2018-05-01 19:50:34', '2018-05-01 19:50:34', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
 (5, 'This is description 2', '2018-05-01 20:22:39', '2018-05-01 20:22:39', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
 (6, 'This is description 2', '2018-05-01 20:22:50', '2018-05-01 20:22:50', NULL, NULL, NULL, NULL, NULL, 9, 0, 0, 5, 1),
-(7, '123 description salsdlkfjlskfj', '2018-05-06 17:55:24', '2018-05-06 17:55:24', NULL, NULL, NULL, NULL, NULL, 10, 0.123, 0.321, 4, 1),
+(7, '123 description salsdlkfjlskfj', '2018-05-06 17:55:24', '2018-05-07 18:06:01', NULL, NULL, NULL, NULL, NULL, 10, 0.123, 0.321, 7, 1),
 (8, 'description salsdlkfjlskfj', '2018-05-06 17:52:19', '2018-05-06 17:52:19', NULL, NULL, NULL, NULL, NULL, 10, 0, 0, 4, 1);
 
 -- --------------------------------------------------------
@@ -888,7 +903,8 @@ ALTER TABLE `message`
   ADD KEY `fk_message_messagetype1_idx` (`Type`),
   ADD KEY `fk_message_region1_idx` (`Region`),
   ADD KEY `fk_message_user1_idx` (`CreateUser`),
-  ADD KEY `fk_message_request1_idx` (`Request`);
+  ADD KEY `fk_message_request1_idx` (`Request`),
+  ADD KEY `fk_message_user_rx_idx` (`UserRx`) USING BTREE;
 
 --
 -- Индексы таблицы `messagetype`
@@ -1000,7 +1016,7 @@ ALTER TABLE `auto`
 -- AUTO_INCREMENT для таблицы `message`
 --
 ALTER TABLE `message`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `messagetype`
 --
@@ -1080,7 +1096,8 @@ ALTER TABLE `message`
   ADD CONSTRAINT `fk_message_messagetype1` FOREIGN KEY (`Type`) REFERENCES `messagetype` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_message_region1` FOREIGN KEY (`Region`) REFERENCES `region` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_message_request1` FOREIGN KEY (`Request`) REFERENCES `request` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_message_user1` FOREIGN KEY (`CreateUser`) REFERENCES `user` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_message_user1` FOREIGN KEY (`CreateUser`) REFERENCES `user` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_message_userrx` FOREIGN KEY (`UserRx`) REFERENCES `user` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `request`

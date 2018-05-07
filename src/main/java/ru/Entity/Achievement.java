@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "achievement")
 @Table(name = "achievement")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })

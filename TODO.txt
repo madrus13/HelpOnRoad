@@ -2,7 +2,8 @@
 TODO TEST: getAllAchievmentByUser
 TODO TEST: getAllToolByUser
 TODO TEST: getAllAutoByUser
-insertMessage Писать сообщение в ПМ 
+TODO TEST: insertMessage Писать сообщение в ПМ поле UserRx
+            Писать сообщение в региональный чат пользователя
 */
 
 
@@ -15,7 +16,7 @@ Message
 Получить часть писем по региону  за последний час
 Получить письма по По конкретному запросу (Request)
 
-Писать сообщение в региональный чат пользователя
+
 Писать письма с привязкой к конкретному request
 
 

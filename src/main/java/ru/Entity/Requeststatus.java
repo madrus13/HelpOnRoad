@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Entity
+@Entity(name = "requeststatus")
 @Table(name = "requeststatus")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })

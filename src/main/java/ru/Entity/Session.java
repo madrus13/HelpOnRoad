@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity
+@Entity(name = "session")
 @Table(name = "session")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })

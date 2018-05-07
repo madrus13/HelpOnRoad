@@ -37,19 +37,6 @@ import java.sql.Timestamp;
 import java.util.Base64;
 import java.util.List;
 
-class CustomObjResult{
-    public Long userId;
-    public boolean isBoolVal;
-
-    public CustomObjResult(Long id, boolean isBoolVal) {
-        this.userId = id;
-        this.isBoolVal = isBoolVal;
-    }
-
-
-
-}
-
 @WebService
 @Transactional
 @MTOM(enabled = true, threshold = 102400)
@@ -369,6 +356,7 @@ public class WebServiceMain {
             @WebParam(name="text")          String text,
             @WebParam(name="requestId")     Long requestId,
             @WebParam(name="regionId")      Long regionId,
+            @WebParam(name="userRx")        Long userRx,
             @WebParam(name="typeId")        Long typeId,
             @WebParam(name="fileName")      String fileName,
             @WebParam(name="fileImage")     byte[] fileImage
@@ -410,6 +398,9 @@ public class WebServiceMain {
                     }
                     if (typeId > 0){
                         msg.setType(typeId);
+                    }
+                    if (userRx > 0){
+                        msg.setUserRx(userRx);
                     }
                     msg.setText(text);
                     msg.setCreateUser(createUserByToken);

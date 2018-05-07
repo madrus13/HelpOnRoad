@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collection;
 
-@Entity
+@Entity(name = "request")
 @Table(name = "request")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })

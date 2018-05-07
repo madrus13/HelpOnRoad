@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity
+@Entity(name = "message")
 @Table(name = "message")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
@@ -17,11 +17,13 @@ public class Message implements Serializable {
     private Timestamp creationDate;
     private Timestamp modifyDate;
     private Long createUser;
+    private Long userRx;
     private String messagePhotoPath;
     private Byte isDeleted;
     private Long request;
     private Long type;
     private Long region;
+    private User userByUserRx;
     private User userByCreateUser;
     private Request requestByRequest;
     private Messagetype messagetypeByType;
@@ -66,6 +68,16 @@ public class Message implements Serializable {
 
     public void setModifyDate(Timestamp modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    @Basic
+    @Column(name = "UserRx", nullable = true)
+    public Long getUserRx() {
+        return userRx;
+    }
+
+    public void setUserRx(Long userRx) {
+        this.userRx = userRx;
     }
 
     @Basic
@@ -174,6 +186,16 @@ public class Message implements Serializable {
 
     public void setUserByCreateUser(User userByCreateUser) {
         this.userByCreateUser = userByCreateUser;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "UserRx", referencedColumnName = "Id", insertable = false, updatable = false)
+    public User getUserByUserRx() {
+        return userByUserRx;
+    }
+
+    public void setUserByUserRx(User userByUserRx) {
+        this.userByUserRx = userByUserRx;
     }
 
     @ManyToOne

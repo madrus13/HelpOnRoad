@@ -12,7 +12,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="FactoryHibernate.xml" value="4e56ddcf-1713-4890-994d-593ff78903a8" />
-          <unit-entry name="META-INF:FactoryHibernate.xml" value="93f3080f-caea-4df2-afd6-9192c316c5d5" />
+          <unit-entry name="META-INF:FactoryHibernate.xml" value="23213fd6-a08b-4578-8f79-25f7bf8dcce6" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/java/META-INF/FactoryHibernate.xml" />
