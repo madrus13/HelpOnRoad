@@ -33,7 +33,12 @@ public class RequestService {
     public List<Request> findRequestByCreationUser(Long userId) {
         return Lists.newArrayList(requestManagers.findRequestByCreationUser(userId));
     }
-
+    public List<Request> findRequestByResolvedByUserAndStatusAndTypeIn(Long userId, Long statusId, List<Long> typeIds) {
+        return Lists.newArrayList(requestManagers.findRequestByResolvedByUserAndStatusAndTypeIn(userId,statusId,typeIds));
+    }
+    public List<Request> findRequestByResolvedByUserAndStatus(Long userId,Long statusId) {
+        return Lists.newArrayList(requestManagers.findRequestByResolvedByUserAndStatus(userId,statusId));
+    }
 
 
 }

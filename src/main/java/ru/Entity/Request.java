@@ -22,15 +22,17 @@ public class Request implements Serializable {
     private Byte isResolvedByUser;
     private String requestPhotoPath;
     private Byte isDeleted;
-    private Long user;
+    private Long resolvedByUser;
     private Long creationUser;
     private Double latitude;
     private Double longitude;
     private Long type;
     private Long status;
+    private Long region;
     private Collection<Message> messagesById;
-    private User userByUser;
+    private User userByResolvedByUser;
     private User userByCreationUser;
+    private Region regionByRegion;
     private Requesttype requesttypeByType;
     private Requeststatus requeststatusByStatus;
 
@@ -43,6 +45,16 @@ public class Request implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "Region", nullable = true)
+    public Long getRegion() {
+        return region;
+    }
+
+    public void setRegion(Long region) {
+        this.region = region;
     }
 
     @Basic
@@ -116,13 +128,13 @@ public class Request implements Serializable {
     }
 
     @Basic
-    @Column(name = "User", nullable = true)
-    public Long getUser() {
-        return user;
+    @Column(name = "ResolvedByUser", nullable = true)
+    public Long getResolvedByUser() {
+        return resolvedByUser;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setResolvedByUser(Long resolvedByUser) {
+        this.resolvedByUser = resolvedByUser;
     }
 
     @Basic
@@ -193,7 +205,7 @@ public class Request implements Serializable {
         if (requestPhotoPath != null ? !requestPhotoPath.equals(request.requestPhotoPath) : request.requestPhotoPath != null)
             return false;
         if (isDeleted != null ? !isDeleted.equals(request.isDeleted) : request.isDeleted != null) return false;
-        if (user != null ? !user.equals(request.user) : request.user != null) return false;
+        if (resolvedByUser != null ? !resolvedByUser.equals(request.resolvedByUser) : request.resolvedByUser != null) return false;
         if (creationUser != null ? !creationUser.equals(request.creationUser) : request.creationUser != null)
             return false;
         if (latitude != null ? !latitude.equals(request.latitude) : request.latitude != null) return false;
@@ -214,13 +226,23 @@ public class Request implements Serializable {
         result = 31 * result + (isResolvedByUser != null ? isResolvedByUser.hashCode() : 0);
         result = 31 * result + (requestPhotoPath != null ? requestPhotoPath.hashCode() : 0);
         result = 31 * result + (isDeleted != null ? isDeleted.hashCode() : 0);
-        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (resolvedByUser != null ? resolvedByUser.hashCode() : 0);
         result = 31 * result + (creationUser != null ? creationUser.hashCode() : 0);
         result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
         result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Region", referencedColumnName = "Id", insertable = false, updatable = false)
+    public Region getRegionByRegion() {
+        return regionByRegion;
+    }
+
+    public void setRegionByRegion(Region regionByRegion) {
+        this.regionByRegion = regionByRegion;
     }
 
     @OneToMany(mappedBy = "requestByRequest")
@@ -235,13 +257,13 @@ public class Request implements Serializable {
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "User", referencedColumnName = "Id", insertable = false, updatable = false)
-    public User getUserByUser() {
-        return userByUser;
+    @JoinColumn(name = "ResolvedByUser", referencedColumnName = "Id", insertable = false, updatable = false)
+    public User getUserByResolvedByUser() {
+        return userByResolvedByUser;
     }
 
-    public void setUserByUser(User userByUser) {
-        this.userByUser = userByUser;
+    public void setUserByResolvedByUser(User userByResolvedByUser) {
+        this.userByResolvedByUser = userByResolvedByUser;
     }
 
     @ManyToOne

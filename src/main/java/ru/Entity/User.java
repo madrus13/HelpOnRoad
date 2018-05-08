@@ -212,7 +212,7 @@ public class User implements Serializable {
         this.messagesById = messagesById;
     }
 
-    @OneToMany(mappedBy = "userByUser")
+    @OneToMany(mappedBy = "userByResolvedByUser")
     @JsonIgnore
     public Collection<Request> getRequestsById() {
         return requestsById;

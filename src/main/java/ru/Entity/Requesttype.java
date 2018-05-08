@@ -16,6 +16,15 @@ public class Requesttype implements Serializable {
     private Long id;
     private String name;
     private Byte isDeleted;
+
+    public static final Long TypeAccumIsDown    = 4L;
+    public static final Long TypeNotStarted   = 5L;
+    public static final Long TypeStuck = 6L;
+    public static final Long TypeAlarm = 7L;
+    public static final Long TypeCarNotOpen = 8L;
+    public static final Long TypeTowTruckNeed = 9L;
+
+
     @JsonIgnore
     private Collection<Request> requestsById;
 

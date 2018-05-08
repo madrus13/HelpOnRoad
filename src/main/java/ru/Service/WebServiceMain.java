@@ -34,8 +34,12 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static ru.Entity.Requesttype.TypeAccumIsDown;
 
 @WebService
 @Transactional
@@ -211,16 +215,17 @@ public class WebServiceMain {
 
     @WebMethod()
     public String insertUpdateRequest(
-            @WebParam(name="Id")            Long Id,
-            @WebParam(name="sessionToken")  String sessionToken,
-            @WebParam(name="name")          String name,
-            @WebParam(name="description")   String description,
-            @WebParam(name="latitude")      double latitude,
-            @WebParam(name="longitude")     double longitude,
-            @WebParam(name="statusId")      Long statusId,
-            @WebParam(name="typeId")        Long typeId,
-            @WebParam(name="fileName")      String fileName,
-            @WebParam(name="fileImage")     byte[] fileImage
+            @WebParam(name="Id")                Long Id,
+            @WebParam(name="sessionToken")      String sessionToken,
+            @WebParam(name="description")       String description,
+            @WebParam(name="latitude")          double latitude,
+            @WebParam(name="longitude")         double longitude,
+            @WebParam(name="statusId")          Long statusId,
+            @WebParam(name="isResolvedByUser")  Long isResolvedByUserId,
+            @WebParam(name="typeId")            Long typeId,
+            @WebParam(name="regionId")          Long regionId,
+            @WebParam(name="fileName")          String fileName,
+            @WebParam(name="fileImage")         byte[] fileImage
 
     ) {
         initMainCfg();
@@ -246,24 +251,58 @@ public class WebServiceMain {
                 else {
                     request = new Request();
                     request.setCreationDate(new Timestamp(System.currentTimeMillis()));
+                    request.setCreationUser(createUserByToken);
                 }
 
                 if (request!=null) {
-                    request.setDescription(description);
-                    request.setLatitude(latitude);
-                    request.setLongitude(longitude);
+
+                    if (isResolvedByUserId > 0) {
+                        User findedUser = usersManagers.findOne(isResolvedByUserId);
+
+                        if (findedUser!=null) {
+                            request.setResolvedByUser(isResolvedByUserId);
+                            //Id юзера создавшего запрос - совпадает с юзером который запрос разрешил
+                            if (isResolvedByUserId == createUserByToken) {
+                                request.setIsResolvedByUser((byte)1);
+                                request.setStatus(Requeststatus.StatusClose);
+                            }
+                        }
+                        return saveRequestAndRetJson(request);
+                    }
+
+                    if (description.isEmpty() == false) {
+                        request.setDescription(description);
+                    }
+
+                    if (latitude!=0L && longitude!=0L) {
+                        request.setLatitude(latitude);
+                        request.setLongitude(longitude);
+                    }
+
                     request.setModifyDate(new Timestamp(System.currentTimeMillis()));
                     if ((statusId == Requeststatus.StatusOpen) || (statusId == Requeststatus.StatusClose))
                     {
                         request.setStatus(statusId);
                     }
-
-                    request.setType(typeId);
-                    request.setCreationUser(createUserByToken);
-                    fileDirName = F_WEB_FILES_REQUEST_PHOTO + String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
-                    if (saveByteToFile(fileImage, fileDirName) == true) {
-                        request.setRequestPhotoPath(fileDirName);
+                    if (    typeId == Requesttype.TypeAccumIsDown ||
+                            typeId == Requesttype.TypeNotStarted ||
+                            typeId == Requesttype.TypeStuck ||
+                            typeId == Requesttype.TypeAlarm ||
+                            typeId == Requesttype.TypeCarNotOpen ||
+                            typeId == Requesttype.TypeTowTruckNeed
+                            ) {
+                        request.setType(typeId);
                     }
+                    if (regionId > 0) {
+                        request.setRegion(regionId);
+                    }
+                    if (!fileName.isEmpty()) {
+                        fileDirName = F_WEB_FILES_REQUEST_PHOTO + String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
+                        if (saveByteToFile(fileImage, fileDirName) == true) {
+                            request.setRequestPhotoPath(fileDirName);
+                        }
+                    }
+
                     result = saveRequestAndRetJson(request);
                 }
                 else {
@@ -445,7 +484,7 @@ public class WebServiceMain {
 
 
     @WebMethod
-    public String findAllMessageByRequest(
+    public String getAllMessageByRequest(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="request")       Long request,
             @WebParam(name="pageSize")      int pageSize
@@ -464,6 +503,55 @@ public class WebServiceMain {
         return result;
     }
 
+    @WebMethod
+    public String getAllRequestByCreationUser(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="userId")        Long userId
+    ) {
+        initMainCfg();
+        String result = "";
+
+        if (isTokenCorrect(sessionToken))
+        {
+            result =  objToJson(requestService.findRequestByCreationUser(userId ));
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
+
+
+    @WebMethod
+    public String findRequestResolvedByCurrentUserWithTypeFilter(
+            @WebParam(name="sessionToken")   String sessionToken,
+            @WebParam(name="typeIds")        String typeIds
+    ) {
+        initMainCfg();
+        String result = "";
+
+        List<Long> listTypeIds = Arrays.stream(typeIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (res.isBoolVal && res.userId > 0)
+        {
+            if (typeIds.isEmpty()) {
+                result =  objToJson(requestService.findRequestByResolvedByUserAndStatus(
+                        res.userId, Requeststatus.StatusClose ));
+            }
+            else {
+                    if (!listTypeIds.isEmpty())
+                    {
+                        result =  objToJson(requestService.findRequestByResolvedByUserAndStatusAndTypeIn(
+                                res.userId, Requeststatus.StatusClose,listTypeIds ));
+                    }
+                }
+            }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
 
     @WebMethod
     public String getUserInfo(
