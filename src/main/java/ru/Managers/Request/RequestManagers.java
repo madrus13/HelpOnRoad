@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface RequestManagers extends CrudRepository<Request, Long> {
     List<Request> findAll();
+    List<Request> findRequestByCreationUser(Long userId);
 }

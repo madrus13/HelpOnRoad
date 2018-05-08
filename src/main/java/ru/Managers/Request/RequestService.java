@@ -30,6 +30,9 @@ public class RequestService {
     public List<Request> findAll() {
         return Lists.newArrayList(requestManagers.findAll());
     }
+    public List<Request> findRequestByCreationUser(Long userId) {
+        return Lists.newArrayList(requestManagers.findRequestByCreationUser(userId));
+    }
 
 
 

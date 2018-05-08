@@ -36,6 +36,9 @@ public class MessageService {
         return Lists.newArrayList(messageManagers.findMessageByRegionAndAndIdGreaterThan(region,Id, new PageRequest(0,pageSize)));
     }
 
+    public List<Message> findAllMessageByRequest(Long request, int pageSize) {
+        return Lists.newArrayList(messageManagers.findMessageByRequest(request, new PageRequest(0,pageSize)));
+    }
 
 
 }

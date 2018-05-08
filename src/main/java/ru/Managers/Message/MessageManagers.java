@@ -12,4 +12,5 @@ import java.util.List;
 public interface MessageManagers extends CrudRepository<Message, Long> {
     List<Message> findAll();
     List<Message> findMessageByRegionAndAndIdGreaterThan(Long region, Long Id, Pageable pageable);
+    List<Message> findMessageByRequest(Long Request, Pageable pageable);
 }

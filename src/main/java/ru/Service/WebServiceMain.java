@@ -444,6 +444,26 @@ public class WebServiceMain {
     }
 
 
+    @WebMethod
+    public String findAllMessageByRequest(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="request")       Long request,
+            @WebParam(name="pageSize")      int pageSize
+
+    ) {
+        initMainCfg();
+        String result = "";
+
+        if (isTokenCorrect(sessionToken))
+        {
+            result =  objToJson(messageService.findAllMessageByRequest(request,pageSize ));
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
+
 
     @WebMethod
     public String getUserInfo(
