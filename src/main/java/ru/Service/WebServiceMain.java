@@ -422,6 +422,26 @@ public class WebServiceMain {
         return result;
     }
 
+    @WebMethod
+    public String getMessageByRegionAndIdGreater(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="regionId")      Long regionId,
+            @WebParam(name="lastId")        Long lastId,
+            @WebParam(name="pageSize")      int pageSize
+
+            ) {
+        initMainCfg();
+        String result = "";
+
+        if (isTokenCorrect(sessionToken))
+        {
+            result =  objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, lastId,pageSize ));
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
 
 
 

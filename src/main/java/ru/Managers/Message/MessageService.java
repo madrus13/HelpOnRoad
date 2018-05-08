@@ -1,6 +1,7 @@
 package ru.Managers.Message;
 
 import com.google.common.collect.Lists;
+import org.springframework.data.domain.PageRequest;
 import ru.Entity.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -29,6 +30,10 @@ public class MessageService {
 
     public List<Message> findAll() {
         return Lists.newArrayList(messageManagers.findAll());
+    }
+
+    public List<Message> findMessageByRegionAndAndIdAfter(Long region, Long Id, int pageSize) {
+        return Lists.newArrayList(messageManagers.findMessageByRegionAndAndIdGreaterThan(region,Id, new PageRequest(0,pageSize)));
     }
 
 
