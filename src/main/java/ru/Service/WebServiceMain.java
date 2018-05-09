@@ -28,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.ws.soap.MTOM;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -141,8 +142,8 @@ public class WebServiceMain {
                             @WebParam(name="region") Long region,
                             @WebParam(name="password") String password,
                             @WebParam(name="email") String email,
-                            @WebParam(name="fileName")      String fileName,
-                            @WebParam(name="fileImage")     byte[] fileImage
+                            @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")      String fileName,
+                            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      byte[] fileImage
                             ) {
         String fullPath = "";
         User user = null;
@@ -218,14 +219,14 @@ public class WebServiceMain {
             @WebParam(name="Id")                Long Id,
             @WebParam(name="sessionToken")      String sessionToken,
             @WebParam(name="description")       String description,
-            @WebParam(name="latitude")          double latitude,
-            @WebParam(name="longitude")         double longitude,
+            @WebParam(name="latitude")          Double latitude,
+            @WebParam(name="longitude")         Double longitude,
             @WebParam(name="statusId")          Long statusId,
             @WebParam(name="isResolvedByUser")  Long isResolvedByUserId,
             @WebParam(name="typeId")            Long typeId,
             @WebParam(name="regionId")          Long regionId,
-            @WebParam(name="fileName")          String fileName,
-            @WebParam(name="fileImage")         byte[] fileImage
+            @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")          String fileName,
+            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
 
     ) {
         initMainCfg();
@@ -523,14 +524,42 @@ public class WebServiceMain {
 
 
     @WebMethod
-    public String findRequestResolvedByCurrentUserWithTypeFilter(
-            @WebParam(name="sessionToken")   String sessionToken,
-            @WebParam(name="typeIds")        String typeIds
+    public String getAllOpenRequestByRegion(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="regionId")        Long regionId,
+            @WebParam(name="typeIds") @XmlElement(required=false, nillable=true, name="typeIds")       String typeIds
+
     ) {
         initMainCfg();
         String result = "";
+        List<Long> listTypeIds = null;
+        if (isTokenCorrect(sessionToken))
+        {
+            if (typeIds.length() <= 0) {
+                result =  objToJson(requestService.findRequestByRegionAndStatus(regionId, Requeststatus.StatusOpen ));
+            }
+            else {
+                if (typeIds.length() > 0) {
+                    listTypeIds = Arrays.stream(typeIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
+                }
+                result =  objToJson(requestService.findRequestByRegionAndStatusAndTypeIn(regionId, Requeststatus.StatusOpen,listTypeIds ));
+            }
+        }
+        else {
+            result = INVALID_TOKEN;
+        }
+        return result;
+    }
 
-        List<Long> listTypeIds = Arrays.stream(typeIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
+    @WebMethod
+    public String findRequestResolvedByCurrentUserWithTypeFilter(
+            @WebParam(name="sessionToken")   String sessionToken,
+            @WebParam(name="typeIds") @XmlElement(required=false, nillable=true, name="typeIds")       String typeIds
+    ) {
+        initMainCfg();
+        String result = "";
+        List<Long> listTypeIds = null;
+
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
 
         if (res.isBoolVal && res.userId > 0)
@@ -540,6 +569,11 @@ public class WebServiceMain {
                         res.userId, Requeststatus.StatusClose ));
             }
             else {
+
+                    if (typeIds.length() > 0) {
+                        listTypeIds = Arrays.stream(typeIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
+                    }
+
                     if (!listTypeIds.isEmpty())
                     {
                         result =  objToJson(requestService.findRequestByResolvedByUserAndStatusAndTypeIn(
