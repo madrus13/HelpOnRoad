@@ -45,4 +45,7 @@ public class RequestService {
     public List<Request> findRequestByRegionAndStatus(Long regionId,Long statusId) {
         return Lists.newArrayList(requestManagers.findRequestByRegionAndStatus(regionId, statusId));
     }
+    public List<Request> findRequestByCreationUserAndStatus(Long userId,Long statusId) {
+        return Lists.newArrayList(requestManagers.findRequestByCreationUserAndStatus(userId, statusId));
+    }
 }

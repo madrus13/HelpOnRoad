@@ -14,4 +14,6 @@ public interface RequestManagers extends CrudRepository<Request, Long> {
     List<Request> findRequestByResolvedByUserAndStatus(Long userId, Long statusId);
     List<Request> findRequestByRegionAndStatusAndTypeIn  (Long userId, Long statusId, List<Long> typeIds);
     List<Request> findRequestByRegionAndStatus  (Long userId, Long statusId);
+    //Получить текущий активный запрос пользователя ( если указать статус Open)
+    List<Request> findRequestByCreationUserAndStatus  (Long userId, Long statusId);
 }

@@ -2,6 +2,7 @@ package ru.Service;
 
 import org.joda.time.DateTime;
 import ru.Entity.*;
+import ru.Service.WSUtility;
 import ru.Managers.Achievement.AchievService;
 import ru.Managers.Achievmenttype.AchievTypeService;
 import ru.Managers.Auto.AutoService;
@@ -21,6 +22,7 @@ import ru.Managers.Transmissiontype.TrTypeService;
 import ru.Managers.User.UsersManagers;
 import ru.Managers.User.UsersService;
 import org.apache.log4j.BasicConfigurator;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,20 +43,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ru.Entity.Requesttype.TypeAccumIsDown;
+import static ru.Service.WSUtility.*;
 
 @WebService
 @Transactional
 @MTOM(enabled = true, threshold = 102400)
 public class WebServiceMain {
 
-    private static final String F_WEB_FILES_REQUEST_PHOTO = "f:\\WebFiles\\RequestPhoto\\";
-    private static final String F_WEB_FILES_USER_AVATAR_PHOTO = "f:\\WebFiles\\UserAvatarPhoto\\";
-    private static final String F_WEB_FILES_MESSAGE_PHOTO = "f:\\WebFiles\\MessagePhoto\\";
 
-    private static final String INVALID_USERNAME_OR_PASS = "INVALID_USERNAME_OR_PASS";
-    private static final String INVALID_TOKEN = "INVALID TOKEN";
-    private static final String INVALID_TOKEN_OR_USER_ID = "INVALID_TOKEN_OR_USER_ID";
-    private static final String INVALIDE_DATA = "INVALID DATA";
 
     private GenericXmlApplicationContext ctx;
 
@@ -123,19 +119,10 @@ public class WebServiceMain {
         return objToJson(obj);
     }
 
-    private String objToJson(Object obj) {
-        String res = INVALIDE_DATA;
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            res = mapper.writeValueAsString(obj);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return res;
-    }
+
 
     @WebMethod()
-    public String insertUpdateUser(
+    public ServiceResult insertUpdateUser(
                             @WebParam(name="Id")   Long Id,
                             @WebParam(name="sessionToken")  String sessionToken,
                             @WebParam(name="name")   String name,
@@ -146,22 +133,30 @@ public class WebServiceMain {
                             @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      byte[] fileImage
                             ) {
         String fullPath = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
         User user = null;
         initMainCfg();
 
         if (name.isEmpty() || password.isEmpty()) {
-            return INVALID_USERNAME_OR_PASS;
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            return result;
         }
 
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
 
         if (Id > 0 && !sessionToken.isEmpty() && res.isBoolVal == false) {
-            return INVALID_TOKEN;
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
+            return result;
         }
 
         if (Id > 0 && !sessionToken.isEmpty() && !res.userId.equals(Id))
         {
-            return INVALID_TOKEN_OR_USER_ID;
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN_OR_USER_ID;
+            return result;
         }
 
 
@@ -169,7 +164,9 @@ public class WebServiceMain {
 
         //По имени не найден пользователь, который обновляется
         if (Id > 0 && !sessionToken.isEmpty() && findedUser == null) {
-            return INVALID_USERNAME_OR_PASS;
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            return result;
         }
 
         //Проверка имени на повтор
@@ -179,7 +176,9 @@ public class WebServiceMain {
                 user = new User();
             }
             else {
-                return INVALID_USERNAME_OR_PASS;
+                result.IsSuccess = false;
+                result.errorMessage = INVALID_USERNAME_OR_PASS;
+                return result;
             }
         }
 
@@ -189,12 +188,12 @@ public class WebServiceMain {
         }
         else {
             if(user==null) {
-                return INVALID_TOKEN_OR_USER_ID;
+                result.IsSuccess = false;
+                result.errorMessage = INVALID_TOKEN_OR_USER_ID;
+                return result;
+
             }
         }
-
-
-
         if (user  != null) {
             user.setName(name);
             user.setCreationDate(new Timestamp(System.currentTimeMillis()));
@@ -204,19 +203,23 @@ public class WebServiceMain {
             user.setStatus(Userstatus.StatusCommon); //Const : common user
 
             fullPath = F_WEB_FILES_USER_AVATAR_PHOTO + String.valueOf(user.hashCode()) + System.currentTimeMillis() + fileName;
-            if (saveByteToFile(fileImage, fullPath) == true) {
+            if (WSUtility.saveByteToFile(fileImage, fullPath) == true) {
                 user.setUserPhotoPath(fullPath);
             }
             user.setRegion(region);
-            return saveUserAndRetJson(user);
-        }
 
-    return INVALIDE_DATA;
+            result.IsSuccess = true;
+            result.ResultObjectJSON =  saveUserAndRetJson(user);
+            return result;
+        }
+        result.IsSuccess = false;
+        result.errorMessage =  INVALIDE_DATA;
+        return result;
     }
 
     @WebMethod()
-    public String insertUpdateRequest(
-            @WebParam(name="Id")                Long Id,
+    public ServiceResult insertUpdateRequest(
+            @WebParam(name="Id") @XmlElement(required=false, nillable=true, name="Id")               Long Id,
             @WebParam(name="sessionToken")      String sessionToken,
             @WebParam(name="description")       String description,
             @WebParam(name="latitude")          Double latitude,
@@ -230,7 +233,10 @@ public class WebServiceMain {
 
     ) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
+        String resultStr = "";
         Request request = null;
 
         String fileDirName = "";
@@ -238,6 +244,13 @@ public class WebServiceMain {
         Long createUserByToken = res.userId;
         if (res.isBoolVal == true)
         {
+            List<Request > activeReqList  =
+                    requestService.findRequestByCreationUserAndStatus(createUserByToken,Requeststatus.StatusOpen );
+            if (!activeReqList.isEmpty())
+            {
+                result.errorMessage = INVALIDE_ACTIVE_REQ;
+            }
+
             if (createUserByToken > 0) {
 
                 if (Id > 0) {
@@ -246,7 +259,7 @@ public class WebServiceMain {
                         request = findedRequest;
                     }
                     else {
-                        return INVALID_TOKEN_OR_USER_ID;
+                        result.errorMessage = INVALID_TOKEN_OR_USER_ID;
                     }
                 }
                 else {
@@ -268,7 +281,9 @@ public class WebServiceMain {
                                 request.setStatus(Requeststatus.StatusClose);
                             }
                         }
-                        return saveRequestAndRetJson(request);
+                        result.ResultObjectJSON = saveRequestAndRetJson(request);
+                        result.IsSuccess = true;
+                        return result;
                     }
 
                     if (description.isEmpty() == false) {
@@ -304,64 +319,35 @@ public class WebServiceMain {
                         }
                     }
 
-                    result = saveRequestAndRetJson(request);
+                    result.ResultObjectJSON =  saveRequestAndRetJson(request);
+                    result.IsSuccess =true;
+                    return result;
                 }
                 else {
-                    result = INVALIDE_DATA;
+                    result.errorMessage = INVALIDE_DATA;
                 }
 
             }
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage =  INVALID_TOKEN;
         }
 
         return result;
     }
 
-    private boolean saveByteToFile(byte[] fileImage, String fullPathToSave)
-    {
-        byte[] encodedBytes;
-        boolean isSuccess = false;
-        if (fileImage!=null && fileImage.length > 0) {
-            encodedBytes = Base64.getEncoder().encode(fileImage);
 
-            try (FileOutputStream fos = new FileOutputStream(  fullPathToSave )) {
-                fos.write(encodedBytes);
-                isSuccess = true;
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-        return isSuccess;
-    }
 
-    private String sha1(String s) {
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("SHA-1");
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-            for (int i = 0; i < messageDigest.length; i++)
-                hexString.append(String.format("%02X", 0xFF & messageDigest[i]));
-            return hexString.toString();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
 
     @WebMethod
-    public String getSessionToken(
+    public ServiceResult getSessionToken(
             @WebParam(name="name") String name,
             @WebParam(name="password") String password)
     {
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        //result.errorMessage = INVALIDE_DATA;
 
-        String res = INVALIDE_DATA;
         User user = null;
         Session findSession = null;
 
@@ -372,25 +358,27 @@ public class WebServiceMain {
             findSession = sessionService.findSessionByUserId(user.getId());
 
             if (findSession !=null && findSession.getToken().equals("")) {
-                res =  findSession.getToken();
+                result.ResultObjectJSON =  findSession.getToken();
+                result.IsSuccess = true;
             }
             else {
                 if (user!=null) {
                     ru.Entity.Session newSession = new ru.Entity.Session();
                     newSession.setUser(user.getId());
-                    newSession.setToken(sha1(user.getName()+user.getPassword()+ DateTime.now().toString()));
+                    newSession.setToken(WSUtility.generateHash(user.getName()+user.getPassword()+ DateTime.now().toString()));
                     sessionManagers.save(newSession);
-                    res = objToJson(newSession);
+                    result.ResultObjectJSON  = objToJson(newSession);
+                    result.IsSuccess = true;
                 }
             }
         }
 
-        return res;
+        return result;
     }
 
 
     @WebMethod()
-    public String insertMessage(
+    public ServiceResult insertMessage(
             @WebParam(name="Id")            Long Id,
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="text")          String text,
@@ -403,8 +391,9 @@ public class WebServiceMain {
 
     ) {
         initMainCfg();
-        String result = "";
         Message msg = null;
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         String fileDirName = "";
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
@@ -419,7 +408,9 @@ public class WebServiceMain {
                         msg = findedMsg;
                     }
                     else {
-                        return INVALID_TOKEN_OR_USER_ID;
+                        result.IsSuccess = false;
+                        result.errorMessage = INVALID_TOKEN_OR_USER_ID;
+                        return result;
                     }
                 }
                 else {
@@ -448,22 +439,26 @@ public class WebServiceMain {
                     if (saveByteToFile(fileImage, fileDirName) == true) {
                         msg.setMessagePhotoPath(fileDirName);
                     }
-                    result = saveMessageAndRetJson(msg);
+
+                    result.ResultObjectJSON = saveMessageAndRetJson(msg);
+                    result.IsSuccess = true;
                 }
                 else {
-                    result = INVALIDE_DATA;
+                    result.IsSuccess = false;
+                    result.errorMessage = INVALIDE_DATA;
                 }
             }
         }
         else {
-            result = INVALID_TOKEN;
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
         }
 
         return result;
     }
 
     @WebMethod
-    public String getMessageByRegionAndIdGreater(
+    public ServiceResult getMessageByRegionAndIdGreater(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="regionId")      Long regionId,
             @WebParam(name="lastId")        Long lastId,
@@ -471,93 +466,129 @@ public class WebServiceMain {
 
             ) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, lastId,pageSize ));
+            result.ResultObjectJSON =  objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, lastId,pageSize ));
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
 
     @WebMethod
-    public String getAllMessageByRequest(
+    public ServiceResult getAllMessageByRequest(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="request")       Long request,
             @WebParam(name="pageSize")      int pageSize
 
     ) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(messageService.findAllMessageByRequest(request,pageSize ));
+            result.ResultObjectJSON =  objToJson(messageService.findAllMessageByRequest(request,pageSize ));
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getAllRequestByCreationUser(
+    public ServiceResult getAllRequestByCreationUser(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="userId")        Long userId
     ) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(requestService.findRequestByCreationUser(userId ));
+            result.ResultObjectJSON =   objToJson(requestService.findRequestByCreationUser(userId ));
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
 
     @WebMethod
-    public String getAllOpenRequestByRegion(
+    public ServiceResult getActiveRequestByCreationUser(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="userId")        Long userId
+    ) {
+        initMainCfg();
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
+        if (isTokenCorrect(sessionToken))
+        {
+            result.ResultObjectJSON =   objToJson(requestService.findRequestByCreationUserAndStatus(userId,Requeststatus.StatusOpen ));
+            result.IsSuccess = true;
+        }
+        else {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+        }
+        return result;
+    }
+
+    @WebMethod
+    public ServiceResult getAllOpenRequestByRegion(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="regionId")        Long regionId,
             @WebParam(name="typeIds") @XmlElement(required=false, nillable=true, name="typeIds")       String typeIds
 
     ) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
         List<Long> listTypeIds = null;
         if (isTokenCorrect(sessionToken))
         {
             if (typeIds.length() <= 0) {
-                result =  objToJson(requestService.findRequestByRegionAndStatus(regionId, Requeststatus.StatusOpen ));
+                result.ResultObjectJSON = objToJson(requestService.findRequestByRegionAndStatus(regionId, Requeststatus.StatusOpen ));
+                result.IsSuccess = true;
             }
             else {
                 if (typeIds.length() > 0) {
                     listTypeIds = Arrays.stream(typeIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
                 }
-                result =  objToJson(requestService.findRequestByRegionAndStatusAndTypeIn(regionId, Requeststatus.StatusOpen,listTypeIds ));
+                result.ResultObjectJSON = objToJson(requestService.findRequestByRegionAndStatusAndTypeIn(regionId, Requeststatus.StatusOpen,listTypeIds ));
+                result.IsSuccess = true;
             }
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String findRequestResolvedByCurrentUserWithTypeFilter(
+    public ServiceResult findRequestResolvedByCurrentUserWithTypeFilter(
             @WebParam(name="sessionToken")   String sessionToken,
             @WebParam(name="typeIds") @XmlElement(required=false, nillable=true, name="typeIds")       String typeIds
     ) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
         List<Long> listTypeIds = null;
 
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
@@ -565,8 +596,9 @@ public class WebServiceMain {
         if (res.isBoolVal && res.userId > 0)
         {
             if (typeIds.isEmpty()) {
-                result =  objToJson(requestService.findRequestByResolvedByUserAndStatus(
+                result.ResultObjectJSON = objToJson(requestService.findRequestByResolvedByUserAndStatus(
                         res.userId, Requeststatus.StatusClose ));
+                result.IsSuccess = true;
             }
             else {
 
@@ -576,22 +608,25 @@ public class WebServiceMain {
 
                     if (!listTypeIds.isEmpty())
                     {
-                        result =  objToJson(requestService.findRequestByResolvedByUserAndStatusAndTypeIn(
+                        result.ResultObjectJSON = objToJson(requestService.findRequestByResolvedByUserAndStatusAndTypeIn(
                                 res.userId, Requeststatus.StatusClose,listTypeIds ));
+                        result.IsSuccess = true;
                     }
                 }
             }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getUserInfo(
+    public ServiceResult getUserInfo(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
@@ -599,173 +634,207 @@ public class WebServiceMain {
             if (sessionService != null) {
                 session = sessionService.findSessionByToken(sessionToken);
             }
-            result =  objToJson(session.getUserByUser());
+            result.ResultObjectJSON = objToJson(session.getUserByUser());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getAllMessageTypes(
+    public ServiceResult getAllMessageTypes(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(messageTypeService.findAll());
+            result.ResultObjectJSON = objToJson(messageTypeService.findAll());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getAllRequestType(
+    public ServiceResult getAllRequestType(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(requestTypeService.findAll());
+            result.ResultObjectJSON = objToJson(requestTypeService.findAll());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getAllTransmissionType(
+    public ServiceResult getAllTransmissionType(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(trTypeService.findAll());
+            result.ResultObjectJSON = objToJson(trTypeService.findAll());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getAllToolType(
+    public ServiceResult getAllToolType(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(toolTypeService.findAll());
+            result.ResultObjectJSON = objToJson(toolTypeService.findAll());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
     @WebMethod
-    public String getAllAchievmenttype(
+    public ServiceResult getAllAchievmenttype(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(achievTypeService.findAll());
+            result.ResultObjectJSON = objToJson(achievTypeService.findAll());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
 
     @WebMethod
-    public String getAllAchievmentByUser(
+    public ServiceResult getAllAchievmentByUser(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="user") Long userId) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
         User user = null;
         List<Achievement> achievs = null;
         if (isTokenCorrect(sessionToken))
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result =  objToJson(achievService.findAchievementByUser(user.getId()));
+                result.ResultObjectJSON = objToJson(achievService.findAchievementByUser(user.getId()));
+                result.IsSuccess = true;
             }
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
 
     @WebMethod
-    public String getAllToolByUser(
+    public ServiceResult getAllToolByUser(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="user") Long userId) {
         initMainCfg();
-        String result = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
         User user = null;
         List<Tool> achievs = null;
         if (isTokenCorrect(sessionToken))
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result =  objToJson(toolService.findToolByUser(user.getId()));
+                result.ResultObjectJSON = objToJson(toolService.findToolByUser(user.getId()));
+                result.IsSuccess = true;
             }
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
 
     @WebMethod
-    public String getAllAutoByUser(
+    public ServiceResult getAllAutoByUser(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="user") Long userId) {
         initMainCfg();
-        String result = "";
+
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
         User user = null;
         List<Tool> tools = null;
         if (isTokenCorrect(sessionToken))
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result =  objToJson(autoService.findAutoByUser(user.getId()));
+                result.ResultObjectJSON = objToJson(autoService.findAutoByUser(user.getId()));
+                result.IsSuccess = true;
             }
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
 
 
     @WebMethod
-    public String getAllRegions(
+    public ServiceResult getAllRegions(
             @WebParam(name="sessionToken") String sessionToken) {
         initMainCfg();
-        String result = "";
+
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
 
         if (isTokenCorrect(sessionToken))
         {
-            result =  objToJson(regionService.findAll());
+            result.ResultObjectJSON = objToJson(regionService.findAll());
+            result.IsSuccess = true;
         }
         else {
-            result = INVALID_TOKEN;
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
         }
         return result;
     }
