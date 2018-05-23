@@ -78,43 +78,55 @@ public class WebServiceMain {
     public WebServiceMain() {
     }
 
-    private String saveUserAndRetJson(User user) {
+    private ServiceResult saveUserAndRetJson(User user) {
+        ServiceResult res = new ServiceResult();
+
         try {
             usersManagers = ctx.getBean(UsersManagers.class);
             if (usersManagers != null) {
                 usersManagers.save(user);
+                res.IsSuccess = true;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            return INVALIDE_DATA;
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            return res;
         }
         return objToJson(user);
     }
 
 
-    private String saveRequestAndRetJson(Request obj) {
+    private ServiceResult saveRequestAndRetJson(Request obj) {
+        ServiceResult res = new ServiceResult();
         try {
             requestManagers = ctx.getBean(RequestManagers.class);
             if (requestManagers != null) {
                 requestManagers.save(obj);
+                res.IsSuccess = true;
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            return INVALIDE_DATA;
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            return res;
         }
         return objToJson(obj);
     }
 
 
-    private String saveMessageAndRetJson(Message obj) {
+    private ServiceResult saveMessageAndRetJson(Message obj) {
+        ServiceResult res = new ServiceResult();
         try {
             messageManagers = ctx.getBean(MessageManagers.class);
             if (messageManagers != null) {
                 messageManagers.save(obj);
+                res.IsSuccess = true;
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
-            return INVALIDE_DATA;
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            return res;
         }
         return objToJson(obj);
     }
@@ -208,8 +220,7 @@ public class WebServiceMain {
             }
             user.setRegion(region);
 
-            result.IsSuccess = true;
-            result.ResultObjectJSON =  saveUserAndRetJson(user);
+            result = saveUserAndRetJson(user);
             return result;
         }
         result.IsSuccess = false;
@@ -281,8 +292,7 @@ public class WebServiceMain {
                                 request.setStatus(Requeststatus.StatusClose);
                             }
                         }
-                        result.ResultObjectJSON = saveRequestAndRetJson(request);
-                        result.IsSuccess = true;
+                        result = saveRequestAndRetJson(request);
                         return result;
                     }
 
@@ -319,8 +329,7 @@ public class WebServiceMain {
                         }
                     }
 
-                    result.ResultObjectJSON =  saveRequestAndRetJson(request);
-                    result.IsSuccess =true;
+                    result = saveRequestAndRetJson(request);
                     return result;
                 }
                 else {
@@ -367,8 +376,7 @@ public class WebServiceMain {
                     newSession.setUser(user.getId());
                     newSession.setToken(WSUtility.generateHash(user.getName()+user.getPassword()+ DateTime.now().toString()));
                     sessionManagers.save(newSession);
-                    result.ResultObjectJSON  = objToJson(newSession);
-                    result.IsSuccess = true;
+                    result = objToJson(newSession);
                 }
             }
         }
@@ -440,8 +448,7 @@ public class WebServiceMain {
                         msg.setMessagePhotoPath(fileDirName);
                     }
 
-                    result.ResultObjectJSON = saveMessageAndRetJson(msg);
-                    result.IsSuccess = true;
+                    result = saveMessageAndRetJson(msg);
                 }
                 else {
                     result.IsSuccess = false;
@@ -471,8 +478,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON =  objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, lastId,pageSize ));
-            result.IsSuccess = true;
+            result = objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, lastId,pageSize ));
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -495,8 +501,8 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON =  objToJson(messageService.findAllMessageByRequest(request,pageSize ));
-            result.IsSuccess = true;
+            result=  objToJson(messageService.findAllMessageByRequest(request,pageSize ));
+
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -516,8 +522,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON =   objToJson(requestService.findRequestByCreationUser(userId ));
-            result.IsSuccess = true;
+            result =   objToJson(requestService.findRequestByCreationUser(userId ));
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -538,7 +543,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON =   objToJson(requestService.findRequestByCreationUserAndStatus(userId,Requeststatus.StatusOpen ));
+            result = objToJson(requestService.findRequestByCreationUserAndStatus(userId,Requeststatus.StatusOpen ));
             result.IsSuccess = true;
         }
         else {
@@ -563,14 +568,13 @@ public class WebServiceMain {
         if (isTokenCorrect(sessionToken))
         {
             if (typeIds.length() <= 0) {
-                result.ResultObjectJSON = objToJson(requestService.findRequestByRegionAndStatus(regionId, Requeststatus.StatusOpen ));
-                result.IsSuccess = true;
+                result = objToJson(requestService.findRequestByRegionAndStatus(regionId, Requeststatus.StatusOpen ));
             }
             else {
                 if (typeIds.length() > 0) {
                     listTypeIds = Arrays.stream(typeIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
                 }
-                result.ResultObjectJSON = objToJson(requestService.findRequestByRegionAndStatusAndTypeIn(regionId, Requeststatus.StatusOpen,listTypeIds ));
+                result = objToJson(requestService.findRequestByRegionAndStatusAndTypeIn(regionId, Requeststatus.StatusOpen,listTypeIds ));
                 result.IsSuccess = true;
             }
         }
@@ -596,7 +600,7 @@ public class WebServiceMain {
         if (res.isBoolVal && res.userId > 0)
         {
             if (typeIds.isEmpty()) {
-                result.ResultObjectJSON = objToJson(requestService.findRequestByResolvedByUserAndStatus(
+                result = objToJson(requestService.findRequestByResolvedByUserAndStatus(
                         res.userId, Requeststatus.StatusClose ));
                 result.IsSuccess = true;
             }
@@ -608,9 +612,8 @@ public class WebServiceMain {
 
                     if (!listTypeIds.isEmpty())
                     {
-                        result.ResultObjectJSON = objToJson(requestService.findRequestByResolvedByUserAndStatusAndTypeIn(
+                        result = objToJson(requestService.findRequestByResolvedByUserAndStatusAndTypeIn(
                                 res.userId, Requeststatus.StatusClose,listTypeIds ));
-                        result.IsSuccess = true;
                     }
                 }
             }
@@ -634,8 +637,7 @@ public class WebServiceMain {
             if (sessionService != null) {
                 session = sessionService.findSessionByToken(sessionToken);
             }
-            result.ResultObjectJSON = objToJson(session.getUserByUser());
-            result.IsSuccess = true;
+            result = objToJson(session.getUserByUser());
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -653,8 +655,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON = objToJson(messageTypeService.findAll());
-            result.IsSuccess = true;
+            result = objToJson(messageTypeService.findAll());
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -672,8 +673,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON = objToJson(requestTypeService.findAll());
-            result.IsSuccess = true;
+            result = objToJson(requestTypeService.findAll());
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -691,8 +691,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON = objToJson(trTypeService.findAll());
-            result.IsSuccess = true;
+            result  = objToJson(trTypeService.findAll());
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -710,8 +709,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON = objToJson(toolTypeService.findAll());
-            result.IsSuccess = true;
+            result = objToJson(toolTypeService.findAll());
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -729,8 +727,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON = objToJson(achievTypeService.findAll());
-            result.IsSuccess = true;
+            result = objToJson(achievTypeService.findAll());
         }
         else {
             result.errorMessage = INVALID_TOKEN;
@@ -754,8 +751,7 @@ public class WebServiceMain {
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result.ResultObjectJSON = objToJson(achievService.findAchievementByUser(user.getId()));
-                result.IsSuccess = true;
+                result = objToJson(achievService.findAchievementByUser(user.getId()));
             }
         }
         else {
@@ -780,8 +776,7 @@ public class WebServiceMain {
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result.ResultObjectJSON = objToJson(toolService.findToolByUser(user.getId()));
-                result.IsSuccess = true;
+                result = objToJson(toolService.findToolByUser(user.getId()));
             }
         }
         else {
@@ -807,8 +802,7 @@ public class WebServiceMain {
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result.ResultObjectJSON = objToJson(autoService.findAutoByUser(user.getId()));
-                result.IsSuccess = true;
+                result = objToJson(autoService.findAutoByUser(user.getId()));
             }
         }
         else {
@@ -829,8 +823,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result.ResultObjectJSON = objToJson(regionService.findAll());
-            result.IsSuccess = true;
+            result = objToJson(regionService.findAll());
         }
         else {
             result.errorMessage = INVALID_TOKEN;

@@ -21,12 +21,19 @@ public class WSUtility {
     public static final String INVALIDE_ACTIVE_REQ = "INVALIDE_ACTIVE_REQ";
 
 
-    public static String objToJson(Object obj) {
-        String res = INVALIDE_DATA;
+    public static ServiceResult objToJson(Object obj) {
+        ServiceResult res = new ServiceResult();
+        res.IsSuccess = false;
+
         ObjectMapper mapper = new ObjectMapper();
         try {
-            res = mapper.writeValueAsString(obj);
+            res.ResultObjectJSON = mapper.writeValueAsString(obj);
+            res.IsSuccess = true;
+            res.errorMessage = "";
         } catch (Exception e) {
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            res.ResultObjectJSON = "";
             e.printStackTrace();
         }
         return res;
