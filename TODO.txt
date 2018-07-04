@@ -37,3 +37,43 @@ TODO insert update User auto
 Связь региона и координаты по умолчанию, если типа не определилась
 загрузка таблицы с городами и координатами
 запрос через spatial  поиск в радиусе по точке
+
+
+
+Common function
+public ServiceResult getSessionToken
+public ServiceResult getUserInfo
+
+Registration
+public ServiceResult insertUpdateUser
+
+
+On Sync \ new install \ first start at day
+public ServiceResult getAllMessageTypes
+public ServiceResult getAllRequestType
+public ServiceResult getAllTransmissionType
+public ServiceResult getAllToolType
+public ServiceResult getAllAchievmenttype
+public ServiceResult getAllAchievmentByUser
+public ServiceResult getAllToolByUser
+public ServiceResult getAllAutoByUser
+public ServiceResult getAllRegions
+
+Request
+public ServiceResult insertUpdateRequest
+public ServiceResult insertMessage
+public ServiceResult getAllMessageByRequest
+public ServiceResult getAllRequestByCreationUser
+public ServiceResult getActiveRequestByCreationUser
+public ServiceResult getAllOpenRequestByRegion
+public ServiceResult findRequestResolvedByCurrentUserWithTypeFilter
+
+
+Chat
+public ServiceResult insertMessage
+public ServiceResult getMessageByRegionAndIdGreater
+
+
+
+
+
