@@ -44,6 +44,7 @@ import java.util.stream.Collectors;
 
 import static ru.Entity.Requesttype.TypeAccumIsDown;
 import static ru.Service.WSUtility.*;
+import javax.jws.WebService;
 
 @WebService
 @Transactional

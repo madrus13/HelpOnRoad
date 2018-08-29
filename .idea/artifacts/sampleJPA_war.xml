@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="sampleJPA:war">
+  <artifact type="war" build-on-make="true" name="sampleJPA:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="sampleJPA-1.0-SNAPSHOT.war">
+    <root id="archive" name="samplejpa-1.war">
       <element id="artifact" artifact-name="sampleJPA:war exploded" />
     </root>
   </artifact>

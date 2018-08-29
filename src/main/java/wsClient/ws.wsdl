@@ -1,0 +1,845 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://Service.ru/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WebServiceMainService" targetNamespace="http://Service.ru/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://Service.ru/" elementFormDefault="unqualified" targetNamespace="http://Service.ru/" version="1.0">
+
+  <xs:element name="findRequestResolvedByCurrentUserWithTypeFilter" type="tns:findRequestResolvedByCurrentUserWithTypeFilter"/>
+
+  <xs:element name="findRequestResolvedByCurrentUserWithTypeFilterResponse" type="tns:findRequestResolvedByCurrentUserWithTypeFilterResponse"/>
+
+  <xs:element name="getActiveRequestByCreationUser" type="tns:getActiveRequestByCreationUser"/>
+
+  <xs:element name="getActiveRequestByCreationUserResponse" type="tns:getActiveRequestByCreationUserResponse"/>
+
+  <xs:element name="getAllAchievmentByUser" type="tns:getAllAchievmentByUser"/>
+
+  <xs:element name="getAllAchievmentByUserResponse" type="tns:getAllAchievmentByUserResponse"/>
+
+  <xs:element name="getAllAchievmenttype" type="tns:getAllAchievmenttype"/>
+
+  <xs:element name="getAllAchievmenttypeResponse" type="tns:getAllAchievmenttypeResponse"/>
+
+  <xs:element name="getAllAutoByUser" type="tns:getAllAutoByUser"/>
+
+  <xs:element name="getAllAutoByUserResponse" type="tns:getAllAutoByUserResponse"/>
+
+  <xs:element name="getAllMessageByRequest" type="tns:getAllMessageByRequest"/>
+
+  <xs:element name="getAllMessageByRequestResponse" type="tns:getAllMessageByRequestResponse"/>
+
+  <xs:element name="getAllMessageTypes" type="tns:getAllMessageTypes"/>
+
+  <xs:element name="getAllMessageTypesResponse" type="tns:getAllMessageTypesResponse"/>
+
+  <xs:element name="getAllOpenRequestByRegion" type="tns:getAllOpenRequestByRegion"/>
+
+  <xs:element name="getAllOpenRequestByRegionResponse" type="tns:getAllOpenRequestByRegionResponse"/>
+
+  <xs:element name="getAllRegions" type="tns:getAllRegions"/>
+
+  <xs:element name="getAllRegionsResponse" type="tns:getAllRegionsResponse"/>
+
+  <xs:element name="getAllRequestByCreationUser" type="tns:getAllRequestByCreationUser"/>
+
+  <xs:element name="getAllRequestByCreationUserResponse" type="tns:getAllRequestByCreationUserResponse"/>
+
+  <xs:element name="getAllRequestType" type="tns:getAllRequestType"/>
+
+  <xs:element name="getAllRequestTypeResponse" type="tns:getAllRequestTypeResponse"/>
+
+  <xs:element name="getAllToolByUser" type="tns:getAllToolByUser"/>
+
+  <xs:element name="getAllToolByUserResponse" type="tns:getAllToolByUserResponse"/>
+
+  <xs:element name="getAllToolType" type="tns:getAllToolType"/>
+
+  <xs:element name="getAllToolTypeResponse" type="tns:getAllToolTypeResponse"/>
+
+  <xs:element name="getAllTransmissionType" type="tns:getAllTransmissionType"/>
+
+  <xs:element name="getAllTransmissionTypeResponse" type="tns:getAllTransmissionTypeResponse"/>
+
+  <xs:element name="getMessageByRegionAndIdGreater" type="tns:getMessageByRegionAndIdGreater"/>
+
+  <xs:element name="getMessageByRegionAndIdGreaterResponse" type="tns:getMessageByRegionAndIdGreaterResponse"/>
+
+  <xs:element name="getSessionToken" type="tns:getSessionToken"/>
+
+  <xs:element name="getSessionTokenResponse" type="tns:getSessionTokenResponse"/>
+
+  <xs:element name="getUserInfo" type="tns:getUserInfo"/>
+
+  <xs:element name="getUserInfoResponse" type="tns:getUserInfoResponse"/>
+
+  <xs:element name="insertMessage" type="tns:insertMessage"/>
+
+  <xs:element name="insertMessageResponse" type="tns:insertMessageResponse"/>
+
+  <xs:element name="insertUpdateRequest" type="tns:insertUpdateRequest"/>
+
+  <xs:element name="insertUpdateRequestResponse" type="tns:insertUpdateRequestResponse"/>
+
+  <xs:element name="insertUpdateUser" type="tns:insertUpdateUser"/>
+
+  <xs:element name="insertUpdateUserResponse" type="tns:insertUpdateUserResponse"/>
+
+  <xs:complexType name="findRequestResolvedByCurrentUserWithTypeFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="typeIds" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findRequestResolvedByCurrentUserWithTypeFilterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceResult">
+    <xs:sequence>
+      <xs:element name="IsSuccess" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="ResultObjectJSON" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorCode" type="xs:long"/>
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAchievmentByUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAchievmentByUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long"/>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="text" type="xs:string"/>
+      <xs:element minOccurs="0" name="requestId" type="xs:long"/>
+      <xs:element minOccurs="0" name="regionId" type="xs:long"/>
+      <xs:element minOccurs="0" name="userRx" type="xs:long"/>
+      <xs:element minOccurs="0" name="typeId" type="xs:long"/>
+      <xs:element minOccurs="0" name="fileName" type="xs:string"/>
+      <xs:element minOccurs="0" name="fileImage" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertMessageResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllToolType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllToolTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRequestTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getActiveRequestByCreationUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getActiveRequestByCreationUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllToolByUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllToolByUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertUpdateRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:long"/>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="latitude" type="xs:double"/>
+      <xs:element minOccurs="0" name="longitude" type="xs:double"/>
+      <xs:element minOccurs="0" name="statusId" type="xs:long"/>
+      <xs:element minOccurs="0" name="isResolvedByUser" type="xs:long"/>
+      <xs:element minOccurs="0" name="typeId" type="xs:long"/>
+      <xs:element minOccurs="0" name="regionId" type="xs:long"/>
+      <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="fileImage" nillable="true" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertUpdateRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSessionToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSessionTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertUpdateUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long"/>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="region" type="xs:long"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="fileImage" nillable="true" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="insertUpdateUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllMessageByRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="request" type="xs:long"/>
+      <xs:element name="pageSize" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllMessageByRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTransmissionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTransmissionTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRegions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRegionsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllOpenRequestByRegion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="regionId" type="xs:long"/>
+      <xs:element minOccurs="0" name="typeIds" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllOpenRequestByRegionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAutoByUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAutoByUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAchievmenttype">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllAchievmenttypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUserInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllMessageTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllMessageTypesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRequestByCreationUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRequestByCreationUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getMessageByRegionAndIdGreater">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="regionId" type="xs:long"/>
+      <xs:element minOccurs="0" name="lastId" type="xs:long"/>
+      <xs:element name="pageSize" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getMessageByRegionAndIdGreaterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResult"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findRequestResolvedByCurrentUserWithTypeFilter">
+    <wsdl:part element="tns:findRequestResolvedByCurrentUserWithTypeFilter" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMessageByRegionAndIdGreaterResponse">
+    <wsdl:part element="tns:getMessageByRegionAndIdGreaterResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertUpdateRequestResponse">
+    <wsdl:part element="tns:insertUpdateRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRegionsResponse">
+    <wsdl:part element="tns:getAllRegionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRequestByCreationUserResponse">
+    <wsdl:part element="tns:getAllRequestByCreationUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveRequestByCreationUserResponse">
+    <wsdl:part element="tns:getActiveRequestByCreationUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllMessageTypesResponse">
+    <wsdl:part element="tns:getAllMessageTypesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveRequestByCreationUser">
+    <wsdl:part element="tns:getActiveRequestByCreationUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSessionToken">
+    <wsdl:part element="tns:getSessionToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertUpdateUser">
+    <wsdl:part element="tns:insertUpdateUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTransmissionType">
+    <wsdl:part element="tns:getAllTransmissionType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllToolByUserResponse">
+    <wsdl:part element="tns:getAllToolByUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findRequestResolvedByCurrentUserWithTypeFilterResponse">
+    <wsdl:part element="tns:findRequestResolvedByCurrentUserWithTypeFilterResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertUpdateUserResponse">
+    <wsdl:part element="tns:insertUpdateUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAchievmenttype">
+    <wsdl:part element="tns:getAllAchievmenttype" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllMessageTypes">
+    <wsdl:part element="tns:getAllMessageTypes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRequestByCreationUser">
+    <wsdl:part element="tns:getAllRequestByCreationUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAchievmentByUser">
+    <wsdl:part element="tns:getAllAchievmentByUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertMessageResponse">
+    <wsdl:part element="tns:insertMessageResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllToolTypeResponse">
+    <wsdl:part element="tns:getAllToolTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTransmissionTypeResponse">
+    <wsdl:part element="tns:getAllTransmissionTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertMessage">
+    <wsdl:part element="tns:insertMessage" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllToolType">
+    <wsdl:part element="tns:getAllToolType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllMessageByRequestResponse">
+    <wsdl:part element="tns:getAllMessageByRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRequestType">
+    <wsdl:part element="tns:getAllRequestType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserInfoResponse">
+    <wsdl:part element="tns:getUserInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRequestTypeResponse">
+    <wsdl:part element="tns:getAllRequestTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllToolByUser">
+    <wsdl:part element="tns:getAllToolByUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertUpdateRequest">
+    <wsdl:part element="tns:insertUpdateRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAchievmentByUserResponse">
+    <wsdl:part element="tns:getAllAchievmentByUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllMessageByRequest">
+    <wsdl:part element="tns:getAllMessageByRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAutoByUserResponse">
+    <wsdl:part element="tns:getAllAutoByUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRegions">
+    <wsdl:part element="tns:getAllRegions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllOpenRequestByRegion">
+    <wsdl:part element="tns:getAllOpenRequestByRegion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAutoByUser">
+    <wsdl:part element="tns:getAllAutoByUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserInfo">
+    <wsdl:part element="tns:getUserInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllOpenRequestByRegionResponse">
+    <wsdl:part element="tns:getAllOpenRequestByRegionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSessionTokenResponse">
+    <wsdl:part element="tns:getSessionTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllAchievmenttypeResponse">
+    <wsdl:part element="tns:getAllAchievmenttypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMessageByRegionAndIdGreater">
+    <wsdl:part element="tns:getMessageByRegionAndIdGreater" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WebServiceMain">
+    <wsdl:operation name="findRequestResolvedByCurrentUserWithTypeFilter">
+      <wsdl:input message="tns:findRequestResolvedByCurrentUserWithTypeFilter" name="findRequestResolvedByCurrentUserWithTypeFilter">
+    </wsdl:input>
+      <wsdl:output message="tns:findRequestResolvedByCurrentUserWithTypeFilterResponse" name="findRequestResolvedByCurrentUserWithTypeFilterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAchievmentByUser">
+      <wsdl:input message="tns:getAllAchievmentByUser" name="getAllAchievmentByUser">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllAchievmentByUserResponse" name="getAllAchievmentByUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertMessage">
+      <wsdl:input message="tns:insertMessage" name="insertMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:insertMessageResponse" name="insertMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllToolType">
+      <wsdl:input message="tns:getAllToolType" name="getAllToolType">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllToolTypeResponse" name="getAllToolTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRequestType">
+      <wsdl:input message="tns:getAllRequestType" name="getAllRequestType">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllRequestTypeResponse" name="getAllRequestTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveRequestByCreationUser">
+      <wsdl:input message="tns:getActiveRequestByCreationUser" name="getActiveRequestByCreationUser">
+    </wsdl:input>
+      <wsdl:output message="tns:getActiveRequestByCreationUserResponse" name="getActiveRequestByCreationUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllToolByUser">
+      <wsdl:input message="tns:getAllToolByUser" name="getAllToolByUser">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllToolByUserResponse" name="getAllToolByUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertUpdateRequest">
+      <wsdl:input message="tns:insertUpdateRequest" name="insertUpdateRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:insertUpdateRequestResponse" name="insertUpdateRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSessionToken">
+      <wsdl:input message="tns:getSessionToken" name="getSessionToken">
+    </wsdl:input>
+      <wsdl:output message="tns:getSessionTokenResponse" name="getSessionTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertUpdateUser">
+      <wsdl:input message="tns:insertUpdateUser" name="insertUpdateUser">
+    </wsdl:input>
+      <wsdl:output message="tns:insertUpdateUserResponse" name="insertUpdateUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMessageByRequest">
+      <wsdl:input message="tns:getAllMessageByRequest" name="getAllMessageByRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllMessageByRequestResponse" name="getAllMessageByRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTransmissionType">
+      <wsdl:input message="tns:getAllTransmissionType" name="getAllTransmissionType">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllTransmissionTypeResponse" name="getAllTransmissionTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRegions">
+      <wsdl:input message="tns:getAllRegions" name="getAllRegions">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllRegionsResponse" name="getAllRegionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOpenRequestByRegion">
+      <wsdl:input message="tns:getAllOpenRequestByRegion" name="getAllOpenRequestByRegion">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllOpenRequestByRegionResponse" name="getAllOpenRequestByRegionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAutoByUser">
+      <wsdl:input message="tns:getAllAutoByUser" name="getAllAutoByUser">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllAutoByUserResponse" name="getAllAutoByUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAchievmenttype">
+      <wsdl:input message="tns:getAllAchievmenttype" name="getAllAchievmenttype">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllAchievmenttypeResponse" name="getAllAchievmenttypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <wsdl:input message="tns:getUserInfo" name="getUserInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserInfoResponse" name="getUserInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMessageTypes">
+      <wsdl:input message="tns:getAllMessageTypes" name="getAllMessageTypes">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllMessageTypesResponse" name="getAllMessageTypesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRequestByCreationUser">
+      <wsdl:input message="tns:getAllRequestByCreationUser" name="getAllRequestByCreationUser">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllRequestByCreationUserResponse" name="getAllRequestByCreationUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessageByRegionAndIdGreater">
+      <wsdl:input message="tns:getMessageByRegionAndIdGreater" name="getMessageByRegionAndIdGreater">
+    </wsdl:input>
+      <wsdl:output message="tns:getMessageByRegionAndIdGreaterResponse" name="getMessageByRegionAndIdGreaterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceMainServiceSoapBinding" type="tns:WebServiceMain">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findRequestResolvedByCurrentUserWithTypeFilter">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findRequestResolvedByCurrentUserWithTypeFilter">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findRequestResolvedByCurrentUserWithTypeFilterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAchievmentByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllAchievmentByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllAchievmentByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="insertMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllToolType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllToolType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllToolTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRequestType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllRequestType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllRequestTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveRequestByCreationUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getActiveRequestByCreationUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActiveRequestByCreationUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllToolByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllToolByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllToolByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertUpdateRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="insertUpdateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertUpdateRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSessionToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSessionToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSessionTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertUpdateUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="insertUpdateUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertUpdateUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMessageByRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllMessageByRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllMessageByRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTransmissionType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllTransmissionType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllTransmissionTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRegions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllRegions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllRegionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllOpenRequestByRegion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllOpenRequestByRegion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllOpenRequestByRegionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAutoByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllAutoByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllAutoByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAchievmenttype">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllAchievmenttype">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllAchievmenttypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllMessageTypes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllMessageTypes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllMessageTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRequestByCreationUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllRequestByCreationUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllRequestByCreationUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessageByRegionAndIdGreater">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMessageByRegionAndIdGreater">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMessageByRegionAndIdGreaterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceMainService">
+    <wsdl:port binding="tns:WebServiceMainServiceSoapBinding" name="WebServiceMainPort">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
