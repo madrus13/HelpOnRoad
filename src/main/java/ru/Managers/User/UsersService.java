@@ -40,4 +40,8 @@ public class UsersService {
         }
         return userList.get(0);
     }
+
+    public User findOneUserById(Long userId) {
+        return usersManagers.findOne(userId);
+    }
 }

@@ -2,6 +2,7 @@ package ru.Service;
 
 import org.joda.time.DateTime;
 import ru.Entity.*;
+import ru.Managers.Auto.AutoManagers;
 import ru.Service.WSUtility;
 import ru.Managers.Achievement.AchievService;
 import ru.Managers.Achievmenttype.AchievTypeService;
@@ -60,6 +61,7 @@ public class WebServiceMain {
     private SessionManagers sessionManagers;
     private RequestManagers requestManagers;
     private MessageManagers messageManagers;
+    private AutoManagers autoManagers;
 
     private UsersService userService;
     private SessionService sessionService;
@@ -98,6 +100,25 @@ public class WebServiceMain {
     }
 
 
+    private ServiceResult saveAutoAndRetJson(Auto obj) {
+        ServiceResult res = new ServiceResult();
+
+        try {
+            autoManagers = ctx.getBean(AutoManagers.class);
+            if (autoManagers != null) {
+                autoManagers.save(obj);
+                res.IsSuccess = true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            return res;
+        }
+        return objToJson(obj);
+    }
+
+
     private ServiceResult saveRequestAndRetJson(Request obj) {
         ServiceResult res = new ServiceResult();
         try {
@@ -132,16 +153,64 @@ public class WebServiceMain {
         return objToJson(obj);
     }
 
+    @WebMethod()
+    public ServiceResult insertUser(
+            @WebParam(name="name")   String name,
+            @WebParam(name="region") Long region,
+            @WebParam(name="password") String password,
+            @WebParam(name="email") String email
+    ) {
+        String fullPath = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        User user = null;
+        initMainCfg();
 
+        if (name.isEmpty() || password.isEmpty()) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            return result;
+        }
+
+        User findedUser  = userService.findOneUserByName(name);
+
+        //Проверка имени на повтор
+        if (!name.isEmpty()) {
+
+            if (findedUser == null) {
+                user = new User();
+            }
+            else {
+                result.IsSuccess = false;
+                result.errorMessage = INVALID_USERNAME_OR_PASS;
+                return result;
+            }
+        }
+
+        //
+        if (user  != null) {
+            user.setName(name);
+            user.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            user.setModifyDate(new Timestamp(System.currentTimeMillis()));
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setStatus(Userstatus.StatusCommon); //Const : common user
+            user.setRegion(region);
+
+            result = saveUserAndRetJson(user);
+            return result;
+        }
+        result.IsSuccess = false;
+        result.errorMessage =  INVALIDE_DATA;
+        return result;
+    }
 
     @WebMethod()
-    public ServiceResult insertUpdateUser(
+    public ServiceResult updateUser(
                             @WebParam(name="Id")   Long Id,
                             @WebParam(name="sessionToken")  String sessionToken,
-                            @WebParam(name="name")   String name,
                             @WebParam(name="region") Long region,
                             @WebParam(name="password") String password,
-                            @WebParam(name="email") String email,
                             @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")      String fileName,
                             @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      byte[] fileImage
                             ) {
@@ -151,7 +220,7 @@ public class WebServiceMain {
         User user = null;
         initMainCfg();
 
-        if (name.isEmpty() || password.isEmpty()) {
+        if (password.isEmpty()) {
             result.IsSuccess = false;
             result.errorMessage = INVALID_USERNAME_OR_PASS;
             return result;
@@ -173,7 +242,7 @@ public class WebServiceMain {
         }
 
 
-        User findedUser  = userService.findOneUserByName(name);
+        User findedUser  = getUserByToken(sessionToken);
 
         //По имени не найден пользователь, который обновляется
         if (Id > 0 && !sessionToken.isEmpty() && findedUser == null) {
@@ -182,18 +251,6 @@ public class WebServiceMain {
             return result;
         }
 
-        //Проверка имени на повтор
-        if (Id <= 0 && sessionToken.isEmpty() && !name.isEmpty()) {
-
-            if (findedUser == null) {
-                user = new User();
-            }
-            else {
-                result.IsSuccess = false;
-                result.errorMessage = INVALID_USERNAME_OR_PASS;
-                return result;
-            }
-        }
 
         //
         if (user == null && findedUser!=null && findedUser.getId() == Id && res.isBoolVal == true) {
@@ -208,11 +265,9 @@ public class WebServiceMain {
             }
         }
         if (user  != null) {
-            user.setName(name);
             user.setCreationDate(new Timestamp(System.currentTimeMillis()));
             user.setModifyDate(new Timestamp(System.currentTimeMillis()));
             user.setPassword(password);
-            user.setEmail(email);
             user.setStatus(Userstatus.StatusCommon); //Const : common user
 
             fullPath = F_WEB_FILES_USER_AVATAR_PHOTO + String.valueOf(user.hashCode()) + System.currentTimeMillis() + fileName;
@@ -230,7 +285,116 @@ public class WebServiceMain {
     }
 
     @WebMethod()
-    public ServiceResult insertUpdateRequest(
+    public ServiceResult insertRequest(
+            /*@WebParam(name="Id") @XmlElement(required=false, nillable=true, name="Id")               Long Id,*/
+            @WebParam(name="sessionToken")      String sessionToken,
+            @WebParam(name="description")       String description,
+            @WebParam(name="latitude")          Double latitude,
+            @WebParam(name="longitude")         Double longitude,
+            @WebParam(name="statusId")          Long statusId,
+            @WebParam(name="isResolvedByUser")  Long isResolvedByUserId,
+            @WebParam(name="typeId")            Long typeId,
+            @WebParam(name="regionId")          Long regionId,
+            @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")          String fileName,
+            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
+
+    ) {
+        initMainCfg();
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+
+        String resultStr = "";
+        Request request = null;
+
+        String fileDirName = "";
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+        Long createUserByToken = res.userId;
+        if (res.isBoolVal == true)
+        {
+            List<Request > activeReqList  =
+                    requestService.findRequestByCreationUserAndStatus(createUserByToken,Requeststatus.StatusOpen );
+            if (!activeReqList.isEmpty())
+            {
+                result.errorMessage = INVALIDE_ACTIVE_REQ;
+            }
+
+            if (createUserByToken > 0) {
+
+
+            request = new Request();
+            request.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            request.setCreationUser(createUserByToken);
+
+
+                if (request!=null) {
+
+                    if (isResolvedByUserId > 0) {
+                        User findedUser = usersManagers.findOne(isResolvedByUserId);
+
+                        if (findedUser!=null) {
+                            request.setResolvedByUser(isResolvedByUserId);
+                            //Id юзера создавшего запрос - совпадает с юзером который запрос разрешил
+                            if (isResolvedByUserId == createUserByToken) {
+                                request.setIsResolvedByUser((byte)1);
+                                request.setStatus(Requeststatus.StatusClose);
+                            }
+                        }
+                        result = saveRequestAndRetJson(request);
+                        return result;
+                    }
+
+                    if (description.isEmpty() == false) {
+                        request.setDescription(description);
+                    }
+
+                    if (latitude!=0L && longitude!=0L) {
+                        request.setLatitude(latitude);
+                        request.setLongitude(longitude);
+                    }
+
+                    request.setModifyDate(new Timestamp(System.currentTimeMillis()));
+                    if ((statusId == Requeststatus.StatusOpen) || (statusId == Requeststatus.StatusClose))
+                    {
+                        request.setStatus(statusId);
+                    }
+                    if (    typeId == Requesttype.TypeAccumIsDown ||
+                            typeId == Requesttype.TypeNotStarted ||
+                            typeId == Requesttype.TypeStuck ||
+                            typeId == Requesttype.TypeAlarm ||
+                            typeId == Requesttype.TypeCarNotOpen ||
+                            typeId == Requesttype.TypeTowTruckNeed
+                            ) {
+                        request.setType(typeId);
+                    }
+                    if (regionId > 0) {
+                        request.setRegion(regionId);
+                    }
+                    if (!fileName.isEmpty()) {
+                        fileDirName = F_WEB_FILES_REQUEST_PHOTO + String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
+                        if (saveByteToFile(fileImage, fileDirName) == true) {
+                            request.setRequestPhotoPath(fileDirName);
+                        }
+                    }
+
+                    result = saveRequestAndRetJson(request);
+                    return result;
+                }
+                else {
+                    result.errorMessage = INVALIDE_DATA;
+                }
+
+            }
+        }
+        else {
+            result.errorMessage =  INVALID_TOKEN;
+        }
+
+        return result;
+    }
+
+
+    @WebMethod()
+    public ServiceResult updateRequest(
             @WebParam(name="Id") @XmlElement(required=false, nillable=true, name="Id")               Long Id,
             @WebParam(name="sessionToken")      String sessionToken,
             @WebParam(name="description")       String description,
@@ -348,7 +512,6 @@ public class WebServiceMain {
 
 
 
-
     @WebMethod
     public ServiceResult getSessionToken(
             @WebParam(name="name") String name,
@@ -388,7 +551,7 @@ public class WebServiceMain {
 
     @WebMethod()
     public ServiceResult insertMessage(
-            @WebParam(name="Id")            Long Id,
+            /* @WebParam(name="Id")            Long Id, */
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="text")          String text,
             @WebParam(name="requestId")     Long requestId,
@@ -411,21 +574,8 @@ public class WebServiceMain {
         {
             if (createUserByToken > 0) {
 
-                if (Id > 0) {
-                    Message findedMsg = messageManagers.findOne(Id);
-                    if (findedMsg.getCreateUser() == createUserByToken) {
-                        msg = findedMsg;
-                    }
-                    else {
-                        result.IsSuccess = false;
-                        result.errorMessage = INVALID_TOKEN_OR_USER_ID;
-                        return result;
-                    }
-                }
-                else {
-                    msg = new Message();
-                    msg.setCreationDate(new Timestamp(System.currentTimeMillis()));
-                }
+                msg = new Message();
+                msg.setCreationDate(new Timestamp(System.currentTimeMillis()));
 
                 if (msg!=null) {
                     msg.setModifyDate(new Timestamp(System.currentTimeMillis()));
@@ -788,6 +938,57 @@ public class WebServiceMain {
     }
 
 
+    @WebMethod()
+    public ServiceResult insertUserAuto(
+            @WebParam(name="sessionToken") String sessionToken,
+            @WebParam(name="name")   String name,
+            @WebParam(name="haveCable")   Byte haveCable,
+            @WebParam(name="userId") Long userId,
+            @WebParam(name="transmissionType") Long transmissionType
+
+    ) {
+        String fullPath = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        Auto auto = null;
+        initMainCfg();
+
+        if (name.isEmpty()) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            return result;
+        }
+
+        Auto findedAuto  = null;//userService.findOneUserByName(name);
+
+        //Проверка имени на повтор
+        if (!name.isEmpty()) {
+
+            if (findedAuto == null) {
+                auto = new Auto();
+            }
+            else {
+                result.IsSuccess = false;
+                result.errorMessage = INVALID_USERNAME_OR_PASS;
+                return result;
+            }
+        }
+
+        //
+        if (auto  != null) {
+            auto.setName(name);
+            auto.setHaveCable(haveCable);
+            auto.setTransmissionType(transmissionType);
+            auto.setUser(userId);
+            result = saveAutoAndRetJson(auto);
+            return result;
+        }
+        result.IsSuccess = false;
+        result.errorMessage =  INVALIDE_DATA;
+        return result;
+    }
+
+
     @WebMethod
     public ServiceResult getAllAutoByUser(
             @WebParam(name="sessionToken") String sessionToken,
@@ -859,11 +1060,22 @@ public class WebServiceMain {
     private void initService()
     {
         if (ctx!=null) {
-            regionManagers = ctx.getBean(RegionManagers.class);
-            sessionManagers = ctx.getBean(SessionManagers.class);
-            usersManagers = ctx.getBean(UsersManagers.class);
-            requestManagers = ctx.getBean(RequestManagers.class);
-            messageManagers = ctx.getBean(MessageManagers.class);
+            if (
+                    regionManagers  == null ||
+                    sessionManagers == null ||
+                    usersManagers   == null ||
+                    requestManagers == null ||
+                    messageManagers == null ||
+                    autoManagers    == null
+                    ) {
+                regionManagers = ctx.getBean(RegionManagers.class);
+                sessionManagers = ctx.getBean(SessionManagers.class);
+                usersManagers = ctx.getBean(UsersManagers.class);
+                requestManagers = ctx.getBean(RequestManagers.class);
+                messageManagers = ctx.getBean(MessageManagers.class);
+                autoManagers = ctx.getBean(AutoManagers.class);
+            }
+
 
             if (userService == null) userService = new UsersService(ctx);
             if (sessionService == null) sessionService = new SessionService(ctx);
