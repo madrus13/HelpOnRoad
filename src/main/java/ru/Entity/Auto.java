@@ -22,6 +22,7 @@ public class Auto implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

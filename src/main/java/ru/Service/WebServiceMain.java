@@ -33,10 +33,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.ws.soap.MTOM;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Base64;
@@ -79,13 +76,14 @@ public class WebServiceMain {
 
 
     public WebServiceMain() {
+        initContext();
+        initService();
     }
 
     private ServiceResult saveUserAndRetJson(User user) {
         ServiceResult res = new ServiceResult();
 
         try {
-            usersManagers = ctx.getBean(UsersManagers.class);
             if (usersManagers != null) {
                 usersManagers.save(user);
                 res.IsSuccess = true;
@@ -104,7 +102,6 @@ public class WebServiceMain {
         ServiceResult res = new ServiceResult();
 
         try {
-            autoManagers = ctx.getBean(AutoManagers.class);
             if (autoManagers != null) {
                 autoManagers.save(obj);
                 res.IsSuccess = true;
@@ -122,7 +119,6 @@ public class WebServiceMain {
     private ServiceResult saveRequestAndRetJson(Request obj) {
         ServiceResult res = new ServiceResult();
         try {
-            requestManagers = ctx.getBean(RequestManagers.class);
             if (requestManagers != null) {
                 requestManagers.save(obj);
                 res.IsSuccess = true;
@@ -140,7 +136,6 @@ public class WebServiceMain {
     private ServiceResult saveMessageAndRetJson(Message obj) {
         ServiceResult res = new ServiceResult();
         try {
-            messageManagers = ctx.getBean(MessageManagers.class);
             if (messageManagers != null) {
                 messageManagers.save(obj);
                 res.IsSuccess = true;
@@ -153,7 +148,7 @@ public class WebServiceMain {
         return objToJson(obj);
     }
 
-    @WebMethod()
+    @WebMethod
     public ServiceResult insertUser(
             @WebParam(name="name")   String name,
             @WebParam(name="region") Long region,
@@ -172,22 +167,33 @@ public class WebServiceMain {
             return result;
         }
 
-        User findedUser  = userService.findOneUserByName(name);
+        User findedUserByName  = userService.findFirstByName(name);
 
-        //Проверка имени на повтор
-        if (!name.isEmpty()) {
 
-            if (findedUser == null) {
-                user = new User();
-            }
-            else {
-                result.IsSuccess = false;
-                result.errorMessage = INVALID_USERNAME_OR_PASS;
-                return result;
-            }
+        if (findedUserByName!=null) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_ALLREADY_EXIST;
+            return result;
         }
 
-        //
+        //Проверка имени \ mail  на повтор
+        User findedUserByMail  = userService.findFirstByEmail(email);
+
+        if (findedUserByMail!=null) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_EMAIL_ALLREADY_EXIST;
+            return result;
+        }
+
+        if (findedUserByMail == null && findedUserByName == null) {
+            user = new User();
+        }
+        else {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            return result;
+        }
+
         if (user  != null) {
             user.setName(name);
             user.setCreationDate(new Timestamp(System.currentTimeMillis()));
@@ -205,9 +211,9 @@ public class WebServiceMain {
         return result;
     }
 
-    @WebMethod()
+    @WebMethod
     public ServiceResult updateUser(
-                            @WebParam(name="Id")   Long Id,
+                            @WebParam(name="Id") @XmlElement(required=true, nillable=true, name="Id")   Long Id,
                             @WebParam(name="sessionToken")  String sessionToken,
                             @WebParam(name="region") Long region,
                             @WebParam(name="password") String password,
@@ -284,17 +290,16 @@ public class WebServiceMain {
         return result;
     }
 
-    @WebMethod()
+    @WebMethod
     public ServiceResult insertRequest(
             /*@WebParam(name="Id") @XmlElement(required=false, nillable=true, name="Id")               Long Id,*/
             @WebParam(name="sessionToken")      String sessionToken,
             @WebParam(name="description")       String description,
-            @WebParam(name="latitude")          Double latitude,
-            @WebParam(name="longitude")         Double longitude,
-            @WebParam(name="statusId")          Long statusId,
-            @WebParam(name="isResolvedByUser")  Long isResolvedByUserId,
-            @WebParam(name="typeId")            Long typeId,
-            @WebParam(name="regionId")          Long regionId,
+            @WebParam(name="latitude")@XmlElement(required=false, nillable=true, name="latitude")          Double latitude,
+            @WebParam(name="longitude")@XmlElement(required=false, nillable=true, name="longitude")         Double longitude,
+            @WebParam(name="isResolvedByUserId") @XmlElement(required=false, nillable=true, name="isResolvedByUserId")   Long isResolvedByUserId,
+            @WebParam(name="typeId") @XmlElement(required=false, nillable=true, name="typeId")           Long typeId,
+            @WebParam(name="regionId")@XmlElement(required=false, nillable=true, name="regionId")          Long regionId,
             @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")          String fileName,
             @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
 
@@ -323,12 +328,13 @@ public class WebServiceMain {
 
             request = new Request();
             request.setCreationDate(new Timestamp(System.currentTimeMillis()));
+            request.setModifyDate(new Timestamp(System.currentTimeMillis()));
             request.setCreationUser(createUserByToken);
 
 
                 if (request!=null) {
 
-                    if (isResolvedByUserId > 0) {
+                    if (isResolvedByUserId != null) {
                         User findedUser = usersManagers.findOne(isResolvedByUserId);
 
                         if (findedUser!=null) {
@@ -347,16 +353,13 @@ public class WebServiceMain {
                         request.setDescription(description);
                     }
 
-                    if (latitude!=0L && longitude!=0L) {
+                    if (latitude !=null && longitude != null) {
                         request.setLatitude(latitude);
                         request.setLongitude(longitude);
                     }
 
                     request.setModifyDate(new Timestamp(System.currentTimeMillis()));
-                    if ((statusId == Requeststatus.StatusOpen) || (statusId == Requeststatus.StatusClose))
-                    {
-                        request.setStatus(statusId);
-                    }
+
                     if (    typeId == Requesttype.TypeAccumIsDown ||
                             typeId == Requesttype.TypeNotStarted ||
                             typeId == Requesttype.TypeStuck ||
@@ -366,7 +369,7 @@ public class WebServiceMain {
                             ) {
                         request.setType(typeId);
                     }
-                    if (regionId > 0) {
+                    if (regionId != null) {
                         request.setRegion(regionId);
                     }
                     if (!fileName.isEmpty()) {
@@ -393,9 +396,9 @@ public class WebServiceMain {
     }
 
 
-    @WebMethod()
+    @WebMethod
     public ServiceResult updateRequest(
-            @WebParam(name="Id") @XmlElement(required=false, nillable=true, name="Id")               Long Id,
+            @WebParam(name="Id") @XmlElement(required=true, nillable=true, name="Id")               Long Id,
             @WebParam(name="sessionToken")      String sessionToken,
             @WebParam(name="description")       String description,
             @WebParam(name="latitude")          Double latitude,
@@ -429,7 +432,7 @@ public class WebServiceMain {
 
             if (createUserByToken > 0) {
 
-                if (Id > 0) {
+                if (Id != null) {
                     Request findedRequest = requestManagers.findOne(Id);
                     if (findedRequest.getCreationUser() == createUserByToken) {
                         request = findedRequest;
@@ -446,7 +449,7 @@ public class WebServiceMain {
 
                 if (request!=null) {
 
-                    if (isResolvedByUserId > 0) {
+                    if (isResolvedByUserId != null) {
                         User findedUser = usersManagers.findOne(isResolvedByUserId);
 
                         if (findedUser!=null) {
@@ -525,7 +528,7 @@ public class WebServiceMain {
         Session findSession = null;
 
         initMainCfg();
-        user = userService.findOneUserByName(name);
+        user = userService.findFirstByName(name);
         if (user !=null && user.getPassword().equals(password))
         {
             findSession = sessionService.findSessionByUserId(user.getId());
@@ -554,12 +557,12 @@ public class WebServiceMain {
             /* @WebParam(name="Id")            Long Id, */
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="text")          String text,
-            @WebParam(name="requestId")     Long requestId,
-            @WebParam(name="regionId")      Long regionId,
-            @WebParam(name="userRx")        Long userRx,
-            @WebParam(name="typeId")        Long typeId,
-            @WebParam(name="fileName")      String fileName,
-            @WebParam(name="fileImage")     byte[] fileImage
+            @WebParam(name="requestId") @XmlElement(required=false, nillable=true, name="requestId")     Long requestId,
+            @WebParam(name="regionId") @XmlElement(required=false, nillable=true, name="regionId")      Long regionId,
+            @WebParam(name="userRx") @XmlElement(required=false, nillable=true, name="userRx")         Long userRx,
+            @WebParam(name="typeId") @XmlElement(required=false, nillable=true, name="typeId")          Long typeId,
+            @WebParam(name="fileName") @XmlElement(required=false, nillable=true, name="fileName")      String fileName,
+            @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     byte[] fileImage
 
     ) {
         initMainCfg();
@@ -580,16 +583,16 @@ public class WebServiceMain {
                 if (msg!=null) {
                     msg.setModifyDate(new Timestamp(System.currentTimeMillis()));
 
-                    if (regionId > 0){
+                    if (regionId != null){
                         msg.setRegion(regionId);
                     }
-                    if (requestId > 0){
+                    if (requestId != null){
                         msg.setRequest(requestId);
                     }
-                    if (typeId > 0){
+                    if (typeId !=null){
                         msg.setType(typeId);
                     }
-                    if (userRx > 0){
+                    if (userRx !=null){
                         msg.setUserRx(userRx);
                     }
                     msg.setText(text);
@@ -872,7 +875,7 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getAllAchievmenttype(
             @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
+
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -938,12 +941,11 @@ public class WebServiceMain {
     }
 
 
-    @WebMethod()
+    @WebMethod
     public ServiceResult insertUserAuto(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="name")   String name,
             @WebParam(name="haveCable")   Byte haveCable,
-            @WebParam(name="userId") Long userId,
             @WebParam(name="transmissionType") Long transmissionType
 
     ) {
@@ -952,6 +954,14 @@ public class WebServiceMain {
         result.IsSuccess= false;
         Auto auto = null;
         initMainCfg();
+
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (res.isBoolVal == false)
+        {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+        }
 
         if (name.isEmpty()) {
             result.IsSuccess = false;
@@ -975,11 +985,11 @@ public class WebServiceMain {
         }
 
         //
-        if (auto  != null) {
+        if (auto  != null && res!=null && res.userId!=null) {
             auto.setName(name);
             auto.setHaveCable(haveCable);
             auto.setTransmissionType(transmissionType);
-            auto.setUser(userId);
+            auto.setUser(res.userId);
             result = saveAutoAndRetJson(auto);
             return result;
         }
@@ -1043,8 +1053,8 @@ public class WebServiceMain {
 
     private void initMainCfg()
     {
-        initContext();
-        initService();
+        //initContext();
+        //initService();
     }
 
     private void initContext()

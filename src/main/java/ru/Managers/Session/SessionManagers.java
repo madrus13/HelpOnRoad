@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface SessionManagers extends CrudRepository<Session, Long> {
     List<Session> findAll();
-    List<Session> findSessionByToken(String token);
-    List<Session> findSessionByUser(Long userId);
+    //List<Session> findSessionByToken(String token);
+    //List<Session> findSessionByUser(Long userId);
+
+    Session findFirstByToken(String token);
+    Session findFirstByUser(Long userId);
 }

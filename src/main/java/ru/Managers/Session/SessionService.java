@@ -32,18 +32,10 @@ public class SessionService {
     }
 
     public Session findSessionByToken(String token) {
-        if (sessionManagers.findSessionByToken(token).isEmpty() == false) {
-            return Lists.newArrayList(sessionManagers.findSessionByToken(token)).get(0);
-        }
-        return null;
+        return sessionManagers.findFirstByToken(token);
     }
 
     public Session findSessionByUserId(Long userId) {
-        Session result = null;
-        List<Session>  findSession =   sessionManagers.findSessionByUser(userId);
-        if (findSession.isEmpty() == false) {
-            result = findSession.get(0);
-        }
-        return result;
+        return sessionManagers.findFirstByUser(userId);
     }
 }

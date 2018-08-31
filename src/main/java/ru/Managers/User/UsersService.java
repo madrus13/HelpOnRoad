@@ -32,13 +32,18 @@ public class UsersService {
         return Lists.newArrayList(usersManagers.findAll());
     }
 
-    public User findOneUserByName (String name) {
-        ArrayList<User> userList = new ArrayList<User>();
-        userList.addAll(usersManagers.findUsersByName(name));
-        if (userList.isEmpty()) {
-            return null;
-        }
-        return userList.get(0);
+   
+
+    public User findFirstByNameAndEmail(String name, String email ) {
+        return usersManagers.findFirstByNameAndEmail(name, email);
+    }
+
+    public User findFirstByEmail(String email ) {
+        return usersManagers.findFirstByEmail(email);
+    }
+
+    public User findFirstByName(String name ) {
+        return usersManagers.findFirstByName(name);
     }
 
     public User findOneUserById(Long userId) {
