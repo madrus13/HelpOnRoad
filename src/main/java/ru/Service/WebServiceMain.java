@@ -961,6 +961,7 @@ public class WebServiceMain {
         {
             result.errorMessage = INVALID_TOKEN;
             result.IsSuccess = false;
+            return result;
         }
 
         if (name.isEmpty()) {

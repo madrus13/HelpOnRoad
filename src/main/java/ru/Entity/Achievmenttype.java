@@ -8,8 +8,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Entity(name = "Achievmenttype")
-@Table(name = "Achievmenttype")
+@Entity(name = "achievmenttype")
+@Table(name  = "achievmenttype")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
 public class Achievmenttype implements Serializable {
