@@ -18,6 +18,7 @@ TODO TEST findRequestByCreationUserAndStatus (getActiveRequestByCreationUser)
         Получить текущий активный запрос пользователя
 TODO TEST: один пользователь -один активный Request (активный Request - это в статусе Open (
         добавить проверку при создании новых запросов, чтобы не было
+TODO TEST:  insert update User auto
 */
 
 
@@ -33,7 +34,7 @@ Request
 
 
 //TODO когда человек откликнулся, появляется  чат\ПМ\сообщения с привязкой к запросу??
-TODO insert update User auto
+
 Связь региона и координаты по умолчанию, если типа не определилась
 загрузка таблицы с городами и координатами
 запрос через spatial  поиск в радиусе по точке

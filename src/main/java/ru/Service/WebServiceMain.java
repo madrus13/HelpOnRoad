@@ -175,7 +175,8 @@ public class WebServiceMain {
             @WebParam(name="name")   String name,
             @WebParam(name="region") Long region,
             @WebParam(name="password") String password,
-            @WebParam(name="email") String email
+            @WebParam(name="email") String email,
+            @WebParam(name="phone") String phone
     ) {
         String fullPath = "";
         ServiceResult result = new ServiceResult();
@@ -218,6 +219,7 @@ public class WebServiceMain {
         if (user  != null) {
             user.setIsDeleted(isDeletedFalse);
             user.setName(name);
+            user.setPhone(phone);
             user.setCreationDate(new Timestamp(System.currentTimeMillis()));
             user.setModifyDate(new Timestamp(System.currentTimeMillis()));
             user.setPassword(password);
@@ -235,7 +237,7 @@ public class WebServiceMain {
 
     @WebMethod
     public ServiceResult updateUser(
-                            @WebParam(name="Id") @XmlElement(required=true, nillable=true, name="Id")   Long Id,
+                            /*@WebParam(name="Id") @XmlElement(required=true, nillable=true, name="Id")   Long Id, */
                             @WebParam(name="sessionToken")  String sessionToken,
                             @WebParam(name="region") Long region,
                             @WebParam(name="password") String password,
@@ -255,24 +257,24 @@ public class WebServiceMain {
 
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
 
-        if (Id > 0 && !sessionToken.isEmpty() && res.isBoolVal == false) {
+        if (!sessionToken.isEmpty() && res.isBoolVal == false) {
             result.IsSuccess = false;
             result.errorMessage = INVALID_TOKEN;
             return result;
         }
-
-        if (Id > 0 && !sessionToken.isEmpty() && !res.userId.equals(Id))
+        /*
+        if (!sessionToken.isEmpty() && !res.userId.equals(Id))
         {
             result.IsSuccess = false;
             result.errorMessage = INVALID_TOKEN_OR_USER_ID;
             return result;
         }
-
+        */
 
         User findedUser  = getUserByToken(sessionToken);
 
         //По имени не найден пользователь, который обновляется
-        if (Id > 0 && !sessionToken.isEmpty() && findedUser == null) {
+        if (!sessionToken.isEmpty() && findedUser == null) {
             result.IsSuccess = false;
             result.errorMessage = INVALID_USERNAME_OR_PASS;
             return result;
@@ -280,7 +282,7 @@ public class WebServiceMain {
 
 
         //
-        if (user == null && findedUser!=null && findedUser.getId() == Id && res.isBoolVal == true) {
+        if (user == null && findedUser!=null && res.isBoolVal == true) {
             user = findedUser;
         }
         else {
@@ -340,7 +342,9 @@ public class WebServiceMain {
                     requestService.findRequestByCreationUserAndStatus(createUserByToken,Requeststatus.StatusOpen );
             if (!activeReqList.isEmpty())
             {
+                result.IsSuccess = false;
                 result.errorMessage = INVALIDE_ACTIVE_REQ;
+                return result;
             }
 
             if (createUserByToken > 0) {
@@ -351,7 +355,7 @@ public class WebServiceMain {
             request.setCreationDate(new Timestamp(System.currentTimeMillis()));
             request.setModifyDate(new Timestamp(System.currentTimeMillis()));
             request.setCreationUser(createUserByToken);
-
+            request.setStatus(Requeststatus.StatusOpen);
 
                 if (request!=null) {
 
@@ -364,6 +368,8 @@ public class WebServiceMain {
                             if (isResolvedByUserId == createUserByToken) {
                                 request.setIsResolvedByUser((byte)1);
                                 request.setStatus(Requeststatus.StatusClose);
+                                request.setCloseDate(new Timestamp(System.currentTimeMillis()));
+                                request.setModifyDate(new Timestamp(System.currentTimeMillis()));
                             }
                         }
                         result = saveRequestAndRetJson(request);
@@ -534,6 +540,104 @@ public class WebServiceMain {
         return result;
     }
 
+    @WebMethod
+    public ServiceResult closeCurrentActiveRequestByCustomUser(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="UserId")        Long UserId
+    ) {
+        String fullPath = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        User user = null;
+
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (!sessionToken.isEmpty() && res.isBoolVal == false) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
+            return result;
+        }
+
+        List<Request> allActiveUserRequest  = requestService.
+                findRequestByCreationUserAndStatus(
+                        res.userId,
+                        Requeststatus.StatusOpen );
+
+        ArrayList<String> errList = new ArrayList<String>();
+
+        if (allActiveUserRequest.size() > 1) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALIDE_ACTIVE_REQ;
+            return result;
+        }
+
+        for (Request item: allActiveUserRequest
+                ) {
+            item.setStatus(Requeststatus.StatusClose);
+            item.setCloseDate(new Timestamp(System.currentTimeMillis()));
+            item.setModifyDate(new Timestamp(System.currentTimeMillis()));
+            item.setIsResolvedByUser((byte) 1);
+            item.setResolvedByUser( UserId);
+            result =  saveRequestAndRetJson(item);
+            if (res.isBoolVal == false) {
+                errList.add(item.getId().toString());
+            }
+        }
+        result.IsSuccess = true;
+        result.errorMessage = "";
+        if (!errList.isEmpty()) {
+            result.IsSuccess = false;
+            result.errorMessage = "Error with request Ids : " + errList.toString();
+        }
+
+        return result;
+    }
+
+
+    @WebMethod
+    public ServiceResult closeAllActiveRequestByAuthor(
+            @WebParam(name="sessionToken")  String sessionToken
+    ) {
+        String fullPath = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        User user = null;
+
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (!sessionToken.isEmpty() && res.isBoolVal == false) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
+            return result;
+        }
+
+        List<Request> allActiveUserRequest  = requestService.
+                                            findRequestByCreationUserAndStatus(
+                                                                                res.userId,
+                                                                                Requeststatus.StatusOpen );
+
+        ArrayList<String> errList = new ArrayList<String>();
+
+        for (Request item: allActiveUserRequest
+             ) {
+            item.setStatus(Requeststatus.StatusClose);
+            item.setCloseDate(new Timestamp(System.currentTimeMillis()));
+            item.setModifyDate(new Timestamp(System.currentTimeMillis()));
+            item.setIsResolvedByUser((byte) 1);
+            result =  saveRequestAndRetJson(item);
+            if (res.isBoolVal == false) {
+                errList.add(item.getId().toString());
+            }
+        }
+        result.IsSuccess = true;
+        result.errorMessage = "";
+        if (!errList.isEmpty()) {
+            result.IsSuccess = false;
+            result.errorMessage = "Error with request Ids : " + errList.toString();
+        }
+
+        return result;
+    }
     /*
     @WebMethod
     public ServiceResult updateUserAuto(
@@ -1157,57 +1261,6 @@ public class WebServiceMain {
             tool.setUser(res.userId);
             saveToolAndRetJson(tool);
         }
-
-
-        /*
-        if (!tools.isEmpty())
-        {
-            if (currentUserToolTypesIds.isEmpty() && !toolTypeIds.isEmpty())
-            {
-                toolsToAdd = new ArrayList<Long>(currentUserToolTypesIds);
-            }
-            else {
-                toolsToAdd = new ArrayList<Long>(toolTypeIds);
-            }
-
-            toolsToRemove = new ArrayList<Long>(toolTypeIds);
-            toolsToRemove.removeAll(currentUserToolTypesIds);
-
-        }
-        else {
-            toolsToAdd = new ArrayList<Long>(currentUserToolTypesIds);
-        }
-
-
-
-
-
-
-
-
-
-        //Проверка имени на повтор
-        if (res!=null && res.userId!=null) {
-            if (auto == null) {
-                auto = new Auto();
-                auto.setIsDeleted(isDeletedFalse);
-                auto.setUser(res.userId);
-            }
-        }
-
-        if (auto  != null && res!=null && res.userId!=null) {
-            auto.setName(name);
-            auto.setHaveCable(haveCable);
-            auto.setTransmissionType(transmissionType);
-
-            result = saveAutoAndRetJson(auto);
-            return result;
-        }
-        else {
-            result.IsSuccess = false;
-            result.errorMessage =  INVALIDE_DATA;
-        }
-        */
         result.IsSuccess = true;
         result.errorMessage =  "Removed : " + toolsToRemove.toString() + " " +
                                "Added : " + toolsToAdd.toString() + " "  ;

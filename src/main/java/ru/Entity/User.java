@@ -20,6 +20,10 @@ public class User implements Serializable {
     private String password;
     private String userPhotoPath;
     private String email;
+
+
+
+    private String phone;
     private Byte isApprovedUser;
     private Timestamp creationDate;
     private Timestamp modifyDate;
@@ -90,6 +94,16 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Basic
+    @Column(name = "Phone", nullable = true, length = 20)
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Basic
