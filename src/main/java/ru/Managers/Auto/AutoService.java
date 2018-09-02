@@ -31,9 +31,10 @@ public class AutoService {
     public List<Auto> findAll() {
         return Lists.newArrayList(autoManagers.findAll());
     }
-
-    public List<Auto> findAutoByUser(Long user) {
+    public List<Auto> findAllAutoByUser(Long user) {
         return Lists.newArrayList(autoManagers.findAutoByUser(user));
     }
-
+    public Auto findFirstAutoByUser(Long user) {
+        return autoManagers.findFirstByUser(user);
+    }
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface RegionManagers extends CrudRepository<Region, Long> {
-    List<Region> findAll();
+    List<Region> findAllByIsDeleted(Byte IsDeleted);
 }

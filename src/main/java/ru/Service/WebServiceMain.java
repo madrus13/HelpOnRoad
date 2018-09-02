@@ -1,8 +1,12 @@
 package ru.Service;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import org.apache.log4j.*;
 import org.joda.time.DateTime;
 import ru.Entity.*;
 import ru.Managers.Auto.AutoManagers;
+import ru.Managers.Tool.ToolManagers;
 import ru.Service.WSUtility;
 import ru.Managers.Achievement.AchievService;
 import ru.Managers.Achievmenttype.AchievTypeService;
@@ -22,7 +26,6 @@ import ru.Managers.Tooltypes.ToolTypeService;
 import ru.Managers.Transmissiontype.TrTypeService;
 import ru.Managers.User.UsersManagers;
 import ru.Managers.User.UsersService;
-import org.apache.log4j.BasicConfigurator;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -35,11 +38,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.ws.soap.MTOM;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import static java.util.stream.Stream.*;
 import static ru.Entity.Requesttype.TypeAccumIsDown;
 import static ru.Service.WSUtility.*;
 import javax.jws.WebService;
@@ -50,7 +53,8 @@ import javax.jws.WebService;
 public class WebServiceMain {
 
 
-
+    private Byte isDeletedFalse = 0;
+    private Byte isDeletedTrue  = 1;
     private GenericXmlApplicationContext ctx;
 
     private UsersManagers usersManagers;
@@ -59,6 +63,7 @@ public class WebServiceMain {
     private RequestManagers requestManagers;
     private MessageManagers messageManagers;
     private AutoManagers autoManagers;
+    private ToolManagers toolsManagers;
 
     private UsersService userService;
     private SessionService sessionService;
@@ -115,6 +120,23 @@ public class WebServiceMain {
         return objToJson(obj);
     }
 
+    private ServiceResult saveToolAndRetJson(Tool obj) {
+        ServiceResult res = new ServiceResult();
+
+        try {
+            if (toolsManagers != null) {
+                toolsManagers.save(obj);
+                res.IsSuccess = true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            return res;
+        }
+        return objToJson(obj);
+    }
+
 
     private ServiceResult saveRequestAndRetJson(Request obj) {
         ServiceResult res = new ServiceResult();
@@ -159,7 +181,6 @@ public class WebServiceMain {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
         User user = null;
-        initMainCfg();
 
         if (name.isEmpty() || password.isEmpty()) {
             result.IsSuccess = false;
@@ -195,6 +216,7 @@ public class WebServiceMain {
         }
 
         if (user  != null) {
+            user.setIsDeleted(isDeletedFalse);
             user.setName(name);
             user.setCreationDate(new Timestamp(System.currentTimeMillis()));
             user.setModifyDate(new Timestamp(System.currentTimeMillis()));
@@ -224,7 +246,6 @@ public class WebServiceMain {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
         User user = null;
-        initMainCfg();
 
         if (password.isEmpty()) {
             result.IsSuccess = false;
@@ -304,7 +325,6 @@ public class WebServiceMain {
             @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
 
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -327,6 +347,7 @@ public class WebServiceMain {
 
 
             request = new Request();
+            request.setIsDeleted(isDeletedFalse);
             request.setCreationDate(new Timestamp(System.currentTimeMillis()));
             request.setModifyDate(new Timestamp(System.currentTimeMillis()));
             request.setCreationUser(createUserByToken);
@@ -411,7 +432,6 @@ public class WebServiceMain {
             @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
 
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -443,6 +463,7 @@ public class WebServiceMain {
                 }
                 else {
                     request = new Request();
+                    request.setIsDeleted(isDeletedFalse);
                     request.setCreationDate(new Timestamp(System.currentTimeMillis()));
                     request.setCreationUser(createUserByToken);
                 }
@@ -513,7 +534,41 @@ public class WebServiceMain {
         return result;
     }
 
+    /*
+    @WebMethod
+    public ServiceResult updateUserAuto(
+            @WebParam(name="sessionToken") String sessionToken,
+            @WebParam(name="name")   String name,
+            @WebParam(name="haveCable")   Byte haveCable,
+            @WebParam(name="transmissionType") Long transmissionType
+    ) {
+        String fullPath = "";
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        Auto auto = null;
 
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (res.isBoolVal == false || res.userId  == null) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
+            return result;
+        }
+        auto = autoManagers.findFirstByUser(res.userId);
+
+        if (auto!= null && !name.isEmpty() && transmissionType!=null)  {
+            auto.setName(name);
+            auto.setTransmissionType(transmissionType);
+            auto.setHaveCable(haveCable);
+
+            result = saveAutoAndRetJson(auto);
+            return result;
+        }
+        result.IsSuccess = false;
+        result.errorMessage =  INVALIDE_DATA;
+        return result;
+    }
+    */
 
     @WebMethod
     public ServiceResult getSessionToken(
@@ -527,25 +582,20 @@ public class WebServiceMain {
         User user = null;
         Session findSession = null;
 
-        initMainCfg();
         user = userService.findFirstByName(name);
         if (user !=null && user.getPassword().equals(password))
         {
             findSession = sessionService.findSessionByUserId(user.getId());
+            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
-            if (findSession !=null && findSession.getToken().equals("")) {
-                result.ResultObjectJSON =  findSession.getToken();
-                result.IsSuccess = true;
+            if (findSession == null) {
+                findSession = new ru.Entity.Session();
+                findSession.setUser(user.getId());
             }
-            else {
-                if (user!=null) {
-                    ru.Entity.Session newSession = new ru.Entity.Session();
-                    newSession.setUser(user.getId());
-                    newSession.setToken(WSUtility.generateHash(user.getName()+user.getPassword()+ DateTime.now().toString()));
-                    sessionManagers.save(newSession);
-                    result = objToJson(newSession);
-                }
-            }
+            findSession.setCreationDate(currentTime);
+            findSession.setToken(WSUtility.generateHash(user.getName()+user.getPassword()+ currentTime.toString()));
+            sessionManagers.save(findSession);
+            result = objToJson(findSession);
         }
 
         return result;
@@ -565,7 +615,6 @@ public class WebServiceMain {
             @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     byte[] fileImage
 
     ) {
-        initMainCfg();
         Message msg = null;
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
@@ -579,6 +628,7 @@ public class WebServiceMain {
 
                 msg = new Message();
                 msg.setCreationDate(new Timestamp(System.currentTimeMillis()));
+                msg.setIsDeleted(isDeletedFalse);
 
                 if (msg!=null) {
                     msg.setModifyDate(new Timestamp(System.currentTimeMillis()));
@@ -626,7 +676,6 @@ public class WebServiceMain {
             @WebParam(name="pageSize")      int pageSize
 
             ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -649,7 +698,6 @@ public class WebServiceMain {
             @WebParam(name="pageSize")      int pageSize
 
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -670,7 +718,6 @@ public class WebServiceMain {
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="userId")        Long userId
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -691,7 +738,6 @@ public class WebServiceMain {
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="userId")        Long userId
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -714,7 +760,6 @@ public class WebServiceMain {
             @WebParam(name="typeIds") @XmlElement(required=false, nillable=true, name="typeIds")       String typeIds
 
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -744,7 +789,6 @@ public class WebServiceMain {
             @WebParam(name="sessionToken")   String sessionToken,
             @WebParam(name="typeIds") @XmlElement(required=false, nillable=true, name="typeIds")       String typeIds
     ) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
         List<Long> listTypeIds = null;
@@ -781,7 +825,6 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getUserInfo(
             @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -803,7 +846,6 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getAllMessageTypes(
             @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -821,7 +863,6 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getAllRequestType(
             @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -838,8 +879,9 @@ public class WebServiceMain {
 
     @WebMethod
     public ServiceResult getAllTransmissionType(
-            @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
+            @WebParam(name="sessionToken") String sessionToken)
+    {
+
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -856,8 +898,8 @@ public class WebServiceMain {
 
     @WebMethod
     public ServiceResult getAllToolType(
-            @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
+            @WebParam(name="sessionToken") String sessionToken)
+    {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -894,8 +936,8 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getAllAchievmentByUser(
             @WebParam(name="sessionToken") String sessionToken,
-            @WebParam(name="user") Long userId) {
-        initMainCfg();
+            @WebParam(name="user") Long userId)
+    {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -919,8 +961,8 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getAllToolByUser(
             @WebParam(name="sessionToken") String sessionToken,
-            @WebParam(name="user") Long userId) {
-        initMainCfg();
+            @WebParam(name="user") Long userId)
+    {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -930,7 +972,7 @@ public class WebServiceMain {
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result = objToJson(toolService.findToolByUser(user.getId()));
+                result = objToJson(toolService.findToolsByUser(user.getId()));
             }
         }
         else {
@@ -942,18 +984,16 @@ public class WebServiceMain {
 
 
     @WebMethod
-    public ServiceResult insertUserAuto(
+    public ServiceResult insertUpdateUserAuto(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="name")   String name,
             @WebParam(name="haveCable")   Byte haveCable,
             @WebParam(name="transmissionType") Long transmissionType
 
     ) {
-        String fullPath = "";
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
         Auto auto = null;
-        initMainCfg();
 
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
 
@@ -970,32 +1010,30 @@ public class WebServiceMain {
             return result;
         }
 
-        Auto findedAuto  = null;//userService.findOneUserByName(name);
+        auto  = autoService.findFirstAutoByUser(res.userId);
 
         //Проверка имени на повтор
-        if (!name.isEmpty()) {
-
-            if (findedAuto == null) {
+        if (!name.isEmpty() && res!=null && res.userId!=null) {
+            if (auto == null) {
                 auto = new Auto();
-            }
-            else {
-                result.IsSuccess = false;
-                result.errorMessage = INVALID_USERNAME_OR_PASS;
-                return result;
+                auto.setIsDeleted(isDeletedFalse);
+                auto.setUser(res.userId);
             }
         }
 
-        //
         if (auto  != null && res!=null && res.userId!=null) {
             auto.setName(name);
             auto.setHaveCable(haveCable);
             auto.setTransmissionType(transmissionType);
-            auto.setUser(res.userId);
+
             result = saveAutoAndRetJson(auto);
             return result;
         }
-        result.IsSuccess = false;
-        result.errorMessage =  INVALIDE_DATA;
+        else {
+            result.IsSuccess = false;
+            result.errorMessage =  INVALIDE_DATA;
+        }
+
         return result;
     }
 
@@ -1003,8 +1041,8 @@ public class WebServiceMain {
     @WebMethod
     public ServiceResult getAllAutoByUser(
             @WebParam(name="sessionToken") String sessionToken,
-            @WebParam(name="user") Long userId) {
-        initMainCfg();
+            @WebParam(name="user") Long userId)
+    {
 
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
@@ -1015,7 +1053,7 @@ public class WebServiceMain {
         {
             user = usersManagers.findOne(userId);
             if (user!=null && user.getId()!=null) {
-                result = objToJson(autoService.findAutoByUser(user.getId()));
+                result = objToJson(autoService.findFirstAutoByUser(user.getId()));
             }
         }
         else {
@@ -1028,9 +1066,8 @@ public class WebServiceMain {
 
     @WebMethod
     public ServiceResult getAllRegions(
-            @WebParam(name="sessionToken") String sessionToken) {
-        initMainCfg();
-
+            @WebParam(name="sessionToken") String sessionToken)
+    {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
@@ -1045,22 +1082,153 @@ public class WebServiceMain {
         return result;
     }
 
+    @WebMethod
+    public ServiceResult insertUpdateUserTools(
+            @WebParam(name="sessionToken") String sessionToken,
+            @WebParam(name="toolTypeIds")@XmlElement(required=false, nillable=true, name="toolTypeIds")
+                                         ArrayList<Long> setToolTypeIds
+    ) {
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        List<Tool> tools = null;
+        Tool tool = null;
+        ArrayList<Long> toolsToAdd = new ArrayList<Long>();
+        ArrayList<Long> toolsToRemove = new ArrayList<Long>();
+
+
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (res.isBoolVal == false)
+        {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+            return result;
+        }
+        List<Tooltypes> allToolTypes = toolTypeService.findAll();
+        List<Long> allToolTypesIds = allToolTypes.stream()
+                .map(Tooltypes::getId)
+                .collect(Collectors.toList());
+
+        tools  = toolService.findToolsByUser(res.userId);
+        List<Long> currentUserToolTypesIds = tools.stream()
+                .map(Tool::getType)
+                .collect(Collectors.toList());
+
+
+
+        //в случае если было пусто и устанавливают пусто
+        if (tools.isEmpty() && setToolTypeIds.isEmpty())
+        {
+            result.IsSuccess = true;
+            return result;
+        }
+
+        for (Long item: setToolTypeIds
+             ) {
+            if (!allToolTypesIds.contains(item)) {
+                result.IsSuccess = false;
+                result.errorMessage = "Error: Item with Id " + item + " not correct, break all";
+                return result;
+            }
+        }
+        //Определение что нужно добавить из типов инструментов и что удалить
+        toolsToAdd = new ArrayList<Long>(setToolTypeIds);
+        toolsToAdd.removeAll(currentUserToolTypesIds);
+
+        toolsToRemove = new ArrayList<Long>(currentUserToolTypesIds);
+        toolsToRemove.removeAll(setToolTypeIds);
+
+        for (Long itemId: toolsToRemove
+                ) {
+            tool = tools.stream().filter(p -> p.getType() == itemId).findAny()// If 'findAny' then return found
+                    .orElse(null);
+
+            if (tool!=null) {
+                tool.setIsDeleted(isDeletedTrue);
+                saveToolAndRetJson(tool);
+            }
+        }
+
+        for (Long itemId: toolsToAdd
+                ) {
+            tool = new Tool();
+            tool.setIsDeleted(isDeletedFalse);
+            tool.setType(itemId);
+            tool.setUser(res.userId);
+            saveToolAndRetJson(tool);
+        }
+
+
+        /*
+        if (!tools.isEmpty())
+        {
+            if (currentUserToolTypesIds.isEmpty() && !toolTypeIds.isEmpty())
+            {
+                toolsToAdd = new ArrayList<Long>(currentUserToolTypesIds);
+            }
+            else {
+                toolsToAdd = new ArrayList<Long>(toolTypeIds);
+            }
+
+            toolsToRemove = new ArrayList<Long>(toolTypeIds);
+            toolsToRemove.removeAll(currentUserToolTypesIds);
+
+        }
+        else {
+            toolsToAdd = new ArrayList<Long>(currentUserToolTypesIds);
+        }
+
+
+
+
+
+
+
+
+
+        //Проверка имени на повтор
+        if (res!=null && res.userId!=null) {
+            if (auto == null) {
+                auto = new Auto();
+                auto.setIsDeleted(isDeletedFalse);
+                auto.setUser(res.userId);
+            }
+        }
+
+        if (auto  != null && res!=null && res.userId!=null) {
+            auto.setName(name);
+            auto.setHaveCable(haveCable);
+            auto.setTransmissionType(transmissionType);
+
+            result = saveAutoAndRetJson(auto);
+            return result;
+        }
+        else {
+            result.IsSuccess = false;
+            result.errorMessage =  INVALIDE_DATA;
+        }
+        */
+        result.IsSuccess = true;
+        result.errorMessage =  "Removed : " + toolsToRemove.toString() + " " +
+                               "Added : " + toolsToAdd.toString() + " "  ;
+
+        return result;
+    }
+
 
     public WebServiceMain(GenericXmlApplicationContext context)
     {
         ctx = context;
-        initMainCfg();
     }
 
-    private void initMainCfg()
-    {
-        //initContext();
-        //initService();
-    }
 
     private void initContext()
     {
         if (ctx == null) {
+            Logger root = Logger.getRootLogger();
+            root.setLevel(Level.ERROR);
+            root.addAppender(new ConsoleAppender(
+                    new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN)));
             BasicConfigurator.configure();
             ctx = new GenericXmlApplicationContext();
             ctx.load("classpath:spring-config.xml");
@@ -1077,7 +1245,8 @@ public class WebServiceMain {
                     usersManagers   == null ||
                     requestManagers == null ||
                     messageManagers == null ||
-                    autoManagers    == null
+                    autoManagers    == null ||
+                    toolsManagers   == null
                     ) {
                 regionManagers = ctx.getBean(RegionManagers.class);
                 sessionManagers = ctx.getBean(SessionManagers.class);
@@ -1085,6 +1254,7 @@ public class WebServiceMain {
                 requestManagers = ctx.getBean(RequestManagers.class);
                 messageManagers = ctx.getBean(MessageManagers.class);
                 autoManagers = ctx.getBean(AutoManagers.class);
+                toolsManagers = ctx.getBean(ToolManagers.class);
             }
 
 

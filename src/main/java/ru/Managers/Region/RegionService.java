@@ -18,7 +18,7 @@ public class RegionService {
     @Autowired
     private RegionManagers regionManagers;
     private GenericXmlApplicationContext ctx;
-
+    private Byte isDeletedFalse = 0;
     public RegionService(GenericXmlApplicationContext context) {
         ctx = context;
         regionManagers = ctx.getBean(RegionManagers.class);
@@ -28,7 +28,7 @@ public class RegionService {
     }
 
     public List<Region> findAll() {
-        return Lists.newArrayList(regionManagers.findAll());
+        return Lists.newArrayList(regionManagers.findAllByIsDeleted(isDeletedFalse));
     }
 
 

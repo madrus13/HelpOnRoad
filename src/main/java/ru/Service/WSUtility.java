@@ -28,6 +28,7 @@ public class WSUtility {
         res.IsSuccess = false;
 
         ObjectMapper mapper = new ObjectMapper();
+
         try {
             res.ResultObjectJSON = mapper.writeValueAsString(obj);
             res.IsSuccess = true;

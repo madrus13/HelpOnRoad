@@ -19,6 +19,7 @@ public class ToolService {
     @Autowired
     private ToolManagers trTypeManagers;
     private GenericXmlApplicationContext ctx;
+    private Byte isDeletedFalse = 0;
 
     public ToolService(GenericXmlApplicationContext context) {
         ctx = context;
@@ -28,10 +29,11 @@ public class ToolService {
     public ToolService() {
     }
 
-    public List<Tool> findAll() {
+    /*public List<Tool> findAll() {
         return Lists.newArrayList(trTypeManagers.findAll());
     }
-    public List<Tool> findToolByUser(Long userId) {
-        return Lists.newArrayList(trTypeManagers.findToolByUser (userId));
+    */
+    public List<Tool> findToolsByUser(Long userId) {
+        return Lists.newArrayList(trTypeManagers.findToolByUserAndIsDeleted (userId, isDeletedFalse));
     }
 }
