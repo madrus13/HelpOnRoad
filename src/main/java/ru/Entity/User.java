@@ -3,6 +3,9 @@ package ru.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
+import ru.Entity.AndroidAnnotation.ForeignCollectionField;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,36 +16,57 @@ import java.util.Collection;
 @Table(name = "user")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class User implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String name;
     @JsonIgnore
+    @DatabaseField
     private String password;
+    @DatabaseField
     private String userPhotoPath;
+    @DatabaseField
     private String email;
-
-
-
+    @DatabaseField
     private String phone;
+    @DatabaseField
     private Byte isApprovedUser;
+    @DatabaseField
     private Timestamp creationDate;
+    @DatabaseField
     private Timestamp modifyDate;
+    @DatabaseField
     private Byte isDeleted;
+    @DatabaseField
     private Long status;
+    @DatabaseField
     private Long region;
+    @ForeignCollectionField
     private Collection<Auto> autosById;
     @JsonIgnore
+    @ForeignCollectionField
     private Collection<Message> messagesById;
     @JsonIgnore
+    @ForeignCollectionField
     private Collection<Request> requestsById;
     @JsonIgnore
+    @ForeignCollectionField
     private Collection<Request> requestsById_0;
     @JsonIgnore
+    @ForeignCollectionField
     private Collection<Session> sessionsById;
     @JsonIgnore
+    @ForeignCollectionField
     private Collection<Tool> toolsById;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Userstatus userstatusByStatus;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Region regionByRegion;
+
+    public User() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

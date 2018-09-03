@@ -3,6 +3,9 @@ package ru.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
+import ru.Entity.AndroidAnnotation.ForeignCollectionField;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,9 +15,13 @@ import java.util.Collection;
 @Table(name = "userstatus")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Userstatus implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String name;
+    @DatabaseField
     private Byte isDeleted;
 
     public static final Long StatusAdmin    = 1L;
@@ -22,7 +29,11 @@ public class Userstatus implements Serializable {
     public static final Long StatusNoActive = 4L;
 
     @JsonIgnore
+    @ForeignCollectionField
     private Collection<User> usersById;
+
+    public Userstatus() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

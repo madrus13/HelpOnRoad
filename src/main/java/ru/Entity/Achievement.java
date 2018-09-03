@@ -2,6 +2,8 @@ package ru.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,13 +12,23 @@ import java.io.Serializable;
 @Table(name = "achievement")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Achievement implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String name;
+    @DatabaseField
     private Long user;
+    @DatabaseField
     private Byte isDeleted;
+    @DatabaseField
     private Long type;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Achievmenttype achievmenttypeByType;
+
+    public Achievement() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

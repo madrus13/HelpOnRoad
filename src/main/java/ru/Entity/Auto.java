@@ -2,6 +2,8 @@ package ru.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,16 +12,27 @@ import java.io.Serializable;
 @Table(name = "auto")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Auto implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String name;
+    @DatabaseField
     private Byte haveCable;
+    @DatabaseField
     private Long user;
+    @DatabaseField
     private Byte isDeleted;
+    @DatabaseField
     private Long transmissionType;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private User userByUser;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private TransmissionType transmissionTypeByTransmissionType;
 
+    public  Auto() {
+    }
     @Id
     @Column(name = "Id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

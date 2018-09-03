@@ -2,6 +2,8 @@ package ru.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,13 +12,23 @@ import java.io.Serializable;
 @Table(name = "tool")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Tool implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private Long type;
+    @DatabaseField
     private Long user;
+    @DatabaseField
     private Byte isDeleted;
+    @DatabaseField(canBeNull = true, foreign = true)
     private Tooltypes tooltypesByType;
+    @DatabaseField(canBeNull = true, foreign = true)
     private User userByUser;
+
+    public Tool() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

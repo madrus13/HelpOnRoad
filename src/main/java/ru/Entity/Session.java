@@ -2,6 +2,8 @@ package ru.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,12 +13,21 @@ import java.sql.Timestamp;
 @Table(name = "session")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Session implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String token;
+    @DatabaseField
     private Timestamp creationDate;
+    @DatabaseField
     private Long user;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private User userByUser;
+
+    public Session() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

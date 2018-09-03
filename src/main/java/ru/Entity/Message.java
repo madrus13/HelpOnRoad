@@ -2,6 +2,8 @@ package ru.Entity;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,23 +13,44 @@ import java.sql.Timestamp;
 @Table(name = "message")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Message implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String text;
+    @DatabaseField
     private Timestamp creationDate;
+    @DatabaseField
     private Timestamp modifyDate;
+    @DatabaseField
     private Long createUser;
+    @DatabaseField
     private Long userRx;
+    @DatabaseField
     private String messagePhotoPath;
+    @DatabaseField
     private Byte isDeleted;
+    @DatabaseField
     private Long request;
+    @DatabaseField
     private Long type;
+    @DatabaseField
     private Long region;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private User userByUserRx;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private User userByCreateUser;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Request requestByRequest;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Messagetype messagetypeByType;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Region regionByRegion;
+
+
+    public  Message() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

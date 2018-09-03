@@ -3,6 +3,8 @@ package ru.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,28 +15,53 @@ import java.util.Collection;
 @Table(name = "request")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Request implements Serializable {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String description;
+    @DatabaseField
     private Timestamp creationDate;
+    @DatabaseField
     private Timestamp modifyDate;
+    @DatabaseField
     private Timestamp closeDate;
+    @DatabaseField
     private Byte isResolvedByUser;
+    @DatabaseField
     private String requestPhotoPath;
+    @DatabaseField
     private Byte isDeleted;
+    @DatabaseField
     private Long resolvedByUser;
+    @DatabaseField
     private Long creationUser;
+    @DatabaseField
     private Double latitude;
+    @DatabaseField
     private Double longitude;
+    @DatabaseField
     private Long type;
+    @DatabaseField
     private Long status;
+    @DatabaseField
     private Long region;
+    @DatabaseField(canBeNull = true, foreign = true)
     private Collection<Message> messagesById;
+    @DatabaseField(canBeNull = true, foreign = true)
     private User userByResolvedByUser;
+    @DatabaseField(canBeNull = true, foreign = true)
     private User userByCreationUser;
+    @DatabaseField(canBeNull = true, foreign = true)
     private Region regionByRegion;
+    @DatabaseField(canBeNull = true, foreign = true)
     private Requesttype requesttypeByType;
+    @DatabaseField(canBeNull = true, foreign = true)
     private Requeststatus requeststatusByStatus;
+
+    public Request() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)

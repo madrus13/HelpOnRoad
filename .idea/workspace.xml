@@ -7,12 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db1ee4d8-524a-479c-be31-99e837808285" name="Default" comment="refactor: not working (refactore Long -int)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4e56ddcf-1713-4890-994d-593ff78903a8.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/4e56ddcf-1713-4890-994d-593ff78903a8.xml" />
-      <change beforePath="$PROJECT_DIR$/TODO.txt" afterPath="$PROJECT_DIR$/TODO.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/AndroidAnnotation/DatabaseField.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/AndroidAnnotation/DatabaseTable.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/AndroidAnnotation/ForeignCollectionField.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/sampleJPA.iml" afterPath="$PROJECT_DIR$/sampleJPA.iml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Message.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Message.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Messagetype.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Messagetype.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Region.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Region.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Request.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Request.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Requeststatus.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Requeststatus.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Session.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Session.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Tool.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Tool.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Tooltypes.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Tooltypes.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/TransmissionType.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/TransmissionType.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/sampleJPA-1.0-SNAPSHOT.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Entity/Userstatus.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Entity/Userstatus.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +37,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/HelpOnRoad$WebServer.coverage" NAME="WebServer Coverage Results" MODIFIED="1535910451394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/HelpOnRoad$WebServer.coverage" NAME="WebServer Coverage Results" MODIFIED="1535917213898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -49,138 +63,108 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="mydb@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="mydb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="mydb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="mydb: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="mydb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="mydb: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="user: table" type="98d5ac3d:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WebServiceMain.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="303" column="37" lean-forward="false" selection-start-line="303" selection-start-column="37" selection-end-line="303" selection-end-column="37" />
-              <folding>
-                <element signature="e#21334#21342#0" expanded="true" />
-                <element signature="e#23262#23270#0" expanded="true" />
-                <element signature="e#42159#42165#0" expanded="true" />
-                <element signature="e#42222#42228#0" expanded="true" />
-                <element signature="e#44597#44598#0" expanded="true" />
-                <element signature="e#44626#44627#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Requesttype.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+            <state relative-caret-position="238">
+              <caret line="38" column="11" lean-forward="false" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/User.java">
+      <file leaf-file-name="Session.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+            <state relative-caret-position="357">
+              <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Region.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Region.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Messagetype.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Messagetype.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="51" column="12" lean-forward="false" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Auto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Achievmenttype.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
               <folding>
-                <element signature="e#2499#2500#0" expanded="true" />
-                <element signature="e#2527#2528#0" expanded="true" />
-                <element signature="e#2569#2570#0" expanded="true" />
-                <element signature="e#2603#2604#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestStatusManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Requeststatus/RequestStatusManagers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TODO.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToolTypeService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Tooltypes/ToolTypeService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <element signature="e#921#922#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/ServiceResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomObjResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/CustomObjResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WSUtility.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestManagers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestManagers.java">
+      <file leaf-file-name="Achievement.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="17" column="83" lean-forward="false" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
+              <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Request.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Request.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="62" column="11" lean-forward="false" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Requeststatus.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Requeststatus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -192,6 +176,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -243,10 +229,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/User/UsersManagers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Entity/Achievmenttype.java" />
-        <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Region/RegionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Entity/Region.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/korotaev/Managers/Session/SessionService.java" />
@@ -255,22 +237,9 @@
         <option value="$PROJECT_DIR$/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Session/SessionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Achievement/AchievService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Messagetype.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Region.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Requeststatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Session.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Tool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Tooltypes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/TransmissionType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Userstatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Entity/_xMessageMD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Message/MessageManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Message/MessageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/ServiceResult.java" />
@@ -280,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/sun-jaxws.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/User/UsersService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Achievement/AchievManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Auto/AutoManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Auto/AutoService.java" />
@@ -292,8 +260,26 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Tool/ToolManagers.java" />
         <option value="$PROJECT_DIR$/TODO.txt" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/DatabaseTable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/DatabaseField.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/ForeignCollectionField.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/ForeignCollection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Requeststatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Session.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Tool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Tooltypes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/TransmissionType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Userstatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Request.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Region.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Messagetype.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Message.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java" />
       </list>
     </option>
   </component>
@@ -320,11 +306,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="203" />
-    <option name="y" value="83" />
-    <option name="width" value="1036" />
-    <option name="height" value="733" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -344,9 +329,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -563,7 +546,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -582,6 +567,10 @@
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="" />
+      <recent name="ru.Entity" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\META-INF" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\lib\GlobalLib" />
@@ -590,11 +579,8 @@
       <recent name="ru.Service.WebServiceMain" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.Entity.AndroidAnnotation" />
       <recent name="ru.Service" />
-    </key>
-    <key name="ImportMappingsDialog.RecentPackages">
-      <recent name="" />
-      <recent name="ru.Entity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Session" />
@@ -602,6 +588,9 @@
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Requeststatus" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Request" />
       <recent name="C:\Users\ms\Desktop\HelpOnRoad\src\main\java\korotaev\Managers\Region" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.Entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -968,7 +957,8 @@
       <workItem from="1535654167327" duration="4485000" />
       <workItem from="1535726862802" duration="208000" />
       <workItem from="1535742276055" duration="1858000" />
-      <workItem from="1535793330730" duration="46714000" />
+      <workItem from="1535793330730" duration="46727000" />
+      <workItem from="1535991906908" duration="3822000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1523906857613</created>
@@ -1037,7 +1027,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242908000" />
+    <option name="totallyTimeSpent" value="246743000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1049,7 +1039,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42973855" sideWeight="0.22401172" order="8" side_tool="true" content_ui="tabs" />
@@ -1057,7 +1047,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09297218" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.022693997" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1069,11 +1059,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49121523" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24019608" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24019608" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49707174" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28623718" sideWeight="0.24301076" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28623718" sideWeight="0.75698924" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.24836601" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.751634" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1173,106 +1163,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/TransmissionType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/repository/com/google/guava/guava/18.0/guava-18.0.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/99b6f93d/23213fd6-a08b-4578-8f79-25f7bf8dcce6/mydb.user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://src:table:/99b6f93d/23213fd6-a08b-4578-8f79-25f7bf8dcce6/mydb.user">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/99b6f93d/23213fd6-a08b-4578-8f79-25f7bf8dcce6/mydb.requesttype">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2669">
-          <caret line="222" column="35" lean-forward="false" selection-start-line="222" selection-start-column="18" selection-end-line="222" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11764">
-          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Message/MessageManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="126" column="23" lean-forward="false" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/sun-jaxws.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Transmissiontype/TrTypeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Achievmenttype/AchievTypeService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1284,35 +1178,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Auto/AutoManagers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1320,10 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="37" column="43" lean-forward="false" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="43" />
-          <folding>
-            <element signature="e#1077#1078#0" expanded="false" />
-            <element signature="e#1134#1135#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1331,7 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1339,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,10 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
-          <folding>
-            <element signature="e#1084#1085#0" expanded="false" />
-            <element signature="e#1146#1147#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1358,7 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1366,10 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="48" column="46" lean-forward="false" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-          <folding>
-            <element signature="e#1380#1381#0" expanded="false" />
-            <marker date="1535721117785" expanded="true" signature="1273:1281" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1409,7 +1263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1417,14 +1270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
           <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="41" />
-          <folding>
-            <marker date="1523424666429" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1523424666429" expanded="true" signature="200:207" ph="{}" />
-            <marker date="1523424666429" expanded="true" signature="244:390" ph="{...}" />
-            <marker date="1523424666429" expanded="true" signature="444:533" ph="{...}" />
-            <marker date="1523424666429" expanded="false" signature="578:589" ph=" { " />
-            <marker date="1523424666429" expanded="false" signature="621:627" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1432,18 +1277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="30" column="40" lean-forward="false" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-          <folding>
-            <element signature="e#869#870#0" expanded="false" />
-            <element signature="e#961#962#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Tooltypes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106">
-          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1459,7 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,7 +1299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-62">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1475,18 +1306,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Tool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding>
-            <element signature="e#675#676#0" expanded="false" />
-            <element signature="e#700#701#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1494,26 +1313,57 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Requeststatus/RequestStatusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="47" column="25" lean-forward="false" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="303" column="37" lean-forward="false" selection-start-line="303" selection-start-column="37" selection-end-line="303" selection-end-column="37" />
           <folding>
-            <marker date="1523175412845" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1523175412845" expanded="false" signature="157:727" ph="..." />
-            <marker date="1523175412845" expanded="true" signature="1163:1500" ph="{...}" />
-            <marker date="1523175412845" expanded="false" signature="1530:1541" ph=" { " />
-            <marker date="1523175412845" expanded="false" signature="1598:1604" ph=" }" />
-            <marker date="1523175412845" expanded="true" signature="1658:2063" ph="{...}" />
-            <marker date="1523175412845" expanded="true" signature="2148:2971" ph="{...}" />
-            <marker date="1523175412845" expanded="true" signature="3059:5626" ph="{...}" />
-            <marker date="1523175412845" expanded="true" signature="5668:6443" ph="{...}" />
-            <marker date="1523175412845" expanded="true" signature="6471:6579" ph="{...}" />
+            <element signature="e#44597#44598#0" expanded="false" />
+            <element signature="e#44626#44627#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Requeststatus/RequestStatusManagers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TODO.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
+        <state relative-caret-position="680">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Tooltypes/ToolTypeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#921#922#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1533,6 +1383,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestManagers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1541,81 +1399,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Tooltypes/ToolTypeService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/AndroidAnnotation/DatabaseTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#921#922#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Requeststatus/RequestStatusService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="55" />
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Requeststatus/RequestStatusManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="47" column="25" lean-forward="false" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar!/org/codehaus/jackson/annotate/JsonIgnoreProperties.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/AndroidAnnotation/DatabaseField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/AndroidAnnotation/ForeignCollectionField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/ForeignCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Tooltypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/TransmissionType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+        <state relative-caret-position="374">
+          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
           <folding>
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2527#2528#0" expanded="true" />
-            <element signature="e#2569#2570#0" expanded="true" />
-            <element signature="e#2603#2604#0" expanded="true" />
+            <element signature="e#3273#3274#0" expanded="false" />
+            <element signature="e#3301#3302#0" expanded="false" />
+            <element signature="e#3343#3344#0" expanded="false" />
+            <element signature="e#3377#3378#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Userstatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="303" column="37" lean-forward="false" selection-start-line="303" selection-start-column="37" selection-end-line="303" selection-end-column="37" />
+        <state relative-caret-position="357">
+          <caret line="31" column="11" lean-forward="false" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="38" column="11" lean-forward="false" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Requeststatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="10" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="62" column="11" lean-forward="false" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Messagetype.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="51" column="12" lean-forward="false" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Auto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Achievmenttype.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
           <folding>
-            <element signature="e#21334#21342#0" expanded="true" />
-            <element signature="e#23262#23270#0" expanded="true" />
-            <element signature="e#42159#42165#0" expanded="true" />
-            <element signature="e#42222#42228#0" expanded="true" />
-            <element signature="e#44597#44598#0" expanded="true" />
-            <element signature="e#44626#44627#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Achievement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

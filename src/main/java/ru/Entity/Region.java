@@ -3,6 +3,9 @@ package ru.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.DatabaseField;
+import ru.Entity.AndroidAnnotation.DatabaseTable;
+import ru.Entity.AndroidAnnotation.ForeignCollectionField;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,15 +15,24 @@ import java.util.Collection;
 @Table(name = "region")
 @Transactional
 @JsonIgnoreProperties(value = { "handler", "hibernateLazyInitializer" })
+@DatabaseTable
 public class Region implements Serializable  {
+    @DatabaseField(generatedId = true)
     private Long id;
+    @DatabaseField
     private String name;
+    @DatabaseField
     private Byte isDeleted;
 
     @JsonIgnore
+    @ForeignCollectionField
     private  Collection<Message> messagesById;
     @JsonIgnore
+    @ForeignCollectionField
     private  Collection<User> usersById;
+
+    public Region() {
+    }
 
     @Id
     @Column(name = "Id", nullable = false)
