@@ -1,12 +1,17 @@
 package ru.Entity;
 
+//import com.j256.ormlite.field.DatabaseField;
+//import com.j256.ormlite.table.DatabaseTable;
+//import com.korotaev.r.ms.testormlite.data.Transactional;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import java.io.Serializable;
+import javax.persistence.*;
+import ru.Entity.*;
+
 import org.springframework.transaction.annotation.Transactional;
 import ru.Entity.AndroidAnnotation.DatabaseField;
 import ru.Entity.AndroidAnnotation.DatabaseTable;
-
-import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity(name = "auto")
 @Table(name = "auto")

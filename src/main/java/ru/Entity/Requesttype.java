@@ -1,15 +1,26 @@
 package ru.Entity;
+//import com.j256.ormlite.dao.ForeignCollection;
+//import com.j256.ormlite.field.DatabaseField;
+//import com.j256.ormlite.field.ForeignCollectionField;
+//import com.j256.ormlite.table.DatabaseTable;
+//import com.korotaev.r.ms.testormlite.data.Transactional;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.springframework.transaction.annotation.Transactional;
-import ru.Entity.AndroidAnnotation.DatabaseField;
-import ru.Entity.AndroidAnnotation.DatabaseTable;
-import ru.Entity.AndroidAnnotation.ForeignCollectionField;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.*;
+//import org.springframework.transaction.annotation.Transactional;
 
 @Entity(name = "requesttype")
 @Table(name = "requesttype")

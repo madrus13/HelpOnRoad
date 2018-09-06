@@ -1,12 +1,26 @@
 package ru.Entity;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.springframework.transaction.annotation.Transactional;
-import ru.Entity.AndroidAnnotation.DatabaseField;
-import ru.Entity.AndroidAnnotation.DatabaseTable;
+//import com.j256.ormlite.field.DatabaseField;
+//import com.j256.ormlite.table.DatabaseTable;
+//import com.korotaev.r.ms.testormlite.data.Transactional;
 
-import javax.persistence.*;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.io.Serializable;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.springframework.transaction.annotation.Transactional;
+import ru.Entity.AndroidAnnotation.*;
+import javax.persistence.*;
 
 @Entity(name = "achievement")
 @Table(name = "achievement")
