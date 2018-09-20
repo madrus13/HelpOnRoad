@@ -1190,12 +1190,20 @@ public class WebServiceMain {
     public ServiceResult insertUpdateUserTools(
             @WebParam(name="sessionToken") String sessionToken,
             @WebParam(name="toolTypeIds")@XmlElement(required=false, nillable=true, name="toolTypeIds")
-                                         ArrayList<Long> setToolTypeIds
+                                         String ToolTypeIds
     ) {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
         List<Tool> tools = null;
         Tool tool = null;
+        ArrayList<Long> setToolTypeIds = new ArrayList<Long>();
+
+        String[] stringArray = ToolTypeIds.split(",");
+
+        for (int i = 0; i < stringArray.length; i++) {
+            setToolTypeIds.add( Long.parseLong(stringArray[i]));
+        }
+
         ArrayList<Long> toolsToAdd = new ArrayList<Long>();
         ArrayList<Long> toolsToRemove = new ArrayList<Long>();
 
