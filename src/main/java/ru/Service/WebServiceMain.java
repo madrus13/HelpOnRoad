@@ -183,15 +183,14 @@ public class WebServiceMain {
         result.IsSuccess= false;
         User user = null;
 
-        if (name.isEmpty() || password.isEmpty()) {
+        if (name.isEmpty() || password.isEmpty() || phone.isEmpty() ) {
             result.IsSuccess = false;
-            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            result.errorMessage = INVALID_USERNAME_OR_PASS_OR_PHONE;
             return result;
         }
 
+        /*
         User findedUserByName  = userService.findFirstByName(name);
-
-
         if (findedUserByName!=null) {
             result.IsSuccess = false;
             result.errorMessage = INVALID_USERNAME_ALLREADY_EXIST;
@@ -206,13 +205,20 @@ public class WebServiceMain {
             result.errorMessage = INVALID_EMAIL_ALLREADY_EXIST;
             return result;
         }
+        */
+        User findedUserByNameOrEmail  = userService.findFirstByNameOrEmail(name, email);
+        if (findedUserByNameOrEmail!=null) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_EMAIL;
+            return result;
+        }
 
-        if (findedUserByMail == null && findedUserByName == null) {
+        if (findedUserByNameOrEmail == null) {
             user = new User();
         }
         else {
             result.IsSuccess = false;
-            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            result.errorMessage = INVALID_USERNAME_OR_PASS_OR_PHONE;
             return result;
         }
 
@@ -225,7 +231,9 @@ public class WebServiceMain {
             user.setPassword(password);
             user.setEmail(email);
             user.setStatus(Userstatus.StatusCommon); //Const : common user
-            user.setRegion(region);
+            if (region > 0) {
+                user.setRegion(region);
+            }
 
             result = saveUserAndRetJson(user);
             return result;
@@ -276,7 +284,7 @@ public class WebServiceMain {
         //По имени не найден пользователь, который обновляется
         if (!sessionToken.isEmpty() && findedUser == null) {
             result.IsSuccess = false;
-            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            result.errorMessage = INVALID_USERNAME_OR_PASS_OR_PHONE;
             return result;
         }
 
@@ -686,8 +694,8 @@ public class WebServiceMain {
         User user = null;
         Session findSession = null;
 
-        user = userService.findFirstByName(name);
-        if (user !=null && user.getPassword().equals(password))
+        user = userService.findFirstByNameAndPassword(name, password);
+        if (user !=null)
         {
             findSession = sessionService.findSessionByUserId(user.getId());
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
@@ -695,10 +703,11 @@ public class WebServiceMain {
             if (findSession == null) {
                 findSession = new ru.Entity.Session();
                 findSession.setUser(user.getId());
+                findSession.setCreationDate(currentTime);
+                findSession.setToken(WSUtility.generateHash(user.getName()+user.getPassword()+ currentTime.toString()));
+                sessionManagers.save(findSession);
             }
-            findSession.setCreationDate(currentTime);
-            findSession.setToken(WSUtility.generateHash(user.getName()+user.getPassword()+ currentTime.toString()));
-            sessionManagers.save(findSession);
+
             result = objToJson(findSession);
         }
 
@@ -1175,14 +1184,14 @@ public class WebServiceMain {
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
 
-        if (isTokenCorrect(sessionToken))
-        {
-            result = objToJson(regionService.findAll());
-        }
-        else {
-            result.errorMessage = INVALID_TOKEN;
-            result.IsSuccess = false;
-        }
+        //if (isTokenCorrect(sessionToken))
+        //{
+       result = objToJson(regionService.findAll());
+       // }
+//        else {
+//            result.errorMessage = INVALID_TOKEN;
+//            result.IsSuccess = false;
+//        }
         return result;
     }
 

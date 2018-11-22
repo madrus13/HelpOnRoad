@@ -77,8 +77,10 @@ public class User implements Serializable {
     @ForeignCollectionField
     private Collection<Tool> toolsById;
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
+    @JsonIgnore
     private Userstatus userstatusByStatus;
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
+    @JsonIgnore
     private Region regionByRegion;
 
     public User() {

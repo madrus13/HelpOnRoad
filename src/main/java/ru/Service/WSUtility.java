@@ -15,8 +15,11 @@ public class WSUtility {
     public static final String F_WEB_FILES_MESSAGE_PHOTO = "/opt/tomcat/files/message_photo/";
 
     public static final String INVALID_USERNAME_OR_PASS = "INVALID_USERNAME_OR_PASS";
+    public static final String INVALID_USERNAME_OR_PASS_OR_PHONE = "INVALID_USERNAME_OR_PASS_OR_PHONE";
     public static final String INVALID_USERNAME_ALLREADY_EXIST = "USERNAME_ALLREADY_EXIST";
     public static final String INVALID_EMAIL_ALLREADY_EXIST = "EMAIL_ALLREADY_EXIST";
+    public static final String INVALID_USERNAME_OR_EMAIL= "INVALID_USERNAME_OR_EMAIL";
+
     public static final String INVALID_TOKEN = "INVALID TOKEN";
     public static final String INVALID_TOKEN_OR_USER_ID = "INVALID_TOKEN_OR_USER_ID";
     public static final String INVALIDE_DATA = "INVALID DATA";

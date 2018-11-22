@@ -3,6 +3,7 @@ package ru.Entity;
 //import com.j256.ormlite.table.DatabaseTable;
 //import com.korotaev.r.ms.testormlite.data.Transactional;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
@@ -36,8 +37,10 @@ public class Tool implements Serializable {
     @DatabaseField
     private Byte isDeleted;
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
+    @JsonIgnore
     private Tooltypes tooltypesByType;
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
+    @JsonIgnore
     private User userByUser;
 
     public Tool() {

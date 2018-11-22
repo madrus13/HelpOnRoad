@@ -68,13 +68,18 @@ public class Request implements Serializable {
     @ForeignCollectionField
     private Collection<Message> messagesById;
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
+    @JsonIgnore
     private User userByResolvedByUser;
+    @JsonIgnore
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private User userByCreationUser;
+    @JsonIgnore
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Region regionByRegion;
+    @JsonIgnore
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Requesttype requesttypeByType;
+    @JsonIgnore
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     private Requeststatus requeststatusByStatus;
 

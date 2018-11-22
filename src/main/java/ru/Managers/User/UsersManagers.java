@@ -10,6 +10,9 @@ public interface UsersManagers extends CrudRepository<User, Long> {
     List<User> findUsersByName(String name);
     User findFirstByNameAndEmail(String name, String email );
     User findFirstByName(String name);
+    User findFirstByNameAndPassword(String name, String password);
+
     User findFirstByEmail(String email );
+    User findFirstByNameOrEmail(String name,String email );
     List<User> findAll();
 }

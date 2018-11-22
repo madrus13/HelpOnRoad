@@ -46,6 +46,14 @@ public class UsersService {
         return usersManagers.findFirstByName(name);
     }
 
+    public User findFirstByNameAndPassword(String name, String password ) {
+        return usersManagers.findFirstByNameAndPassword(name,password);
+    }
+
+    public User findFirstByNameOrEmail(String name, String email ) {
+        return usersManagers.findFirstByNameOrEmail(name, email);
+    }
+
     public User findOneUserById(Long userId) {
         return usersManagers.findOne(userId);
     }
