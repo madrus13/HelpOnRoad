@@ -26,8 +26,9 @@ public class WSUtility {
     public static final String INVALIDE_ACTIVE_REQ = "INVALIDE_ACTIVE_REQ";
 
 
-    public static ServiceResult objToJson(Object obj) {
+    public static ServiceResult objToJson(Object obj, String timingMsg) {
         ServiceResult res = new ServiceResult();
+        long start = System.currentTimeMillis() % 1000;
         res.IsSuccess = false;
 
         ObjectMapper mapper = new ObjectMapper();
@@ -42,6 +43,7 @@ public class WSUtility {
             res.ResultObjectJSON = "";
             e.printStackTrace();
         }
+        res.timingMessage = timingMsg + WebServiceMain.genTimeInfo("objToJson",start );
         return res;
     }
 
