@@ -9,6 +9,9 @@
       <property name="show_sql">false</property>
       <property name="connection.url">jdbc:mysql://localhost:3306/mydb</property>
       <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <property name="connection.username">root</property>
+      <property name="connection.password">root</property>
+      <property name="spring.jpa.properties.hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
       <mapping class="ru.Entity.Achievement"/>
       <mapping class="ru.Entity.Achievmenttype"/>
       <mapping class="ru.Entity.Auto"/>
@@ -24,7 +27,5 @@
       <mapping class="ru.Entity.TransmissionType"/>
       <mapping class="ru.Entity.User"/>
       <mapping class="ru.Entity.Userstatus"/>
-      <!-- <property name="connection.username"/> -->
-      <!-- <property name="connection.password"/> -->
   </session-factory>
 </hibernate-configuration>
