@@ -7,11 +7,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db1ee4d8-524a-479c-be31-99e837808285" name="Default" comment="refactor: not working (refactore Long -int)">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_5_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_activation_javax_activation_1_2_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_jws_javax_jws_api_1_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/sampleJPA_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/sampleJPA_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_org_apache_xml_internal_resolver_20050927.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_2_2_10_b140802_1033.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_2_10_b140802_1033.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_13.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_messaging_saaj_saaj_impl_1_3_25.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_messaging_saaj_saaj_impl_1_5_0.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_stream_buffer_streambuffer_1_5_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_stream_buffer_streambuffer_1_5_6.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_ws_jaxws_rt_2_2_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_ws_jaxws_rt_2_3_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_ws_policy_2_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_ws_policy_2_7_5.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_jws_jsr181_api_1_0_MR1.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_2_12_b140109_1041.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_soap_javax_xml_soap_api_1_3_7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_soap_javax_xml_soap_api_1_4_0.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_ws_jaxws_api_2_2_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_ws_jaxws_api_2_3_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_34.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_13.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jta_1_1_spec_1_1_1.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_4_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_woodstox_core_asl_4_2_0.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_0_Final.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_0_1_Final.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_5_0_1_Final.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_1_GA.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_1_2_2_Final.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_mimepull_mimepull_1_9_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_mimepull_mimepull_1_9_10.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_7_7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ru_sampleJPA_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ru_sampleJPA_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Service/ServiceResult.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Service/ServiceResult.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/sampleJPA.iml" afterPath="$PROJECT_DIR$/sampleJPA.iml" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/FastInfoset-1.2.13.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-commons-annotations-5.0.0.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-core-5.0.1.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-entitymanager-5.0.1.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jandex-1.2.2.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javassist-3.18.1-GA.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.annotation-api-1.2.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.xml.soap-api-1.3.7.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxb-api-2.2.12-b140109.1041.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxb-core-2.2.10-b140802.1033.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxb-impl-2.2.10-b140802.1033.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxws-api-2.2.11.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxws-rt-2.2.10.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jboss-logging-3.3.0.Final.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jsr181-api-1.0-MR1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/mimepull-1.9.4.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/mysql-connector-java-5.1.34.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/policy-2.4.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/resolver-20050927.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/saaj-impl-1.3.25.jar" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/sampleJPA-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/sampleJPA-1.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/stax-ex-1.7.7.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/stax2-api-3.1.1.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/streambuffer-1.5.3.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/woodstox-core-asl-4.2.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/xml-apis-1.0.b2.jar" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,11 +117,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WSUtility.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WSUtility.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="-238">
               <caret line="45" column="62" lean-forward="false" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TODO.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TODO.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sun-jaxws.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -149,7 +243,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>autoManagers</find>
       <find>toolsManagers</find>
       <find>saveToolAndRetJson</find>
       <find>insertup</find>
@@ -179,6 +272,7 @@
       <find>&quot;Save obj: &quot; + ((System.currentTimeMillis() % 1000)-start)</find>
       <find>OVERALL_TAG</find>
       <find>return</find>
+      <find>samplejpa</find>
     </findStrings>
     <replaceStrings>
       <replace>Long</replace>
@@ -209,7 +303,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestManagers.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Managers/Request/RequestService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceUtility.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/sun-jaxws.xml" />
@@ -248,6 +341,7 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/ServiceResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -274,7 +368,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="132" />
     <option name="y" value="-8" />
     <option name="width" value="697" />
@@ -298,8 +392,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -516,8 +609,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,7 +622,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/repository" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26293558" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -935,6 +1029,7 @@
       <workItem from="1543000817108" duration="1552000" />
       <workItem from="1543075820253" duration="11209000" />
       <workItem from="1543139445182" duration="3896000" />
+      <workItem from="1543658278945" duration="2599000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1523906857613</created>
@@ -1003,7 +1098,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270777000" />
+    <option name="totallyTimeSpent" value="273376000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1015,7 +1110,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42973855" sideWeight="0.22401172" order="8" side_tool="true" content_ui="tabs" />
@@ -1038,8 +1134,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24019608" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49707174" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.3120915" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.6879085" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.32026145" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.6797386" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1139,20 +1235,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Message/MessageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Auto/AutoManagers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Auto/AutoService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1278,13 +1360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1495,13 +1570,13 @@
         <state relative-caret-position="177">
           <caret line="1353" column="25" lean-forward="false" selection-start-line="1353" selection-start-column="25" selection-end-line="1353" selection-end-column="25" />
           <folding>
-            <element signature="e#23685#23693#0" expanded="true" />
-            <element signature="e#25868#25876#0" expanded="true" />
-            <element signature="e#47413#47419#0" expanded="true" />
-            <element signature="e#47661#47667#0" expanded="true" />
-            <element signature="e#47724#47730#0" expanded="true" />
-            <element signature="e#50562#50563#0" expanded="true" />
-            <element signature="e#50591#50592#0" expanded="true" />
+            <element signature="e#23685#23693#0" expanded="false" />
+            <element signature="e#25868#25876#0" expanded="false" />
+            <element signature="e#47413#47419#0" expanded="false" />
+            <element signature="e#47661#47667#0" expanded="false" />
+            <element signature="e#47724#47730#0" expanded="false" />
+            <element signature="e#50562#50563#0" expanded="false" />
+            <element signature="e#50591#50592#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1511,17 +1586,41 @@
         <state relative-caret-position="323">
           <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2058#2059#0" expanded="true" />
-            <element signature="e#2090#2091#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2058#2059#0" expanded="false" />
+            <element signature="e#2090#2091#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="-238">
           <caret line="45" column="62" lean-forward="false" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1532,7 +1631,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>sampleJPA:war</last-edited>
+          <last-edited>sampleJPA:war exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1581,11 +1680,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>sampleJPA</last-edited>
+          <last-edited>Web|sampleJPA</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.13410771" />
+                <option value="0.26293558" />
               </list>
             </option>
           </splitter-proportions>
