@@ -20,19 +20,21 @@
         <property name="dataSource" ref="dataSource" />
         <!--Поставщик данных - hibernate-->
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" >
+                <property name="generateDdl" value="true" />
+            </bean>
         </property>
         <!--поиск сущностей в этом пакете-->
         <property name="packagesToScan"
-                  value="ru"/>
+                  value="ru.Entity"/>
     </bean>
 
     <!-- Datasource. Источник данных - база MySQL -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/mydb" />
+        <property name="url" value="jdbc:mysql://localhost:3306/testdb" />
         <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="password" value="ghblehjr321" />
     </bean>
 
     <!--Activates various annotations to be detected in bean classes: Spring's @Required and @Autowired and so on-->

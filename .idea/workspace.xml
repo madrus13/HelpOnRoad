@@ -7,127 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db1ee4d8-524a-479c-be31-99e837808285" name="Default" comment="refactor: not working (refactore Long -int)">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/sampleJPA_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/sampleJPA_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/sampleJPA_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/sampleJPA_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_13.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_35.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_1_5_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_3_RELEASE.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/sampleJPA.iml" afterPath="$PROJECT_DIR$/sampleJPA.iml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml" afterPath="$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/META-INF/MANIFEST.MF" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/antlr-2.7.7.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/aspectjrt-1.8.6.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/aspectjweaver-1.8.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/dom4j-1.6.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/guava-18.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/hibernate-commons-annotations-5.0.0.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/hibernate-core-5.0.1.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/hibernate-entitymanager-5.0.1.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/jandex-1.2.2.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/javassist-3.18.1-GA.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/jboss-logging-3.3.0.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/jcl-over-slf4j-1.7.12.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/joda-time-2.7.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/joda-time-hibernate-1.3.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/log4j-1.2.17.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/mysql-connector-java-5.1.34.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/sampleJPA-1.0-SNAPSHOT.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/slf4j-api-1.7.12.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/slf4j-log4j12-1.7.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-aop-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-aspects-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-beans-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-context-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-core-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-data-commons-1.11.0.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-data-jpa-1.9.0.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-expression-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-jdbc-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-orm-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/spring-tx-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/lib/xml-apis-1.0.b2.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-/WEB-INF/web.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/META-INF/MANIFEST.MF" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/FastInfoset-1.2.15.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/antlr-2.7.7.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/aspectjrt-1.8.6.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/aspectjweaver-1.8.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/byte-buddy-1.8.12.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/classmate-1.3.4.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/dom4j-1.6.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/gmbal-api-only-3.1.0-b001.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/guava-18.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/ha-api-3.1.9.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-commons-annotations-5.0.3.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-core-5.3.1.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/hibernate-entitymanager-5.3.1.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jandex-2.0.3.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javassist-3.22.0-GA.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.activation-1.2.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.activation-api-1.2.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.annotation-api-1.3.2.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.jws-api-1.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.persistence-api-2.2.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/javax.xml.soap-api-1.4.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxb-api-2.3.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxb-runtime-2.3.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxws-api-2.3.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jaxws-rt-2.3.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/jcl-over-slf4j-1.7.12.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/joda-time-2.7.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/joda-time-hibernate-1.3.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/log4j-1.2.17.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/management-api-3.0.0-b012.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/mimepull-1.9.10.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/mysql-connector-java-8.0.13.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/policy-2.7.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/protobuf-java-3.6.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/saaj-impl-1.5.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/sampleJPA-1.0-SNAPSHOT.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/slf4j-api-1.7.12.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/slf4j-log4j12-1.7.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-aop-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-aspects-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-beans-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-context-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-core-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-data-commons-1.11.0.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-data-jpa-1.9.0.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-expression-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-jdbc-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-orm-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/spring-tx-4.1.5.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/stax-ex-1.8.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/stax2-api-4.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/streambuffer-1.5.6.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/txw2-2.3.1.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/lib/woodstox-core-5.1.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/sun-jaxws.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/samplejpa-1/WEB-INF/web.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-config.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -169,51 +51,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WSUtility.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="76" column="16" lean-forward="false" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="WebServiceMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22542">
-              <caret line="1374" column="19" lean-forward="false" selection-start-line="1374" selection-start-column="19" selection-end-line="1374" selection-end-column="19" />
+            <state relative-caret-position="323">
+              <caret line="1373" column="34" lean-forward="false" selection-start-line="1373" selection-start-column="34" selection-end-line="1373" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TODO.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO.txt">
+      <file leaf-file-name="persistence.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/META-INF/persistence.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FactoryHibernate.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
+            <state relative-caret-position="68">
+              <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -229,12 +81,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-config.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="spring-config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="34" column="70" lean-forward="false" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FactoryHibernate.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sun-jaxws.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Session/SessionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+              <folding>
+                <element signature="e#1084#1085#0" expanded="true" />
+                <element signature="e#1146#1147#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -252,8 +147,8 @@
       <file leaf-file-name="UsersService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/User/UsersService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+            <state relative-caret-position="357">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#1222#1223#0" expanded="true" />
                 <element signature="e#1280#1281#0" expanded="true" />
@@ -277,7 +172,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isDeletedFalse</find>
       <find>toolsToRemove</find>
       <find>update</find>
       <find>requestStatusManagers</find>
@@ -307,6 +201,7 @@
       <find>hibernate-core</find>
       <find>jdbc</find>
       <find>mysql</find>
+      <find>getses</find>
     </findStrings>
     <replaceStrings>
       <replace>Long</replace>
@@ -374,8 +269,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-config.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml" />
       </list>
     </option>
   </component>
@@ -403,8 +298,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="132" />
-    <option name="y" value="-8" />
+    <option name="x" value="531" />
+    <option name="y" value="111" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -426,6 +321,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -436,6 +335,11 @@
             <path>
               <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
               <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -450,6 +354,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
@@ -458,6 +370,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ru" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ru" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
@@ -479,16 +400,30 @@
             </path>
             <path>
               <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelpOnRoad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelpOnRoad" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -908,6 +843,8 @@
       <workItem from="1543139445182" duration="3896000" />
       <workItem from="1543658278945" duration="11835000" />
       <workItem from="1543687656779" duration="520000" />
+      <workItem from="1543769936236" duration="1095000" />
+      <workItem from="1545420978127" duration="2050000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1523906857613</created>
@@ -976,7 +913,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283132000" />
+    <option name="totallyTimeSpent" value="286277000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1002,16 +939,17 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2009804" sideWeight="0.7759883" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3872549" sideWeight="0.49707174" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31535947" sideWeight="0.55636895" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49121523" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24019608" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58986926" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49707174" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.32843137" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.67156863" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.34477124" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818447" sideWeight="0.65522873" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1021,7 +959,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31535947" sideWeight="0.55636895" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27284947" sideWeight="0.47361112" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1112,24 +1049,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Achievement/AchievService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Session/SessionManagers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1354,26 +1277,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/User/UsersService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-          <folding>
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1280#1281#0" expanded="true" />
-            <element signature="e#1625#1626#0" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Session/SessionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Entity/Requesttype.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1381,18 +1284,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TODO.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="76" column="16" lean-forward="false" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/User/UsersService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="357">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1625#1626#0" expanded="true" />
+            <element signature="e#1677#1678#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1404,15 +1313,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
+    <entry file="file://$PROJECT_DIR$/TODO.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="76" column="16" lean-forward="false" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+        <state relative-caret-position="17">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/META-INF/persistence.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/Managers/Session/SessionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <element signature="e#1084#1085#0" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydb.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1422,24 +1349,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22542">
-          <caret line="1374" column="19" lean-forward="false" selection-start-line="1374" selection-start-column="19" selection-end-line="1374" selection-end-column="19" />
+        <state relative-caret-position="323">
+          <caret line="1373" column="34" lean-forward="false" selection-start-line="1373" selection-start-column="34" selection-end-line="1373" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+        <state relative-caret-position="238">
+          <caret line="34" column="70" lean-forward="false" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml">
+    <entry file="file://$PROJECT_DIR$/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
+        <state relative-caret-position="68">
+          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1452,10 +1379,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/FactoryHibernate.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/sun-jaxws.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/META-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding />
         </state>
       </provider>
