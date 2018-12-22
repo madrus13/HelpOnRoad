@@ -30,6 +30,9 @@ import javax.persistence.*;
 @DatabaseTable
 public class Achievement implements Serializable {
     @DatabaseField(generatedId = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @DatabaseField
     private String name;

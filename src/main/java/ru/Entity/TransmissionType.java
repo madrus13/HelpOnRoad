@@ -12,12 +12,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.transaction.annotation.Transactional;
 import ru.Entity.AndroidAnnotation.*;
@@ -30,6 +25,9 @@ import ru.Entity.AndroidAnnotation.*;
 @DatabaseTable
 public class TransmissionType implements Serializable {
     @DatabaseField(generatedId = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @DatabaseField
     private String name;
@@ -44,6 +42,7 @@ public class TransmissionType implements Serializable {
 
     @Id
     @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

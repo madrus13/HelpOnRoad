@@ -31,6 +31,9 @@ import ru.Entity.AndroidAnnotation.*;
 @DatabaseTable
 public class Tooltypes implements Serializable {
     @DatabaseField(generatedId = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @DatabaseField
     private String name;

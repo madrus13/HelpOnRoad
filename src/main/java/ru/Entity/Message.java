@@ -24,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 @DatabaseTable
 public class Message implements Serializable {
     @DatabaseField(generatedId = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @DatabaseField
     private String text;
