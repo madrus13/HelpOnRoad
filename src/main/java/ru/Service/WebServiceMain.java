@@ -1404,11 +1404,20 @@ public class WebServiceMain {
             tool.setUser(res.userId);
             saveToolAndRetJson(tool);
         }
-        result.IsSuccess = true;
-        result.errorMessage =  "Removed : " + toolsToRemove.toString() + " " +
-                               "Added : " + toolsToAdd.toString() + " "  ;
 
-        result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+        try {
+            result.ResultObjectJSON = objToJson(toolService.findToolsByUser(res.userId),"").ResultObjectJSON;
+            result.IsSuccess = true;
+            result.errorMessage =  "Removed : " + toolsToRemove.toString() + " " +
+                    "Added : " + toolsToAdd.toString() + " "  ;
+            result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+        }
+        catch (Exception ex)
+        {
+            result.errorMessage = INVALIDE_DATA;
+            result.IsSuccess = false;
+            result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+        }
         return result;
     }
 

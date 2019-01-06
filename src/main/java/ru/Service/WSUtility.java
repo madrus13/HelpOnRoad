@@ -25,13 +25,12 @@ public class WSUtility {
     public static final String INVALIDE_DATA = "INVALID DATA";
     public static final String INVALIDE_ACTIVE_REQ = "INVALIDE_ACTIVE_REQ";
 
+    public static ObjectMapper mapper = new ObjectMapper();
 
     public static ServiceResult objToJson(Object obj, String timingMsg) {
         ServiceResult res = new ServiceResult();
         long start = System.currentTimeMillis() % 1000;
         res.IsSuccess = false;
-
-        ObjectMapper mapper = new ObjectMapper();
 
         try {
             res.ResultObjectJSON = mapper.writeValueAsString(obj);
