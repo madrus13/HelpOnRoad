@@ -245,15 +245,16 @@ public class WebServiceMain {
         return result;
     }
 
+
     @WebMethod
     public ServiceResult updateUser(
-                            /*@WebParam(name="Id") @XmlElement(required=true, nillable=true, name="Id")   Long Id, */
-                            @WebParam(name="sessionToken")  String sessionToken,
-                            @WebParam(name="region") Long region,
-                            @WebParam(name="password") String password,
-                            @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")      String fileName,
-                            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      byte[] fileImage
-                            ) {
+            /*@WebParam(name="Id") @XmlElement(required=true, nillable=true, name="Id")   Long Id, */
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="region") Long region,
+            @WebParam(name="password") String password,
+            @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")      String fileName,
+            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      byte[] fileImage
+    ) {
         String fullPath = "";
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
@@ -275,14 +276,6 @@ public class WebServiceMain {
             result.timingMessage += genTimeInfo(PREPARE_TAG,start);
             return result;
         }
-        /*
-        if (!sessionToken.isEmpty() && !res.userId.equals(Id))
-        {
-            result.IsSuccess = false;
-            result.errorMessage = INVALID_TOKEN_OR_USER_ID;
-            return result;
-        }
-        */
 
         User findedUser  = getUserByToken(sessionToken);
 
@@ -311,7 +304,7 @@ public class WebServiceMain {
         if (user  != null) {
             user.setCreationDate(new Timestamp(System.currentTimeMillis()));
             user.setModifyDate(new Timestamp(System.currentTimeMillis()));
-            user.setPassword(password);
+            //user.setPassword(password);
             user.setStatus(Userstatus.StatusCommon); //Const : common user
 
             fullPath = F_WEB_FILES_USER_AVATAR_PHOTO + String.valueOf(user.hashCode()) + System.currentTimeMillis() + fileName;
@@ -329,6 +322,74 @@ public class WebServiceMain {
         result.timingMessage += genTimeInfo(PREPARE_TAG,start);
         return result;
     }
+
+
+    @WebMethod
+    public ServiceResult updateUserPassword(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="password") String password
+    ) {
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        User user = null;
+        long start = System.currentTimeMillis() % 1000;
+
+        if (password.isEmpty()) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS;
+            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+            return result;
+        }
+
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+
+        if (!sessionToken.isEmpty() && res.isBoolVal == false) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
+            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+            return result;
+        }
+
+
+        User findedUser  = getUserByToken(sessionToken);
+
+        //По имени не найден пользователь, который обновляется
+        if (!sessionToken.isEmpty() && findedUser == null) {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_USERNAME_OR_PASS_OR_PHONE;
+            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+            return result;
+        }
+
+
+
+        if (user == null && findedUser!=null && res.isBoolVal == true) {
+            user = findedUser;
+        }
+        else {
+            if(user==null) {
+                result.IsSuccess = false;
+                result.errorMessage = INVALID_TOKEN_OR_USER_ID;
+                result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+                return result;
+
+            }
+        }
+
+        if (user  != null) {
+            user.setModifyDate(new Timestamp(System.currentTimeMillis()));
+            user.setPassword(password);
+            result = saveUserAndRetJson(user);
+            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+            return result;
+        }
+        result.IsSuccess = false;
+        result.errorMessage =  INVALIDE_DATA;
+        result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+        return result;
+    }
+
+
 
     @WebMethod
     public ServiceResult insertRequest(
