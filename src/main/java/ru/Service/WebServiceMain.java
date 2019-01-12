@@ -83,6 +83,7 @@ public class WebServiceMain {
     public static String PREPARE_TAG = "prepare";
     public static String SAVE_OBJ_TAG = "saveObj";
 
+    public  SendPushNotification sendPushNotification;
     public WebServiceMain() {
         initContext();
         initService();
@@ -863,6 +864,10 @@ public class WebServiceMain {
         }
 
         result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+
+        if (result.IsSuccess && sendPushNotification!=null) {
+            sendPushNotification.execute("region_" + regionId.toString(),"insertMessage", result.ResultObjectJSON, "New message in region chat");
+        }
         return result;
     }
 
@@ -1443,6 +1448,8 @@ public class WebServiceMain {
             ctx = new GenericXmlApplicationContext();
             ctx.load("classpath:spring-config.xml");
             ctx.refresh();
+            sendPushNotification = new SendPushNotification();
+
         }
     }
 

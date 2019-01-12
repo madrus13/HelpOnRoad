@@ -6,7 +6,7 @@
 
 <groupId>ru</groupId>
 <artifactId>samplejpa</artifactId>
-<version>22</version>
+<version>30</version>
     <build>
         <plugins>
             <plugin>
