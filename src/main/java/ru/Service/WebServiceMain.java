@@ -843,8 +843,15 @@ public class WebServiceMain {
                     if (userRx !=null){
                         msg.setUserRx(userRx);
                     }
+
+                    User user = getUserByToken(sessionToken);
+
+
                     msg.setText(text);
                     msg.setCreateUser(createUserByToken);
+                    if (user!=null) {
+                        msg.setCreateUserName(user.getName());
+                    }
                     fileDirName = F_WEB_FILES_MESSAGE_PHOTO + String.valueOf(msg.hashCode()) + System.currentTimeMillis() + fileName;
                     if (saveByteToFile(fileImage, fileDirName) == true) {
                         msg.setMessagePhotoPath(fileDirName);
