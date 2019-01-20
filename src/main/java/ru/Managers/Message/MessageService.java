@@ -32,12 +32,12 @@ public class MessageService {
         return Lists.newArrayList(messageManagers.findAll());
     }
 
-    public List<Message> findMessageByRegionAndAndIdAfter(Long region, Long Id, int pageSize) {
-        return Lists.newArrayList(messageManagers.findMessageByRegionAndAndIdGreaterThan(region,Id, new PageRequest(0,pageSize)));
+    public List<Message> findMessageByRegionAndAndIdAfter(Long region, int startRow, int pageSize) {
+        return Lists.newArrayList(messageManagers.findMessageByRegionOrderById(region, new PageRequest(startRow,pageSize)));
     }
 
-    public List<Message> findAllMessageByRequest(Long request, int pageSize) {
-        return Lists.newArrayList(messageManagers.findMessageByRequest(request, new PageRequest(0,pageSize)));
+    public List<Message> findAllMessageByRequest(Long request, int startRow, int pageSize) {
+        return Lists.newArrayList(messageManagers.findMessageByRequest(request, new PageRequest(startRow,pageSize)));
     }
 
 

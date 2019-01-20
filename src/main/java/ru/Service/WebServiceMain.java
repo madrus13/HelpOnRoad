@@ -882,7 +882,7 @@ public class WebServiceMain {
     public ServiceResult getMessageByRegionAndIdGreater(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="regionId")      Long regionId,
-            @WebParam(name="lastId")        Long lastId,
+            @WebParam(name="lastId")        int startRow,
             @WebParam(name="pageSize")      int pageSize
 
             ) {
@@ -892,7 +892,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result = objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, lastId,pageSize ),
+            result = objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, startRow,pageSize ),
                     "");
         }
         else {
@@ -908,6 +908,7 @@ public class WebServiceMain {
     public ServiceResult getAllMessageByRequest(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="request")       Long request,
+            @WebParam(name="startRow")      int startRow,
             @WebParam(name="pageSize")      int pageSize
 
     ) {
@@ -917,7 +918,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result=  objToJson(messageService.findAllMessageByRequest(request,pageSize ),"");
+            result=  objToJson(messageService.findAllMessageByRequest(request, startRow, pageSize ),"");
 
         }
         else {
