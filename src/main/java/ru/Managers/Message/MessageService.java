@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("jpaMessageService")
@@ -32,8 +33,21 @@ public class MessageService {
         return Lists.newArrayList(messageManagers.findAll());
     }
 
-    public List<Message> findMessageByRegionAndAndIdAfter(Long region, int startRow, int pageSize) {
+    public List<Message> findMessageByRegion(Long region, int startRow, int pageSize) {
         return Lists.newArrayList(messageManagers.findMessageByRegionOrderById(region, new PageRequest(startRow,pageSize)));
+    }
+
+    public List<Message> findMessageByRegionAndAndIdAfter(Long region, Long Id, int pageSize) {
+        return Lists.newArrayList(messageManagers.findMessageByRegionAndIdGreaterThan(region,Id, new PageRequest(0,pageSize)));
+    }
+
+    public List<Message> findMessageByReqionAndCreationDateBetweenOrderByIdAsc(Long region,
+                                                                               Date startDate,
+                                                                               Date endDate,
+                                                                               int page,
+                                                                               int pageSize) {
+        return Lists.newArrayList(messageManagers.findMessageByRegionAndCreationDateBetweenOrderByIdAsc(
+                region, startDate, endDate, new PageRequest(page,pageSize)));
     }
 
     public List<Message> findAllMessageByRequest(Long request, int startRow, int pageSize) {

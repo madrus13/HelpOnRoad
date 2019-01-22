@@ -882,7 +882,7 @@ public class WebServiceMain {
     public ServiceResult getMessageByRegionAndIdGreater(
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="regionId")      Long regionId,
-            @WebParam(name="lastId")        int startRow,
+            @WebParam(name="lastId")        Long Id,
             @WebParam(name="pageSize")      int pageSize
 
             ) {
@@ -892,7 +892,7 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken))
         {
-            result = objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, startRow,pageSize ),
+            result = objToJson(messageService.findMessageByRegionAndAndIdAfter(regionId, Id,pageSize ),
                     "");
         }
         else {
@@ -902,6 +902,51 @@ public class WebServiceMain {
         result.timingMessage += genTimeInfo(OVERALL_TAG,start);
         return result;
     }
+
+
+
+    @WebMethod
+    public ServiceResult findMessageByRegionAndCreationDateBetweenOrderByIdAsc(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="regionId")      Long regionId,
+            @WebParam(name="startDate")     Date startDate,
+            @WebParam(name="endDate")       Date endDate,
+            @WebParam(name="page")          int page,
+            @WebParam(name="pageSize")      int pageSize
+
+    ) {
+        boolean isErrorInParams = false;
+        if (regionId == null || startDate == null || endDate == null || page < 0 || pageSize < 1) {
+            isErrorInParams = true;
+        }
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        long start = System.currentTimeMillis() % 1000;
+
+        if (isTokenCorrect(sessionToken) && !isErrorInParams)
+        {
+            result = objToJson(messageService.findMessageByReqionAndCreationDateBetweenOrderByIdAsc(
+                    regionId,
+                    startDate,
+                    endDate,
+                    page,
+                    pageSize ),
+                    "");
+        }
+        else if(!isErrorInParams) {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+        }
+        else {
+            result.errorMessage = INVALIDE_DATA;
+            result.IsSuccess = false;
+        }
+        result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+        return result;
+    }
+
+
+
 
 
     @WebMethod
