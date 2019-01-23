@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.log4j.*;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.thymeleaf.util.DateUtils;
 import ru.Entity.*;
 import ru.Managers.Auto.AutoManagers;
 import ru.Managers.Tool.ToolManagers;
@@ -925,6 +927,62 @@ public class WebServiceMain {
 
         if (isTokenCorrect(sessionToken) && !isErrorInParams)
         {
+            result = objToJson(messageService.findMessageByReqionAndCreationDateBetweenOrderByIdAsc(
+                    regionId,
+                    startDate,
+                    endDate,
+                    page,
+                    pageSize ),
+                    "");
+        }
+        else if(!isErrorInParams) {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+        }
+        else {
+            result.errorMessage = INVALIDE_DATA;
+            result.IsSuccess = false;
+        }
+        result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+        return result;
+    }
+
+
+    @WebMethod
+    public ServiceResult findMessageByRegionAndCreationDateBetweenOffset(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="regionId")      Long regionId,
+            @WebParam(name="offset")        int offset,
+            @WebParam(name="page")          int page,
+            @WebParam(name="pageSize")      int pageSize
+
+    ) {
+        boolean isErrorInParams = false;
+        if (regionId == null || page < 0 || pageSize < 1) {
+            isErrorInParams = true;
+        }
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        long start = System.currentTimeMillis() % 1000;
+
+        if (isTokenCorrect(sessionToken) && !isErrorInParams)
+        {
+            Date now = new Date();
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY,23 );
+            cal.set(Calendar.MINUTE,59);
+            cal.set(Calendar.SECOND,59);
+            cal.set(Calendar.MILLISECOND,59);
+            Date endDate = cal.getTime();
+
+            Calendar prev = Calendar.getInstance();
+            prev.set(Calendar.HOUR_OF_DAY,0 );
+            prev.set(Calendar.MINUTE,0);
+            prev.set(Calendar.SECOND,0);
+            prev.set(Calendar.MILLISECOND,0);
+
+            Date startDate  = new DateTime(prev).minusDays(offset).toDate();
             result = objToJson(messageService.findMessageByReqionAndCreationDateBetweenOrderByIdAsc(
                     regionId,
                     startDate,
