@@ -10,9 +10,10 @@ import java.util.Base64;
 
 public class WSUtility {
     //f:\WebFiles
-    public static final String F_WEB_FILES_REQUEST_PHOTO = "/opt/tomcat/files/request_photo/";
-    public static final String F_WEB_FILES_USER_AVATAR_PHOTO = "/opt/tomcat/files/user_ava_photo/";
-    public static final String F_WEB_FILES_MESSAGE_PHOTO = "/opt/tomcat/files/message_photo/";
+    public static final String F_WEB_FILES_COMMON = "/var/www/html/files";
+    public static final String F_WEB_FILES_REQUEST_PHOTO = F_WEB_FILES_COMMON + "/request_photo/";
+    public static final String F_WEB_FILES_USER_AVATAR_PHOTO = F_WEB_FILES_COMMON + "/user_ava_photo/";
+    public static final String F_WEB_FILES_MESSAGE_PHOTO = F_WEB_FILES_COMMON + "/message_photo/";
 
     public static final String INVALID_USERNAME_OR_PASS = "INVALID_USERNAME_OR_PASS";
     public static final String INVALID_USERNAME_OR_PASS_OR_PHONE = "INVALID_USERNAME_OR_PASS_OR_PHONE";

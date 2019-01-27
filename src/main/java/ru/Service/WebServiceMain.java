@@ -8,6 +8,8 @@ import org.joda.time.LocalDate;
 import org.thymeleaf.util.DateUtils;
 import ru.Entity.*;
 import ru.Managers.Auto.AutoManagers;
+import ru.Managers.Files.FilesManagers;
+import ru.Managers.Files.FilesService;
 import ru.Managers.Tool.ToolManagers;
 import ru.Service.WSUtility;
 import ru.Managers.Achievement.AchievService;
@@ -66,6 +68,9 @@ public class WebServiceMain {
     private MessageManagers messageManagers;
     private AutoManagers autoManagers;
     private ToolManagers toolsManagers;
+    private FilesManagers filesManagers;
+
+
 
     private UsersService userService;
     private SessionService sessionService;
@@ -80,6 +85,8 @@ public class WebServiceMain {
     private ToolService toolService;
     private ToolTypeService toolTypeService;
     private TrTypeService trTypeService;
+    private FilesService filesService;
+
 
     public static String OVERALL_TAG = "overall";
     public static String PREPARE_TAG = "prepare";
@@ -185,6 +192,25 @@ public class WebServiceMain {
         }
         return objToJson(obj,genTimeInfo(SAVE_OBJ_TAG,start));
     }
+
+
+    private ServiceResult saveFileAndRetJson(Files obj) {
+        ServiceResult res = new ServiceResult();
+        long start = System.currentTimeMillis() % 1000;
+        try {
+            if (filesManagers != null) {
+                filesManagers.save(obj);
+                res.IsSuccess = true;
+            }
+        } catch (Exception ex) {
+            res.errorMessage = INVALIDE_DATA;
+            res.IsSuccess = false;
+            res.timingMessage += genTimeInfo(SAVE_OBJ_TAG,start);
+            return res;
+        }
+        return objToJson(obj,genTimeInfo(SAVE_OBJ_TAG,start));
+    }
+
 
     @WebMethod
     public ServiceResult insertUser(
@@ -806,10 +832,11 @@ public class WebServiceMain {
             /* @WebParam(name="Id")            Long Id, */
             @WebParam(name="sessionToken")  String sessionToken,
             @WebParam(name="text")          String text,
-            @WebParam(name="requestId") @XmlElement(required=false, nillable=true, name="requestId")     Long requestId,
+            @WebParam(name="requestId") @XmlElement(required=false, nillable=true, name="requestId")    Long requestId,
             @WebParam(name="regionId") @XmlElement(required=false, nillable=true, name="regionId")      Long regionId,
-            @WebParam(name="userRx") @XmlElement(required=false, nillable=true, name="userRx")         Long userRx,
+            @WebParam(name="userRx") @XmlElement(required=false, nillable=true, name="userRx")          Long userRx,
             @WebParam(name="typeId") @XmlElement(required=false, nillable=true, name="typeId")          Long typeId,
+            @WebParam(name="fileId") @XmlElement(required=false, nillable=true, name="fileId")          Long fileId,
             @WebParam(name="fileName") @XmlElement(required=false, nillable=true, name="fileName")      String fileName,
             @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     byte[] fileImage
 
@@ -839,11 +866,18 @@ public class WebServiceMain {
                     if (requestId != null){
                         msg.setRequest(requestId);
                     }
+                    if (requestId != null){
+                        msg.setRequest(requestId);
+                    }
                     if (typeId !=null){
                         msg.setType(typeId);
                     }
                     if (userRx !=null){
                         msg.setUserRx(userRx);
+                    }
+
+                    if (fileId !=null){
+                        msg.setFiles(fileId);
                     }
 
                     User user = getUserByToken(sessionToken);
@@ -905,6 +939,104 @@ public class WebServiceMain {
         return result;
     }
 
+
+
+    @WebMethod()
+    public ServiceResult insertFile(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="fileName")      String fileName,
+            @WebParam(name="description")   String description,
+            @WebParam(name="fileType")      String fileType,
+            @WebParam(name="createUser") @XmlElement(required=false, nillable=true, name="createUser")   Long createUser,
+            @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     byte[] fileImage
+    ) {
+        Files file;
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        long start = System.currentTimeMillis() % 1000;
+
+        String fileDirName = "";
+        CustomObjResult res = isTokenCorrectWithUser(sessionToken);
+        Long createUserByToken = res.userId;
+        if (res.isBoolVal == true)
+        {
+            if (createUserByToken > 0) {
+
+                file = new Files();
+
+                if (file!=null) {
+                    file.setCreationDate(new Timestamp(System.currentTimeMillis()));
+                    file.setIsDeleted(isDeletedFalse);
+
+                    file.setModifyDate(new Timestamp(System.currentTimeMillis()));
+
+                    if (description != null){
+                        file.setDescription(description);
+                    }
+                    if (fileName != null){
+                        file.setFileName(fileName);
+                    }
+                    if (fileType != null){
+                        file.setFileType(fileType);
+                    }
+
+                    if (createUser !=null){
+                        file.setCreationUser(createUser);
+                    }
+
+                    User user = getUserByToken(sessionToken);
+
+                    file.setCreationUser(createUserByToken);
+                    if (user!=null) {
+                        file.setCreationUser(user.getId());
+                    }
+                    fileDirName = F_WEB_FILES_MESSAGE_PHOTO + String.valueOf(file.hashCode()) + System.currentTimeMillis() + fileName;
+                    if (saveByteToFile(fileImage, fileDirName) == true) {
+                        file.setFullPhotoPath(fileDirName);
+                    }
+
+                    result = saveFileAndRetJson(file);
+                }
+                else {
+                    result.IsSuccess = false;
+                    result.errorMessage = INVALIDE_DATA;
+                }
+            }
+        }
+        else {
+            result.IsSuccess = false;
+            result.errorMessage = INVALID_TOKEN;
+        }
+
+        result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+
+        if (result.IsSuccess && sendPushNotification!=null) {
+        }
+        return result;
+    }
+
+
+    @WebMethod
+    public ServiceResult getFileById(
+            @WebParam(name="sessionToken")  String sessionToken,
+            @WebParam(name="id")            Long id
+    ) {
+        ServiceResult result = new ServiceResult();
+        result.IsSuccess= false;
+        long start = System.currentTimeMillis() % 1000;
+
+        if (isTokenCorrect(sessionToken))
+        {
+            result = objToJson(filesService.findFirstById(id ),
+                    "");
+        }
+        else {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+        }
+        result.timingMessage += genTimeInfo(OVERALL_TAG,start);
+        return result;
+    }
 
 
     @WebMethod
@@ -1574,7 +1706,8 @@ public class WebServiceMain {
                     requestManagers == null ||
                     messageManagers == null ||
                     autoManagers    == null ||
-                    toolsManagers   == null
+                    toolsManagers   == null ||
+                    filesManagers   == null
                     ) {
                 regionManagers = ctx.getBean(RegionManagers.class);
                 sessionManagers = ctx.getBean(SessionManagers.class);
@@ -1583,6 +1716,7 @@ public class WebServiceMain {
                 messageManagers = ctx.getBean(MessageManagers.class);
                 autoManagers = ctx.getBean(AutoManagers.class);
                 toolsManagers = ctx.getBean(ToolManagers.class);
+                filesManagers = ctx.getBean(FilesManagers.class);
             }
 
 
@@ -1599,6 +1733,7 @@ public class WebServiceMain {
             if (toolService == null) toolService = new ToolService(ctx);
             if (toolTypeService == null) toolTypeService = new ToolTypeService(ctx);
             if (trTypeService == null) trTypeService = new TrTypeService(ctx);
+            if (filesService == null) filesService = new FilesService(ctx);
         }
     }
 

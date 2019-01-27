@@ -30,6 +30,6 @@
       <mapping class="ru.Entity.Tooltypes"/>
       <mapping class="ru.Entity.TransmissionType"/>
       <mapping class="ru.Entity.User"/>
-      <mapping class="ru.Entity.Userstatus"/>
+      <mapping class="ru.Entity.Files"/>
   </session-factory>
 </hibernate-configuration>

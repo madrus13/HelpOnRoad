@@ -7,6 +7,7 @@ package ru.Entity;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import java.io.File;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,10 @@ public class Message implements Serializable {
     private Byte isDeleted;
     @DatabaseField
     private Long request;
+
+
+    @DatabaseField
+    private Long files;
     @DatabaseField
     private Long type;
     @DatabaseField
@@ -59,6 +64,9 @@ public class Message implements Serializable {
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     @JsonIgnore
     private Request requestByRequest;
+    @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
+    @JsonIgnore
+    private Files filesByFiles;
     @DatabaseField(canBeNull = true, foreign = true, foreignAutoRefresh = true)
     @JsonIgnore
     private Messagetype messagetypeByType;
@@ -181,6 +189,17 @@ public class Message implements Serializable {
         this.region = region;
     }
 
+
+    @Basic
+    @Column(name = "files", nullable = true)
+    public Long getFiles() {
+        return files;
+    }
+
+    public void setFiles(Long files) {
+        this.files = files;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -238,6 +257,17 @@ public class Message implements Serializable {
     public void setUserByUserRx(User userByUserRx) {
         this.userByUserRx = userByUserRx;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "Files", referencedColumnName = "Id", insertable = false, updatable = false)
+    public Files getFilesByFiles() {
+        return filesByFiles;
+    }
+
+    public void setFilesByFiles(Files  filesByFiles) {
+        this.filesByFiles = filesByFiles;
+    }
+
 
     @ManyToOne
     @JoinColumn(name = "Request", referencedColumnName = "Id", insertable = false, updatable = false)
