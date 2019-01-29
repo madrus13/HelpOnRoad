@@ -340,6 +340,9 @@ public class WebServiceMain {
             if (WSUtility.saveByteToFile(fileImage, fullPath) == true) {
                 user.setUserPhotoPath(fullPath);
             }
+            else {
+                user.setUserPhotoPath("");
+            }
             user.setRegion(region);
 
             result = saveUserAndRetJson(user);

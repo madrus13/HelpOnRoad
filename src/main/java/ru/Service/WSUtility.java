@@ -2,6 +2,7 @@ package ru.Service;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -10,7 +11,7 @@ import java.util.Base64;
 
 public class WSUtility {
     //f:\WebFiles
-    public static final String F_WEB_FILES_COMMON = "/var/www/html/files";
+    public static final String F_WEB_FILES_COMMON = "/opt/tomcat/webapps/upload";
     public static final String F_WEB_FILES_REQUEST_PHOTO = F_WEB_FILES_COMMON + "/request_photo/";
     public static final String F_WEB_FILES_USER_AVATAR_PHOTO = F_WEB_FILES_COMMON + "/user_ava_photo/";
     public static final String F_WEB_FILES_MESSAGE_PHOTO = F_WEB_FILES_COMMON + "/message_photo/";
@@ -75,11 +76,19 @@ public class WSUtility {
             encodedBytes = Base64.getEncoder().encode(fileImage);
 
             try (FileOutputStream fos = new FileOutputStream(  fullPathToSave )) {
+
                 fos.write(encodedBytes);
                 isSuccess = true;
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
+            File file = new File(fullPathToSave);
+            if (file!=null) {
+                file.setExecutable(false);
+                file.setReadable(true);
+                file.setWritable(true);
+            }
+
         }
         return isSuccess;
     }
