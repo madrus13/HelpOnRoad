@@ -282,7 +282,7 @@ public class WebServiceMain {
             @WebParam(name="region") Long region,
             @WebParam(name="password") String password,
             @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")      String fileName,
-            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      byte[] fileImage
+            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")      String fileImage
     ) {
         String fullPath = "";
         ServiceResult result = new ServiceResult();
@@ -337,7 +337,7 @@ public class WebServiceMain {
             user.setStatus(Userstatus.StatusCommon); //Const : common user
 
             fullPath = F_WEB_FILES_USER_AVATAR_PHOTO + String.valueOf(user.hashCode()) + System.currentTimeMillis() + fileName;
-            if (WSUtility.saveByteToFile(fileImage, fullPath) == true) {
+            if (WSUtility.saveByteToFile(fileImage.getBytes(), fullPath) == true) {
                 user.setUserPhotoPath(fullPath);
             }
             else {

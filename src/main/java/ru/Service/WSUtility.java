@@ -73,7 +73,8 @@ public class WSUtility {
         byte[] encodedBytes;
         boolean isSuccess = false;
         if (fileImage!=null && fileImage.length > 0) {
-            encodedBytes = Base64.getEncoder().encode(fileImage);
+
+            encodedBytes = Base64.getDecoder().decode(fileImage);
 
             try (FileOutputStream fos = new FileOutputStream(  fullPathToSave )) {
 
