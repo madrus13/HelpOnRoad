@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db1ee4d8-524a-479c-be31-99e837808285" name="Default" comment="refactor: not working (refactore Long -int)">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" afterPath="$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="WebServiceMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="339" column="61" lean-forward="false" selection-start-line="339" selection-start-column="61" selection-end-line="339" selection-end-column="61" />
+            <state relative-caret-position="173">
+              <caret line="341" column="30" lean-forward="false" selection-start-line="341" selection-start-column="30" selection-end-line="341" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -59,8 +58,8 @@
       <file leaf-file-name="WSUtility.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="17">
+              <caret line="70" column="29" lean-forward="false" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -312,8 +311,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -492,8 +493,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -930,6 +929,7 @@
       <workItem from="1548695315520" duration="3615000" />
       <workItem from="1548780503550" duration="3979000" />
       <workItem from="1548877470560" duration="1130000" />
+      <workItem from="1548960845766" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1523906857613</created>
@@ -998,7 +998,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352098000" />
+    <option name="totallyTimeSpent" value="354077000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1033,10 +1033,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08658744" sideWeight="0.8169839" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49707174" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22390318" sideWeight="0.29202038" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22390318" sideWeight="0.7079796" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22692889" sideWeight="0.3047404" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22692889" sideWeight="0.6952596" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13752122" sideWeight="0.47361112" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24787776" sideWeight="0.47361112" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1128,13 +1128,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java</url>
-          <line>1655</line>
+          <line>1676</line>
           <properties />
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java</url>
-          <line>1058</line>
+          <line>1079</line>
           <properties />
           <option name="timeStamp" value="65" />
         </line-breakpoint>
@@ -1521,16 +1521,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WSUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        <state relative-caret-position="17">
+          <caret line="70" column="29" lean-forward="false" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/Service/WebServiceMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="339" column="61" lean-forward="false" selection-start-line="339" selection-start-column="61" selection-end-line="339" selection-end-column="61" />
+        <state relative-caret-position="173">
+          <caret line="341" column="30" lean-forward="false" selection-start-line="341" selection-start-column="30" selection-end-line="341" selection-end-column="30" />
           <folding />
         </state>
       </provider>

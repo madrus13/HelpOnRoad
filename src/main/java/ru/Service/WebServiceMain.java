@@ -41,6 +41,7 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.ws.soap.MTOM;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -337,11 +338,15 @@ public class WebServiceMain {
             user.setStatus(Userstatus.StatusCommon); //Const : common user
 
             fullPath = F_WEB_FILES_USER_AVATAR_PHOTO + String.valueOf(user.hashCode()) + System.currentTimeMillis() + fileName;
-            if (WSUtility.saveByteToFile(fileImage.getBytes(), fullPath) == true) {
-                user.setUserPhotoPath(fullPath);
-            }
-            else {
-                user.setUserPhotoPath("");
+            try {
+                if (WSUtility.saveByteToFile(fileImage.getBytes("UTF-8"), fullPath) == true) {
+                    user.setUserPhotoPath(fullPath);
+                }
+                else {
+                    user.setUserPhotoPath("");
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
             user.setRegion(region);
 
@@ -434,7 +439,7 @@ public class WebServiceMain {
             @WebParam(name="typeId") @XmlElement(required=false, nillable=true, name="typeId")           Long typeId,
             @WebParam(name="regionId")@XmlElement(required=false, nillable=true, name="regionId")          Long regionId,
             @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")          String fileName,
-            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
+            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")        String fileImage
 
     ) {
         ServiceResult result = new ServiceResult();
@@ -512,8 +517,12 @@ public class WebServiceMain {
                     }
                     if (!fileName.isEmpty()) {
                         fileDirName = F_WEB_FILES_REQUEST_PHOTO + String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
-                        if (saveByteToFile(fileImage, fileDirName) == true) {
-                            request.setRequestPhotoPath(fileDirName);
+                        try {
+                            if (saveByteToFile(fileImage.getBytes("UTF-8"), fileDirName) == true) {
+                                request.setRequestPhotoPath(fileDirName);
+                            }
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
                         }
                     }
 
@@ -548,7 +557,7 @@ public class WebServiceMain {
             @WebParam(name="typeId")            Long typeId,
             @WebParam(name="regionId")          Long regionId,
             @WebParam(name="fileName")@XmlElement(required=false, nillable=true, name="fileName")          String fileName,
-            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")         byte[] fileImage
+            @WebParam(name="fileImage")@XmlElement(required=false, nillable=true, name="fileImage")        String fileImage
 
     ) {
         ServiceResult result = new ServiceResult();
@@ -633,8 +642,12 @@ public class WebServiceMain {
                     }
                     if (!fileName.isEmpty()) {
                         fileDirName = F_WEB_FILES_REQUEST_PHOTO + String.valueOf(request.hashCode()) + System.currentTimeMillis() + fileName;
-                        if (saveByteToFile(fileImage, fileDirName) == true) {
-                            request.setRequestPhotoPath(fileDirName);
+                        try {
+                            if (saveByteToFile(fileImage.getBytes("UTF-8"), fileDirName) == true) {
+                                request.setRequestPhotoPath(fileDirName);
+                            }
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
                         }
                     }
 
@@ -841,7 +854,7 @@ public class WebServiceMain {
             @WebParam(name="typeId") @XmlElement(required=false, nillable=true, name="typeId")          Long typeId,
             @WebParam(name="fileId") @XmlElement(required=false, nillable=true, name="fileId")          Long fileId,
             @WebParam(name="fileName") @XmlElement(required=false, nillable=true, name="fileName")      String fileName,
-            @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     byte[] fileImage
+            @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     String fileImage
 
     ) {
         Message msg = null;
@@ -892,8 +905,12 @@ public class WebServiceMain {
                         msg.setCreateUserName(user.getName());
                     }
                     fileDirName = F_WEB_FILES_MESSAGE_PHOTO + String.valueOf(msg.hashCode()) + System.currentTimeMillis() + fileName;
-                    if (saveByteToFile(fileImage, fileDirName) == true) {
-                        msg.setMessagePhotoPath(fileDirName);
+                    try {
+                        if (saveByteToFile(fileImage.getBytes("UTF-8"), fileDirName) == true) {
+                            msg.setMessagePhotoPath(fileDirName);
+                        }
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
                     }
 
                     result = saveMessageAndRetJson(msg);
@@ -951,7 +968,7 @@ public class WebServiceMain {
             @WebParam(name="description")   String description,
             @WebParam(name="fileType")      String fileType,
             @WebParam(name="createUser") @XmlElement(required=false, nillable=true, name="createUser")   Long createUser,
-            @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     byte[] fileImage
+            @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     String fileImage
     ) {
         Files file;
         ServiceResult result = new ServiceResult();
@@ -994,8 +1011,12 @@ public class WebServiceMain {
                         file.setCreationUser(user.getId());
                     }
                     fileDirName = F_WEB_FILES_MESSAGE_PHOTO + String.valueOf(file.hashCode()) + System.currentTimeMillis() + fileName;
-                    if (saveByteToFile(fileImage, fileDirName) == true) {
-                        file.setFullPhotoPath(fileDirName);
+                    try {
+                        if (saveByteToFile(fileImage.getBytes("UTF-8"), fileDirName) == true) {
+                            file.setFullPhotoPath(fileDirName);
+                        }
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
                     }
 
                     result = saveFileAndRetJson(file);
