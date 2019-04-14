@@ -1,6 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="sampleJPA:war exploded">
     <output-path>$PROJECT_DIR$/target/samplejpa-30</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>sampleJPA</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -44,7 +51,6 @@
           <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.5" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
-          <element id="library" level="project" name="Maven: ru:sampleJPA:1" />
           <element id="library" level="project" name="Maven: com.sun.xml.ws:jaxws-rt:2.3.1" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.1" />
           <element id="library" level="project" name="Maven: javax.xml.ws:jaxws-api:2.3.1" />
@@ -69,6 +75,8 @@
           <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: com.google.common.html.types:proto:1.0.8" />
+          <element id="library" level="project" name="Maven: ru:sampleJPA:1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

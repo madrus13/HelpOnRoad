@@ -27,6 +27,7 @@
           <factory-entry name="NewPersistenceUnit" value="4e56ddcf-1713-4890-994d-593ff78903a8" />
           <factory-entry name="emf" value="23213fd6-a08b-4578-8f79-25f7bf8dcce6" />
         </datasource-mapping>
+        <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/META-INF/persistence.xml" />
       </configuration>
     </facet>
@@ -54,7 +55,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.thymeleaf:thymeleaf:Release" level="project" />
     <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release" level="project" />
@@ -69,6 +70,9 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Hibernate 5.4.1-5.4.1" level="project" />
+    <orderEntry type="library" name="Hibernate 5.4.1-5.4.1" level="project" />
+    <orderEntry type="library" name="Spring-4.3.18.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.35" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:5.3.7.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" level="project" />
@@ -103,7 +107,6 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.5" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
-    <orderEntry type="library" name="Maven: ru:sampleJPA:1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.ws:jaxws-rt:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.ws:jaxws-api:2.3.1" level="project" />
@@ -128,5 +131,7 @@
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
+    <orderEntry type="library" name="Maven: com.google.common.html.types:proto:1.0.8" level="project" />
+    <orderEntry type="library" name="Maven: ru:sampleJPA:1" level="project" />
   </component>
 </module>

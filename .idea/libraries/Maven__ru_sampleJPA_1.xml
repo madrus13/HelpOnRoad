@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="Maven: ru:sampleJPA:1">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/ru/sampleJPA/1/sampleJPA-1.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/ru/sampleJPA/1/sampleJPA-1-javadoc.jar!/" />
     </JAVADOC>
