@@ -857,7 +857,7 @@ public class WebServiceMain {
             @WebParam(name="fileImage") @XmlElement(required=false, nillable=true, name="fileImage")     String fileImage
 
     ) {
-        Message msg = null;
+        Message msg;
         ServiceResult result = new ServiceResult();
         result.IsSuccess= false;
         long start = System.currentTimeMillis() % 1000;
@@ -876,23 +876,20 @@ public class WebServiceMain {
                 if (msg!=null) {
                     msg.setModifyDate(new Timestamp(System.currentTimeMillis()));
 
-                    if (regionId != null){
+                    if (regionId != null && regionId > 0){
                         msg.setRegion(regionId);
                     }
-                    if (requestId != null){
+                    if (requestId != null && requestId > 0){
                         msg.setRequest(requestId);
                     }
-                    if (requestId != null){
-                        msg.setRequest(requestId);
-                    }
-                    if (typeId !=null){
+                    if (typeId !=null && typeId > 0){
                         msg.setType(typeId);
                     }
-                    if (userRx !=null){
+                    if (userRx !=null && userRx > 0){
                         msg.setUserRx(userRx);
                     }
 
-                    if (fileId !=null){
+                    if (fileId !=null && fileId > 0){
                         msg.setFiles(fileId);
                     }
 
