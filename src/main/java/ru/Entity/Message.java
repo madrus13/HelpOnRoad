@@ -196,6 +196,16 @@ public class Message implements Serializable {
         return files;
     }
 
+    @Basic
+    @Column(name = "CreateUserName", nullable = true, length = 100)
+    public String getCreateUserName() {
+        return createUserName;
+    }
+
+    public void setCreateUserName(String createUserName) {
+        this.createUserName = createUserName;
+    }
+
     public void setFiles(Long files) {
         this.files = files;
     }
@@ -299,13 +309,5 @@ public class Message implements Serializable {
         this.regionByRegion = regionByRegion;
     }
 
-    @Basic
-    @Column(name = "CreateUserName", nullable = true, length = 100)
-    public String getCreateUserName() {
-        return createUserName;
-    }
 
-    public void setCreateUserName(String createUserName) {
-        this.createUserName = createUserName;
-    }
 }
