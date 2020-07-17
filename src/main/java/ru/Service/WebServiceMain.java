@@ -1499,13 +1499,7 @@ public class WebServiceMain {
 
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
 
-        if (res.isBoolVal == false)
-        {
-            result.errorMessage = INVALID_TOKEN;
-            result.IsSuccess = false;
-            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
-            return result;
-        }
+        if (setResult(result, start, res)) return result;
 
         if (name.isEmpty()) {
             result.IsSuccess = false;
@@ -1540,6 +1534,17 @@ public class WebServiceMain {
         }
         result.timingMessage += genTimeInfo(PREPARE_TAG,start);
         return result;
+    }
+
+    private boolean setResult(ServiceResult result, long start, CustomObjResult res) {
+        if (res.isBoolVal == false)
+        {
+            result.errorMessage = INVALID_TOKEN;
+            result.IsSuccess = false;
+            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
+            return true;
+        }
+        return false;
     }
 
 
@@ -1611,13 +1616,7 @@ public class WebServiceMain {
 
         CustomObjResult res = isTokenCorrectWithUser(sessionToken);
 
-        if (res.isBoolVal == false)
-        {
-            result.errorMessage = INVALID_TOKEN;
-            result.IsSuccess = false;
-            result.timingMessage += genTimeInfo(PREPARE_TAG,start);
-            return result;
-        }
+        if (setResult(result, start, res)) return result;
         List<Tooltypes> allToolTypes = toolTypeService.findAll();
         List<Long> allToolTypesIds = allToolTypes.stream()
                 .map(Tooltypes::getId)
